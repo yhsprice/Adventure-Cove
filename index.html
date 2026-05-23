@@ -710,17 +710,27 @@
           wheelNotes[wheelPlayerIndex] = option.label;
         }
 
-        document.getElementById("nextSpinBtn").textContent = wheelPlayerIndex === players.length - 1 ? "Start Hole" : "Next Player";
+        document.getElementById("nextSpinBtn").textContent = "Take Turn";
         document.getElementById("nextSpinBtn").classList.remove("hidden");
       }, 2450);
     }
 
     function nextWheelPlayer() {
+      // Instead of all players spinning first, each player now spins
+      // and immediately takes their turn before the next player spins.
+      currentPlayerIndex = wheelPlayerIndex;
+      updatePlayScreen();
+      showOnly("playScreen");
+    }
+
+    function continueWheelFlow() {
       wheelPlayerIndex++;
+
       if (wheelPlayerIndex >= players.length) {
-        startHolePlay();
+        handleEndOfHole();
       } else {
         updateWheelScreen();
+        showOnly("wheelScreen");
       }
     }
 
@@ -809,14 +819,26 @@
         finalStrokes = 1;
         note = bonus.note;
       }
+
       if (bonus?.add) {
         finalStrokes = strokes + bonus.add;
         note = bonus.note;
       }
-      if (wheelNotes[currentPlayerIndex]) note = `Wheel: ${wheelNotes[currentPlayerIndex]}`;
+
+      if (wheelNotes[currentPlayerIndex]) {
+        note = `Wheel: ${wheelNotes[currentPlayerIndex]}`;
+      }
 
       scores[currentPlayerIndex].holes[currentHoleIndex] = finalStrokes;
       scores[currentPlayerIndex].notes[currentHoleIndex] = note;
+
+      // Special handling for spin wheel mode:
+      // spin -> player takes turn -> next player spins
+      if (currentChallenge?.type === "SPIN_WHEEL") {
+        continueWheelFlow();
+        return;
+      }
+
       currentPlayerIndex++;
 
       if (currentPlayerIndex >= players.length) {
@@ -824,6 +846,7 @@
       } else {
         updatePlayScreen();
       }
+    }
     }
 
     function handleEndOfHole() {
