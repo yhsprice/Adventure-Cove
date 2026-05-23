@@ -640,12 +640,16 @@
     function spinWheel() {
       const spinBtn = document.getElementById("spinBtn");
       spinBtn.disabled = true;
+
       const selectedIndex = Math.floor(Math.random() * wheelOptions.length);
       const segmentSize = 360 / wheelOptions.length;
-      const targetCenter = selectedIndex * segmentSize + segmentSize / 2;
-      const pointerAngle = 270;
-      const extraSpins = 4 * 360;
-      const finalRotation = extraSpins + pointerAngle - targetCenter;
+
+      // The pointer is at the top of the wheel. This keeps the visual landing spot
+      // and the result text matched correctly.
+      const selectedCenterAngle = selectedIndex * segmentSize + segmentSize / 2;
+      const extraSpins = 5 * 360;
+      const finalRotation = extraSpins - selectedCenterAngle;
+
       wheelRotation += finalRotation;
       document.getElementById("wheel").style.transform = `rotate(${wheelRotation}deg)`;
 
@@ -1058,4 +1062,3 @@
   </script>
 </body>
 </html>
-
