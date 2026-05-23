@@ -832,8 +832,8 @@
       scores[currentPlayerIndex].holes[currentHoleIndex] = finalStrokes;
       scores[currentPlayerIndex].notes[currentHoleIndex] = note;
 
-      // Special handling for spin wheel mode:
-      // spin -> player takes turn -> next player spins
+      // Spin wheel mode now works one player at a time:
+      // spin -> take turn -> next player spins.
       if (currentChallenge?.type === "SPIN_WHEEL") {
         continueWheelFlow();
         return;
@@ -846,7 +846,6 @@
       } else {
         updatePlayScreen();
       }
-    }
     }
 
     function handleEndOfHole() {
