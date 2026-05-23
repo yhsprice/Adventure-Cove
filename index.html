@@ -208,6 +208,45 @@
       margin-top: 14px;
     }
 
+    .live-scoreboard {
+      background: white;
+      border: 2px solid var(--green);
+      border-radius: 18px;
+      padding: 12px;
+      margin: 14px 0;
+      overflow-x: auto;
+    }
+
+    .live-scoreboard h3 {
+      text-align: center;
+      color: var(--green-dark);
+      margin-bottom: 10px;
+    }
+
+    .live-score-row {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr .8fr;
+      gap: 8px;
+      padding: 8px;
+      border-bottom: 1px solid #e0e8e2;
+      align-items: center;
+      font-weight: 800;
+    }
+
+    .live-score-row.header {
+      background: var(--green);
+      color: white;
+      border-radius: 10px;
+    }
+
+    .live-score-row:last-child { border-bottom: none; }
+
+    .score-adjust-note {
+      font-size: .8rem;
+      color: #6b5a28;
+      font-weight: 700;
+    }
+
     .select-row {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -349,6 +388,7 @@
         <div class="stat-box">Par<br><span id="choicePar" class="big-number">2</span></div>
         <div class="stat-box">Players<br><span id="choicePlayers" class="big-number">0</span></div>
       </div>
+      <div id="choiceScoreboard" class="live-scoreboard"></div>
       <h2 class="center">How do you want to play this hole?</h2>
       <div class="center">
         <button onclick="chooseNormal()">Normal</button>
@@ -375,6 +415,7 @@
 
       <div id="activeChallenge" class="path-box hidden"></div>
       <div id="challengeMessage" class="message-box hidden"></div>
+      <div id="playScoreboard" class="live-scoreboard"></div>
 
       <div class="turn-box">
         <div>Now playing</div>
@@ -559,6 +600,7 @@
       document.getElementById("choiceHole").textContent = hole.hole;
       document.getElementById("choicePar").textContent = hole.par;
       document.getElementById("choicePlayers").textContent = players.length;
+      renderLiveScoreboard("choiceScoreboard");
     }
 
     function chooseNormal() {
@@ -694,6 +736,7 @@
       document.getElementById("playPar").textContent = hole.par;
       document.getElementById("playMode").textContent = currentMode;
       document.getElementById("turnName").textContent = players[currentPlayerIndex];
+      renderLiveScoreboard("playScoreboard");
 
       const challengeBox = document.getElementById("activeChallenge");
       const messageBox = document.getElementById("challengeMessage");
@@ -721,6 +764,40 @@
       } else {
         messageBox.classList.add("hidden");
       }
+    }
+
+    function renderLiveScoreboard(elementId) {
+      const box = document.getElementById(elementId);
+      if (!box || !scores.length) return;
+
+      const rows = scores.map(player => {
+        const total = totalFor(player);
+        const completed = player.holes.filter(v => v !== null).length;
+        const currentRaw = player.holes[currentHoleIndex];
+        const currentAdj = Number(player.adjustments?.[currentHoleIndex]) || 0;
+        let currentText = currentRaw === null ? "—" : `${getHoleTotal(player, currentHoleIndex)}`;
+        if (currentRaw !== null && currentAdj !== 0) {
+          currentText += `<div class="score-adjust-note">${currentRaw} ${currentAdj > 0 ? "+" : ""}${currentAdj}</div>`;
+        }
+        return `
+          <div class="live-score-row">
+            <div>${player.name}</div>
+            <div>${currentText}</div>
+            <div>${total}</div>
+          </div>
+        `;
+      }).join("");
+
+      box.innerHTML = `
+        <h3>Current Scorecard</h3>
+        <div class="live-score-row header">
+          <div>Player</div>
+          <div>Hole ${holes[currentHoleIndex].hole}</div>
+          <div>Total</div>
+        </div>
+        ${rows}
+        <p class="muted center">Scores update as each player is entered. Challenge adjustments are included in totals.</p>
+      `;
     }
 
     function enterScore(strokes) {
