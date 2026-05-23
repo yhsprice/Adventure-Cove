@@ -265,54 +265,78 @@
     .wheel-pointer {
       width: 0;
       height: 0;
-      border-left: 18px solid transparent;
-      border-right: 18px solid transparent;
-      border-top: 34px solid var(--danger);
-      filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
+      border-left: 22px solid transparent;
+      border-right: 22px solid transparent;
+      border-top: 42px solid #d3a53c;
+      filter: drop-shadow(0 3px 2px rgba(0,0,0,.28));
       z-index: 2;
-      margin-bottom: -14px;
+      margin-bottom: -18px;
     }
 
     .wheel {
-      width: min(330px, 82vw);
-      height: min(330px, 82vw);
+      width: min(390px, 86vw);
+      height: min(390px, 86vw);
       border-radius: 50%;
-      border: 8px solid var(--green-dark);
+      border: 11px solid var(--green-dark);
       background: conic-gradient(
-        #f6d36b 0deg 72deg,
-        #72bf78 72deg 144deg,
-        #72b8d8 144deg 216deg,
-        #e78b74 216deg 288deg,
-        #d9d9d9 288deg 360deg
+        #1d75ad 0deg 72deg,
+        #e85f3c 72deg 144deg,
+        #f0bd15 144deg 216deg,
+        #6a4a8f 216deg 288deg,
+        #3e9a35 288deg 360deg
       );
       position: relative;
       transition: transform 2.4s cubic-bezier(.08,.8,.18,1);
-      box-shadow: inset 0 0 0 8px white, 0 10px 22px rgba(0,0,0,.25);
+      box-shadow: inset 0 0 0 7px #f5d36f, inset 0 0 0 14px var(--green-dark), 0 14px 26px rgba(0,0,0,.28);
+      overflow: hidden;
+    }
+
+    .wheel::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.75);
+      pointer-events: none;
     }
 
     .wheel::after {
-      content: "";
-      width: 40px;
-      height: 40px;
+      content: "✦";
+      width: 62px;
+      height: 62px;
       background: var(--green-dark);
-      border: 5px solid white;
+      color: #f5d36f;
+      border: 7px solid var(--gold);
       border-radius: 50%;
       position: absolute;
       inset: 50% auto auto 50%;
       transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      font-weight: 900;
+      z-index: 5;
+      box-shadow: 0 4px 9px rgba(0,0,0,.25);
     }
 
     .wheel-label {
       position: absolute;
-      width: 42%;
-      left: 29%;
-      top: 46%;
+      width: 35%;
+      left: 32.5%;
+      top: 45%;
       text-align: center;
       font-weight: 900;
-      font-size: .74rem;
-      transform-origin: 50% 12px;
-      color: #082412;
-      text-shadow: 0 1px rgba(255,255,255,.75);
+      font-size: clamp(.72rem, 2.3vw, .98rem);
+      line-height: 1.05;
+      transform-origin: 50% 18px;
+      color: white;
+      text-shadow: 0 2px 3px rgba(0,0,0,.45);
+      z-index: 3;
+    }
+
+    .wheel-label.black-text {
+      color: #102818;
+      text-shadow: 0 1px rgba(255,255,255,.55);
     }
 
     .winner-card {
@@ -369,7 +393,7 @@
     <section class="card hero">
       <img src="Adventure Cove.jpg" alt="Adventure Cove Miniature Golf logo" class="logo" />
       <h1>Adventure Cove Scorecard</h1>
-      <p>Play normal mini golf or choose a wild challenge at each hole. Scores stay hidden until the final reveal — because friendship is nice, but mystery is better.</p>
+      <p>Play normal mini golf or choose a wild challenge at each hole. Keep score as you go, watch the surprises unfold, and see who claims bragging rights at the Cove.</p>
     </section>
 
     <section id="setupScreen" class="card">
@@ -440,11 +464,11 @@
       <div class="wheel-wrap">
         <div class="wheel-pointer"></div>
         <div id="wheel" class="wheel">
-          <div class="wheel-label" style="transform: rotate(36deg) translateY(-128px) rotate(-36deg);">Instant Hole in One</div>
-          <div class="wheel-label" style="transform: rotate(108deg) translateY(-128px) rotate(-108deg);">Stand One Legged</div>
-          <div class="wheel-label" style="transform: rotate(180deg) translateY(-128px) rotate(-180deg);">Non-Dominant Hand</div>
-          <div class="wheel-label" style="transform: rotate(252deg) translateY(-128px) rotate(-252deg);">Add 2</div>
-          <div class="wheel-label" style="transform: rotate(324deg) translateY(-128px) rotate(-324deg);">Play Normal</div>
+          <div class="wheel-label" style="transform: rotate(36deg) translateY(-142px) rotate(-36deg);">⛳<br>Instant<br>Hole In One!</div>
+          <div class="wheel-label" style="transform: rotate(108deg) translateY(-142px) rotate(-108deg);">🧍<br>Stand One<br>Legged</div>
+          <div class="wheel-label black-text" style="transform: rotate(180deg) translateY(-142px) rotate(-180deg);">✋<br>Non-Dominant<br>Hand</div>
+          <div class="wheel-label" style="transform: rotate(252deg) translateY(-142px) rotate(-252deg);">+2<br>Add 2<br>Strokes</div>
+          <div class="wheel-label" style="transform: rotate(324deg) translateY(-142px) rotate(-324deg);">🏌️<br>Play<br>Normal</div>
         </div>
       </div>
       <div id="wheelResult" class="message-box hidden"></div>
@@ -512,7 +536,29 @@
       { text: "Aaargh! Putt the ball with your eyes closed. If you dare.", type: "NORMAL" },
       { text: "Bowl the ball into the hole. Don't use your club!", type: "NORMAL" },
       { text: "Take your 2nd shot of this round with your eyes closed!", type: "NORMAL" },
-      { text: "Golf this hole with your unfavored hand.", type: "NORMAL" }
+      { text: "Golf this hole with your unfavored hand.", type: "NORMAL" },
+      { text: "Crab Walk Shot: stand sideways when you take your first shot.", type: "NORMAL" },
+      { text: "Tiny Tap Rule: your first shot must be a small tap. No full swing on shot one.", type: "NORMAL" },
+      { text: "Switcheroo: trade putters with another player for this hole.", type: "NORMAL" },
+      { text: "Wall First: your first shot must touch a side wall before it can go in.", type: "NORMAL" },
+      { text: "No Peeking Putt: look at the hole, then close your eyes before your first shot.", type: "NORMAL" },
+      { text: "Two-Finger Grip: hold the putter with only two fingers on your first shot.", type: "NORMAL" },
+      { text: "Last Place Rule: the player with the highest score chooses how everyone takes their first shot.", type: "NORMAL" },
+      { text: "Leader Trouble: the player with the lowest score must use their non-dominant hand on the first shot.", type: "NORMAL" },
+      { text: "One-Step Shot: take one step, stop, then hit the ball without moving your feet again.", type: "NORMAL" },
+      { text: "Tap and Freeze: after your first shot, freeze until the ball stops moving.", type: "NORMAL" },
+      { text: "Partner Pick: the player before you chooses whether you use one hand or two hands for your first shot.", type: "NORMAL" },
+      { text: "Straight Arm Shot: keep your elbows straight for your first shot.", type: "NORMAL" },
+      { text: "Mini Boss Hole: everyone must use the same challenge from the player who goes first.", type: "NORMAL" },
+      { text: "Safe Shot: if your ball touches no wall or obstacle on this hole, deduct 1 stroke.", type: "NORMAL" },
+      { text: "Obstacle Trouble: if your ball gets stuck or leaves the green, add 1 stroke.", type: "NORMAL" },
+      { text: "Comeback Cove: the player with the highest score may deduct 1 stroke if they finish this hole in par or better.", type: "NORMAL" },
+      { text: "Treasure Steal: if you get a hole-in-one, deduct 1 stroke from your score instead of adding to someone else's.", type: "NORMAL" },
+      { text: "Captain's Call: before anyone shoots, the youngest player chooses one rule for this hole: one hand, eyes closed first shot, or sideways stance.", type: "NORMAL" },
+      { text: "Waterfall Whisper: everyone must take their first shot quietly. If someone talks before everyone shoots, they add 1 stroke.", type: "NORMAL" },
+      { text: "Lucky Bounce: if your ball bounces off a wall and still goes in, deduct 1 stroke.", type: "NORMAL" },
+      { text: "The Detour: your first shot must aim for a wall or obstacle before heading toward the hole.", type: "NORMAL" },
+      { text: "Steady Captain: hold the putter with both hands touching each other for the whole hole.", type: "NORMAL" }
     ];
 
     const wheelOptions = [
