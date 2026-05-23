@@ -1,1 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adventure Cove Scorecard</title>
+  <style>
+    :root {
+      --green: #0f6b36;
+      --green-dark: #06451f;
+      --gold: #c8953f;
+      --cream: #fff8ea;
+      --paper: rgba(255, 255, 255, 0.94);
+      --ink: #17321f;
+      --danger: #a23b2a;
+      --blue: #1d6f8f;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(5, 45, 20, 0.45), rgba(5, 45, 20, 0.65)),
+        url("Waterfall.jpg") center/cover fixed no-repeat;
+    }
+
+    .app {
+      width: min(980px, 94vw);
+      margin: 0 auto;
+      padding: 18px 0 40px;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 3px solid var(--green);
+      border-radius: 22px;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.28);
+      padding: 20px;
+      margin-top: 16px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .logo {
+      max-width: 430px;
+      width: 88%;
+      margin: 0 auto 8px;
+      display: block;
+      background: white;
+      border-radius: 18px;
+      padding: 8px;
+    }
+
+    h1, h2, h3 { margin: 8px 0; }
+    h1 { color: var(--green-dark); font-size: clamp(1.8rem, 5vw, 3rem); }
+    h2 { color: var(--green-dark); font-size: clamp(1.4rem, 4vw, 2.2rem); }
+    p { line-height: 1.45; }
+
+    .hidden { display: none !important; }
+    .center { text-align: center; }
+    .muted { color: #5c6c62; font-size: .92rem; }
+
+    .player-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #b7cbbd;
+      border-radius: 12px;
+      font-size: 1rem;
+      background: white;
+    }
+
+    input { text-transform: uppercase; }
+
+    button {
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 13px 20px;
+      font-size: 1rem;
+      font-weight: 800;
+      color: white;
+      background: var(--green);
+      box-shadow: 0 5px 0 var(--green-dark);
+      margin: 6px;
+      transition: transform .08s ease, box-shadow .08s ease;
+    }
+
+    button:hover { filter: brightness(1.05); }
+    button:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--green-dark); }
+    button:disabled { opacity: .55; cursor: not-allowed; filter: grayscale(.3); }
+
+    .gold-btn { background: var(--gold); box-shadow: 0 5px 0 #8a6122; }
+    .danger-btn { background: var(--danger); box-shadow: 0 5px 0 #6d251a; }
+    .blue-btn { background: var(--blue); box-shadow: 0 5px 0 #124759; }
+    .small-btn { padding: 9px 14px; font-size: .9rem; }
+
+    .hole-header {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .stat-box {
+      background: var(--cream);
+      border: 2px solid var(--gold);
+      border-radius: 16px;
+      padding: 12px;
+      font-weight: 900;
+    }
+
+    .big-number {
+      font-size: clamp(2.2rem, 10vw, 5rem);
+      color: var(--green-dark);
+      line-height: 1;
+    }
+
+    .path-box, .message-box {
+      background: #fffdf5;
+      border: 3px dashed var(--gold);
+      border-radius: 18px;
+      padding: 16px;
+      margin: 14px 0;
+      font-size: clamp(1.05rem, 3vw, 1.35rem);
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .message-box {
+      border-style: solid;
+      background: #eef8ef;
+      border-color: var(--green);
+    }
+
+    .turn-box {
+      background: var(--green-dark);
+      color: white;
+      border-radius: 18px;
+      padding: 16px;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .turn-name {
+      font-size: clamp(1.8rem, 6vw, 3.2rem);
+      font-weight: 900;
+      color: #ffe5a8;
+      letter-spacing: 1px;
+    }
+
+    .score-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 15px auto;
+      max-width: 460px;
+    }
+
+    .score-buttons button { margin: 0; }
+
+    .score-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .score-table th, .score-table td {
+      border: 1px solid #ccd8cf;
+      padding: 8px;
+      text-align: center;
+      background: white;
+    }
+
+    .score-table th {
+      background: var(--green);
+      color: white;
+      position: sticky;
+      top: 0;
+    }
+
+    .score-table td:first-child, .score-table th:first-child {
+      text-align: left;
+      font-weight: 800;
+    }
+
+    .rule-panel {
+      background: white;
+      border: 2px solid #d7e5da;
+      border-radius: 18px;
+      padding: 15px;
+      margin-top: 14px;
+    }
+
+    .select-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .wheel-wrap {
+      display: grid;
+      place-items: center;
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .wheel-pointer {
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 34px solid var(--danger);
+      filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
+      z-index: 2;
+      margin-bottom: -14px;
+    }
+
+    .wheel {
+      width: min(330px, 82vw);
+      height: min(330px, 82vw);
+      border-radius: 50%;
+      border: 8px solid var(--green-dark);
+      background: conic-gradient(
+        #f6d36b 0deg 72deg,
+        #72bf78 72deg 144deg,
+        #72b8d8 144deg 216deg,
+        #e78b74 216deg 288deg,
+        #d9d9d9 288deg 360deg
+      );
+      position: relative;
+      transition: transform 2.4s cubic-bezier(.08,.8,.18,1);
+      box-shadow: inset 0 0 0 8px white, 0 10px 22px rgba(0,0,0,.25);
+    }
+
+    .wheel::after {
+      content: "";
+      width: 40px;
+      height: 40px;
+      background: var(--green-dark);
+      border: 5px solid white;
+      border-radius: 50%;
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .wheel-label {
+      position: absolute;
+      width: 42%;
+      left: 29%;
+      top: 46%;
+      text-align: center;
+      font-weight: 900;
+      font-size: .74rem;
+      transform-origin: 50% 12px;
+      color: #082412;
+      text-shadow: 0 1px rgba(255,255,255,.75);
+    }
+
+    .winner-card {
+      background: linear-gradient(135deg, #fff6d6, #ffffff);
+      border: 4px solid var(--gold);
+      text-align: center;
+      animation: pop .45s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(.94); opacity: .3; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .place-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .place {
+      padding: 14px;
+      border-radius: 15px;
+      background: white;
+      border: 2px solid #d8c08b;
+      font-weight: 900;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .history-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border-bottom: 1px solid #d8e4dc;
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 620px) {
+      .hole-header { grid-template-columns: 1fr; }
+      .score-buttons { grid-template-columns: repeat(2, 1fr); }
+      .card { padding: 14px; }
+      .history-item, .place, .select-row { grid-template-columns: 1fr; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="card hero">
+      <img src="Adventure Cove.jpg" alt="Adventure Cove Miniature Golf logo" class="logo" />
+      <h1>Adventure Cove Scorecard</h1>
+      <p>Play normal mini golf or choose a wild challenge at each hole. Scores stay hidden until the final reveal — because friendship is nice, but mystery is better.</p>
+    </section>
+
+    <section id="setupScreen" class="card">
+      <h2>Players</h2>
+      <p class="muted">Enter up to 6 players. Names are limited to 8 letters.</p>
+      <div class="player-grid" id="playerInputs"></div>
+      <div class="center">
+        <button onclick="startGame()">Next</button>
+        <button class="gold-btn" onclick="showHistory()">Past Games</button>
+      </div>
+    </section>
+
+    <section id="choiceScreen" class="card hidden">
+      <div class="hole-header">
+        <div class="stat-box">Hole<br><span id="choiceHole" class="big-number">1</span></div>
+        <div class="stat-box">Par<br><span id="choicePar" class="big-number">2</span></div>
+        <div class="stat-box">Players<br><span id="choicePlayers" class="big-number">0</span></div>
+      </div>
+      <h2 class="center">How do you want to play this hole?</h2>
+      <div class="center">
+        <button onclick="chooseNormal()">Normal</button>
+        <button class="gold-btn" onclick="choosePath()">Choose Your Path</button>
+      </div>
+    </section>
+
+    <section id="pathScreen" class="card hidden">
+      <h2 class="center">Choose Your Path</h2>
+      <div id="challengeText" class="path-box"></div>
+      <div id="challengePreview" class="message-box hidden"></div>
+      <div class="center">
+        <button class="gold-btn" onclick="newChallenge()">Switch Challenge</button>
+        <button onclick="acceptChallenge()">Use This Challenge</button>
+      </div>
+    </section>
+
+    <section id="playScreen" class="card hidden">
+      <div class="hole-header">
+        <div class="stat-box">Hole<br><span id="playHole" class="big-number">1</span></div>
+        <div class="stat-box">Par<br><span id="playPar" class="big-number">2</span></div>
+        <div class="stat-box">Mode<br><span id="playMode">Normal</span></div>
+      </div>
+
+      <div id="activeChallenge" class="path-box hidden"></div>
+      <div id="challengeMessage" class="message-box hidden"></div>
+
+      <div class="turn-box">
+        <div>Now playing</div>
+        <div id="turnName" class="turn-name"></div>
+        <div class="muted" style="color:#d7eadc;">Enter this player's strokes for the hole.</div>
+      </div>
+
+      <div class="score-buttons" id="scoreButtons"></div>
+      <div class="center">
+        <button class="small-btn danger-btn" onclick="goBackOnePlayer()">Back One Player</button>
+      </div>
+    </section>
+
+    <section id="specialScreen" class="card hidden">
+      <h2 id="specialTitle" class="center">Challenge Result</h2>
+      <div id="specialContent"></div>
+    </section>
+
+    <section id="wheelScreen" class="card hidden">
+      <h2 class="center">Spin the Wheel</h2>
+      <div id="wheelPlayer" class="message-box"></div>
+      <div class="wheel-wrap">
+        <div class="wheel-pointer"></div>
+        <div id="wheel" class="wheel">
+          <div class="wheel-label" style="transform: rotate(36deg) translateY(-128px) rotate(-36deg);">Instant Hole in One</div>
+          <div class="wheel-label" style="transform: rotate(108deg) translateY(-128px) rotate(-108deg);">Stand One Legged</div>
+          <div class="wheel-label" style="transform: rotate(180deg) translateY(-128px) rotate(-180deg);">Non-Dominant Hand</div>
+          <div class="wheel-label" style="transform: rotate(252deg) translateY(-128px) rotate(-252deg);">Add 2</div>
+          <div class="wheel-label" style="transform: rotate(324deg) translateY(-128px) rotate(-324deg);">Play Normal</div>
+        </div>
+      </div>
+      <div id="wheelResult" class="message-box hidden"></div>
+      <div class="center">
+        <button id="spinBtn" class="gold-btn" onclick="spinWheel()">Spin</button>
+        <button id="nextSpinBtn" class="hidden" onclick="nextWheelPlayer()">Next Player</button>
+      </div>
+    </section>
+
+    <section id="finalScreen" class="card winner-card hidden">
+      <h2>🏴‍☠️ Final Treasure Reveal 🏴‍☠️</h2>
+      <h1 id="winnerText"></h1>
+      <p id="winnerSubtext"></p>
+      <div id="places" class="place-list"></div>
+      <div id="finalScoreTable"></div>
+      <div class="center">
+        <button onclick="newGame()">Start New Game</button>
+        <button class="gold-btn" onclick="showHistory()">View Past Games</button>
+      </div>
+    </section>
+
+    <section id="historyScreen" class="card hidden">
+      <h2>Past Games</h2>
+      <div id="historyList"></div>
+      <div class="center">
+        <button onclick="backHome()">Back</button>
+        <button class="danger-btn" onclick="clearHistory()">Clear History</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const holes = [
+      { hole: 1, par: 2 }, { hole: 2, par: 3 }, { hole: 3, par: 4 },
+      { hole: 4, par: 3 }, { hole: 5, par: 2 }, { hole: 6, par: 2 },
+      { hole: 7, par: 2 }, { hole: 8, par: 2 }, { hole: 9, par: 2 },
+      { hole: 10, par: 3 }, { hole: 11, par: 2 }, { hole: 12, par: 3 },
+      { hole: 13, par: 2 }, { hole: 14, par: 2 }, { hole: 15, par: 2 },
+      { hole: 16, par: 2 }, { hole: 17, par: 3 }, { hole: 18, par: 2 }
+    ];
+
+    const challengeTypes = {
+      HIGHEST_PAR_DECIDES: "Player with the highest par determines how everyone must hit the ball.",
+      CLOSEST_TO_HOLE: "Putt the ball as close to the hole without going in, but no more than 2 strokes. Closest player who wins deducts 1 point. If a player’s ball goes in, they get an extra 2 points.",
+      UNDER_PAR_REMOVE_WORST: "Any player who gets under par this round can eliminate their worst score so far.",
+      HOLE_IN_ONE_ATTACK: "Any player who gets a hole-in-one on this round can add two strokes to another player’s score.",
+      SPIN_WHEEL: "Spin the wheel to learn your fate."
+    };
+
+    const challenges = [
+      { text: "Ahoy! Walk the plank and hit the ball standing on one foot.", type: "NORMAL" },
+      { text: "Turn the club upside down and hit the ball with the handle.", type: "NORMAL" },
+      { text: challengeTypes.HIGHEST_PAR_DECIDES, type: "HIGHEST_PAR_DECIDES" },
+      { text: "Face backward and putt the ball between your legs.", type: "NORMAL" },
+      { text: challengeTypes.CLOSEST_TO_HOLE, type: "CLOSEST_TO_HOLE" },
+      { text: "Play one handed with your dominant hand.", type: "NORMAL" },
+      { text: "Hit the ball like this is a game of pool.", type: "NORMAL" },
+      { text: challengeTypes.UNDER_PAR_REMOVE_WORST, type: "UNDER_PAR_REMOVE_WORST" },
+      { text: challengeTypes.HOLE_IN_ONE_ATTACK, type: "HOLE_IN_ONE_ATTACK" },
+      { text: "Swing granny style between the legs.", type: "NORMAL" },
+      { text: challengeTypes.SPIN_WHEEL, type: "SPIN_WHEEL" },
+      { text: "First one to sink a shot this round may move another player's ball anywhere within the length of their club.", type: "NORMAL" },
+      { text: "Forget the club and use your foot to hit the ball for this round!", type: "NORMAL" },
+      { text: "Hit the ball while sitting on the ground cross-legged.", type: "NORMAL" },
+      { text: "Aaargh! Putt the ball with your eyes closed. If you dare.", type: "NORMAL" },
+      { text: "Bowl the ball into the hole. Don't use your club!", type: "NORMAL" },
+      { text: "Take your 2nd shot of this round with your eyes closed!", type: "NORMAL" },
+      { text: "Golf this hole with your unfavored hand.", type: "NORMAL" }
+    ];
+
+    const wheelOptions = [
+      { label: "Instant hole in one", action: "INSTANT_ONE" },
+      { label: "Stand one legged while hitting", action: "PLAY_NOTE" },
+      { label: "Swing with your non-dominant hand", action: "PLAY_NOTE" },
+      { label: "Add 2 to your score for this round", action: "ADD_TWO" },
+      { label: "Play normal", action: "PLAY_NOTE" }
+    ];
+
+    let players = [];
+    let scores = [];
+    let currentHoleIndex = 0;
+    let currentPlayerIndex = 0;
+    let currentMode = "Normal";
+    let currentChallenge = null;
+    let wheelPlayerIndex = 0;
+    let wheelBonuses = {};
+    let wheelNotes = {};
+    let wheelRotation = 0;
+    let pendingAfterHole = null;
+
+    function buildSetup() {
+      const box = document.getElementById("playerInputs");
+      box.innerHTML = "";
+      for (let i = 1; i <= 6; i++) {
+        const input = document.createElement("input");
+        input.maxLength = 8;
+        input.placeholder = `Player ${i}`;
+        input.id = `player${i}`;
+        box.appendChild(input);
+      }
+      buildScoreButtons();
+    }
+
+    function buildScoreButtons() {
+      const box = document.getElementById("scoreButtons");
+      box.innerHTML = "";
+      for (let i = 1; i <= 8; i++) {
+        const btn = document.createElement("button");
+        btn.textContent = i;
+        btn.onclick = () => enterScore(i);
+        box.appendChild(btn);
+      }
+      const plus = document.createElement("button");
+      plus.textContent = "9+";
+      plus.className = "gold-btn";
+      plus.onclick = () => {
+        const val = Number(prompt("Enter strokes:"));
+        if (Number.isInteger(val) && val > 0) enterScore(val);
+      };
+      box.appendChild(plus);
+    }
+
+    function showOnly(id) {
+      ["setupScreen", "choiceScreen", "pathScreen", "playScreen", "specialScreen", "wheelScreen", "finalScreen", "historyScreen"].forEach(screen => {
+        document.getElementById(screen).classList.add("hidden");
+      });
+      document.getElementById(id).classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function startGame() {
+      players = [];
+      for (let i = 1; i <= 6; i++) {
+        const name = document.getElementById(`player${i}`).value.trim().toUpperCase();
+        if (name) players.push(name.substring(0, 8));
+      }
+
+      if (players.length < 1) {
+        alert("Enter at least one player. Even pirates need a crew.");
+        return;
+      }
+
+      scores = players.map(name => ({ name, holes: Array(18).fill(null), adjustments: Array(18).fill(0), notes: Array(18).fill("") }));
+      currentHoleIndex = 0;
+      currentPlayerIndex = 0;
+      currentChallenge = null;
+      updateChoiceScreen();
+      showOnly("choiceScreen");
+    }
+
+    function updateChoiceScreen() {
+      const hole = holes[currentHoleIndex];
+      document.getElementById("choiceHole").textContent = hole.hole;
+      document.getElementById("choicePar").textContent = hole.par;
+      document.getElementById("choicePlayers").textContent = players.length;
+    }
+
+    function chooseNormal() {
+      currentMode = "Normal";
+      currentChallenge = null;
+      pendingAfterHole = null;
+      startHolePlay();
+    }
+
+    function choosePath() {
+      newChallenge();
+      showOnly("pathScreen");
+    }
+
+    function newChallenge() {
+      currentChallenge = challenges[Math.floor(Math.random() * challenges.length)];
+      document.getElementById("challengeText").textContent = currentChallenge.text;
+      const preview = document.getElementById("challengePreview");
+      const message = getChallengePreviewMessage(currentChallenge.type);
+      if (message) {
+        preview.textContent = message;
+        preview.classList.remove("hidden");
+      } else {
+        preview.classList.add("hidden");
+      }
+    }
+
+    function getChallengePreviewMessage(type) {
+      if (type === "HIGHEST_PAR_DECIDES") return highestParMessage();
+      if (type === "SPIN_WHEEL") return "Each player will spin before the hole begins.";
+      if (type === "CLOSEST_TO_HOLE") return "After everyone scores, you will choose the closest player and mark if anyone accidentally sank the ball.";
+      if (type === "UNDER_PAR_REMOVE_WORST") return "After the hole, the app will remove the worst previous score for anyone who beats par.";
+      if (type === "HOLE_IN_ONE_ATTACK") return "After the hole, anyone with a hole-in-one can add 2 strokes to another player.";
+      return "";
+    }
+
+    function acceptChallenge() {
+      currentMode = "Challenge";
+      pendingAfterHole = null;
+      if (currentChallenge.type === "SPIN_WHEEL") {
+        startWheelChallenge();
+      } else {
+        startHolePlay();
+      }
+    }
+
+    function highestParMessage() {
+      const totals = scores.map(p => ({ name: p.name, total: totalFor(p) }));
+      const max = Math.max(...totals.map(p => p.total));
+      if (max === 0) {
+        const randomName = players[Math.floor(Math.random() * players.length)];
+        return `No leader yet. Random pick: ${randomName} decides how everyone must hit the ball.`;
+      }
+      const leaders = totals.filter(p => p.total === max).map(p => p.name);
+      if (leaders.length === 1) return `${leaders[0]} has the highest score so far and decides how everyone must hit the ball.`;
+      const randomLeader = leaders[Math.floor(Math.random() * leaders.length)];
+      return `There is a tie for highest score. Random pick: ${randomLeader} decides how everyone must hit the ball.`;
+    }
+
+    function startWheelChallenge() {
+      wheelPlayerIndex = 0;
+      wheelBonuses = {};
+      wheelNotes = {};
+      wheelRotation = 0;
+      document.getElementById("wheel").style.transition = "none";
+      document.getElementById("wheel").style.transform = "rotate(0deg)";
+      setTimeout(() => document.getElementById("wheel").style.transition = "transform 2.4s cubic-bezier(.08,.8,.18,1)", 20);
+      updateWheelScreen();
+      showOnly("wheelScreen");
+    }
+
+    function updateWheelScreen() {
+      document.getElementById("wheelPlayer").textContent = `${players[wheelPlayerIndex]}, spin to learn your fate.`;
+      document.getElementById("wheelResult").classList.add("hidden");
+      document.getElementById("spinBtn").disabled = false;
+      document.getElementById("nextSpinBtn").classList.add("hidden");
+    }
+
+    function spinWheel() {
+      const spinBtn = document.getElementById("spinBtn");
+      spinBtn.disabled = true;
+      const selectedIndex = Math.floor(Math.random() * wheelOptions.length);
+      const segmentSize = 360 / wheelOptions.length;
+      const targetCenter = selectedIndex * segmentSize + segmentSize / 2;
+      const pointerAngle = 270;
+      const extraSpins = 4 * 360;
+      const finalRotation = extraSpins + pointerAngle - targetCenter;
+      wheelRotation += finalRotation;
+      document.getElementById("wheel").style.transform = `rotate(${wheelRotation}deg)`;
+
+      setTimeout(() => {
+        const playerName = players[wheelPlayerIndex];
+        const option = wheelOptions[selectedIndex];
+        const resultBox = document.getElementById("wheelResult");
+        resultBox.textContent = `${playerName}: ${option.label}`;
+        resultBox.classList.remove("hidden");
+
+        if (option.action === "INSTANT_ONE") {
+          wheelBonuses[wheelPlayerIndex] = { forceScore: 1, note: "Wheel: instant hole in one" };
+        } else if (option.action === "ADD_TWO") {
+          wheelBonuses[wheelPlayerIndex] = { add: 2, note: "Wheel: +2" };
+        } else {
+          wheelNotes[wheelPlayerIndex] = option.label;
+        }
+
+        document.getElementById("nextSpinBtn").textContent = wheelPlayerIndex === players.length - 1 ? "Start Hole" : "Next Player";
+        document.getElementById("nextSpinBtn").classList.remove("hidden");
+      }, 2450);
+    }
+
+    function nextWheelPlayer() {
+      wheelPlayerIndex++;
+      if (wheelPlayerIndex >= players.length) {
+        startHolePlay();
+      } else {
+        updateWheelScreen();
+      }
+    }
+
+    function startHolePlay() {
+      currentPlayerIndex = 0;
+      updatePlayScreen();
+      showOnly("playScreen");
+    }
+
+    function updatePlayScreen() {
+      const hole = holes[currentHoleIndex];
+      document.getElementById("playHole").textContent = hole.hole;
+      document.getElementById("playPar").textContent = hole.par;
+      document.getElementById("playMode").textContent = currentMode;
+      document.getElementById("turnName").textContent = players[currentPlayerIndex];
+
+      const challengeBox = document.getElementById("activeChallenge");
+      const messageBox = document.getElementById("challengeMessage");
+
+      if (currentMode === "Challenge" && currentChallenge) {
+        challengeBox.textContent = currentChallenge.text;
+        challengeBox.classList.remove("hidden");
+      } else {
+        challengeBox.classList.add("hidden");
+      }
+
+      let msg = "";
+      if (currentChallenge?.type === "HIGHEST_PAR_DECIDES") msg = highestParMessage();
+      if (currentChallenge?.type === "SPIN_WHEEL") {
+        const bonus = wheelBonuses[currentPlayerIndex];
+        const note = wheelNotes[currentPlayerIndex];
+        if (bonus?.forceScore) msg = `${players[currentPlayerIndex]} spun Instant Hole in One. Score will be saved as 1.`;
+        else if (bonus?.add) msg = `${players[currentPlayerIndex]} spun Add 2. Enter their strokes normally; the app will add 2.`;
+        else if (note) msg = `${players[currentPlayerIndex]} spun: ${note}.`;
+      }
+
+      if (msg) {
+        messageBox.textContent = msg;
+        messageBox.classList.remove("hidden");
+      } else {
+        messageBox.classList.add("hidden");
+      }
+    }
+
+    function enterScore(strokes) {
+      const bonus = currentChallenge?.type === "SPIN_WHEEL" ? wheelBonuses[currentPlayerIndex] : null;
+      let finalStrokes = strokes;
+      let note = "";
+
+      if (bonus?.forceScore) {
+        finalStrokes = 1;
+        note = bonus.note;
+      }
+      if (bonus?.add) {
+        finalStrokes = strokes + bonus.add;
+        note = bonus.note;
+      }
+      if (wheelNotes[currentPlayerIndex]) note = `Wheel: ${wheelNotes[currentPlayerIndex]}`;
+
+      scores[currentPlayerIndex].holes[currentHoleIndex] = finalStrokes;
+      scores[currentPlayerIndex].notes[currentHoleIndex] = note;
+      currentPlayerIndex++;
+
+      if (currentPlayerIndex >= players.length) {
+        handleEndOfHole();
+      } else {
+        updatePlayScreen();
+      }
+    }
+
+    function handleEndOfHole() {
+      if (currentMode === "Challenge" && currentChallenge) {
+        if (currentChallenge.type === "CLOSEST_TO_HOLE") return showClosestToHoleScreen();
+        if (currentChallenge.type === "UNDER_PAR_REMOVE_WORST") return applyUnderParRemoveWorst();
+        if (currentChallenge.type === "HOLE_IN_ONE_ATTACK") return showHoleInOneAttackScreen();
+      }
+      advanceHole();
+    }
+
+    function advanceHole() {
+      currentHoleIndex++;
+      if (currentHoleIndex >= holes.length) {
+        finishGame();
+      } else {
+        currentChallenge = null;
+        currentMode = "Normal";
+        updateChoiceScreen();
+        showOnly("choiceScreen");
+      }
+    }
+
+    function goBackOnePlayer() {
+      if (currentPlayerIndex > 0) {
+        currentPlayerIndex--;
+        scores[currentPlayerIndex].holes[currentHoleIndex] = null;
+        scores[currentPlayerIndex].notes[currentHoleIndex] = "";
+        updatePlayScreen();
+      }
+    }
+
+    function showClosestToHoleScreen() {
+      document.getElementById("specialTitle").textContent = "Closest to the Hole";
+      const content = document.getElementById("specialContent");
+      content.innerHTML = `
+        <div class="message-box">Select who got closest without going in. That player gets 1 stroke deducted.</div>
+        <div class="rule-panel">
+          <label><strong>Closest player</strong></label>
+          ${playerSelectHtml("closestSelect")}
+          <div class="center"><button onclick="applyClosestWinner()">Apply Closest Player</button></div>
+        </div>
+      `;
+      showOnly("specialScreen");
+    }
+
+    function applyClosestWinner() {
+      const closestIndex = Number(document.getElementById("closestSelect").value);
+      scores[closestIndex].adjustments[currentHoleIndex] -= 1;
+      scores[closestIndex].notes[currentHoleIndex] += " Closest: -1.";
+
+      const content = document.getElementById("specialContent");
+      content.innerHTML = `
+        <div class="message-box">${players[closestIndex]} gets 1 stroke deducted. Did anyone's ball go in?</div>
+        <div class="center">
+          <button onclick="showWentInSelector()">Yes</button>
+          <button class="gold-btn" onclick="advanceHole()">No, Continue</button>
+        </div>
+      `;
+    }
+
+    function showWentInSelector() {
+      const content = document.getElementById("specialContent");
+      content.innerHTML = `
+        <div class="message-box">Choose the player whose ball went in. They get 2 strokes added.</div>
+        <div class="rule-panel">
+          ${playerSelectHtml("wentInSelect")}
+          <div class="center"><button onclick="applyWentInPenalty()">Add 2 Strokes</button></div>
+        </div>
+      `;
+    }
+
+    function applyWentInPenalty() {
+      const playerIndex = Number(document.getElementById("wentInSelect").value);
+      scores[playerIndex].adjustments[currentHoleIndex] += 2;
+      scores[playerIndex].notes[currentHoleIndex] += " Ball went in: +2.";
+      const more = confirm("Did another player's ball go in too?");
+      if (more) showWentInSelector();
+      else advanceHole();
+    }
+
+    function applyUnderParRemoveWorst() {
+      const par = holes[currentHoleIndex].par;
+      const luckyNames = [];
+
+      scores.forEach((player, index) => {
+        const thisHoleScore = getHoleTotal(player, currentHoleIndex);
+        if (thisHoleScore < par) {
+          const worst = findWorstPreviousHole(player, currentHoleIndex);
+          if (worst !== null) {
+            player.adjustments[worst] -= getHoleTotal(player, worst);
+            player.notes[worst] += " Worst score eliminated.";
+            luckyNames.push(player.name);
+          }
+        }
+      });
+
+      document.getElementById("specialTitle").textContent = "Lucky Break";
+      const message = luckyNames.length === 0
+        ? "Nobody is lucky today."
+        : luckyNames.length === 1
+          ? `Lucky for ${luckyNames[0]}! Their worst previous score has been eliminated.`
+          : `Lucky for ${luckyNames[0]} and someone else! Worst previous scores have been eliminated.`;
+      document.getElementById("specialContent").innerHTML = `
+        <div class="message-box">${message}</div>
+        <div class="center"><button onclick="advanceHole()">Continue</button></div>
+      `;
+      showOnly("specialScreen");
+    }
+
+    function findWorstPreviousHole(player, currentIndex) {
+      let worstIndex = null;
+      let worstValue = -Infinity;
+      for (let i = 0; i <= currentIndex; i++) {
+        const value = getHoleTotal(player, i);
+        if (value > worstValue) {
+          worstValue = value;
+          worstIndex = i;
+        }
+      }
+      return worstIndex;
+    }
+
+    function showHoleInOneAttackScreen() {
+      const holeInOnePlayers = scores
+        .map((p, index) => ({ name: p.name, index, score: getHoleTotal(p, currentHoleIndex) }))
+        .filter(p => p.score === 1);
+
+      if (holeInOnePlayers.length === 0) {
+        document.getElementById("specialTitle").textContent = "No Hole-in-One";
+        document.getElementById("specialContent").innerHTML = `
+          <div class="message-box">No hole-in-one this round. No revenge today.</div>
+          <div class="center"><button onclick="advanceHole()">Continue</button></div>
+        `;
+        showOnly("specialScreen");
+        return;
+      }
+
+      pendingAfterHole = { type: "HOLE_IN_ONE_ATTACK", attackers: holeInOnePlayers, current: 0 };
+      showAttackChoice();
+    }
+
+    function showAttackChoice() {
+      const attacker = pendingAfterHole.attackers[pendingAfterHole.current];
+      document.getElementById("specialTitle").textContent = "Hole-in-One Power Move";
+      document.getElementById("specialContent").innerHTML = `
+        <div class="message-box">${attacker.name} got a hole-in-one! Choose someone to receive +2 strokes.</div>
+        <div class="rule-panel">
+          ${playerSelectHtml("attackTarget", attacker.index)}
+          <div class="center"><button onclick="applyAttackPenalty()">Add 2 Strokes</button></div>
+        </div>
+      `;
+      showOnly("specialScreen");
+    }
+
+    function applyAttackPenalty() {
+      const targetIndex = Number(document.getElementById("attackTarget").value);
+      const attacker = pendingAfterHole.attackers[pendingAfterHole.current];
+      scores[targetIndex].adjustments[currentHoleIndex] += 2;
+      scores[targetIndex].notes[currentHoleIndex] += ` +2 from ${attacker.name}.`;
+      pendingAfterHole.current++;
+      if (pendingAfterHole.current >= pendingAfterHole.attackers.length) {
+        pendingAfterHole = null;
+        advanceHole();
+      } else {
+        showAttackChoice();
+      }
+    }
+
+    function playerSelectHtml(id, excludeIndex = null) {
+      let html = `<select id="${id}">`;
+      players.forEach((name, index) => {
+        if (index !== excludeIndex) html += `<option value="${index}">${name}</option>`;
+      });
+      html += `</select>`;
+      return html;
+    }
+
+    function getHoleTotal(player, holeIndex) {
+      return (Number(player.holes[holeIndex]) || 0) + (Number(player.adjustments[holeIndex]) || 0);
+    }
+
+    function totalFor(player) {
+      return player.holes.reduce((sum, val, i) => sum + (Number(val) || 0) + (Number(player.adjustments?.[i]) || 0), 0);
+    }
+
+    function finishGame() {
+      const results = scores.map(p => ({
+        name: p.name,
+        total: totalFor(p),
+        holes: p.holes,
+        adjustments: p.adjustments,
+        notes: p.notes
+      }));
+      results.sort((a, b) => a.total - b.total);
+
+      const winner = results[0];
+      document.getElementById("winnerText").textContent = `${winner.name} wins with ${winner.total}!`;
+      document.getElementById("winnerSubtext").textContent = "The cove has spoken. Bragging rights unlocked.";
+
+      const places = document.getElementById("places");
+      places.innerHTML = "";
+      results.forEach((p, index) => {
+        const div = document.createElement("div");
+        div.className = "place";
+        div.innerHTML = `<span>${placeLabel(index)} ${p.name}</span><span>${p.total} strokes</span>`;
+        places.appendChild(div);
+      });
+
+      document.getElementById("finalScoreTable").innerHTML = buildTable(scores);
+      saveGame(results);
+      showOnly("finalScreen");
+      launchConfetti();
+    }
+
+    function placeLabel(index) {
+      if (index === 0) return "🏆 1st";
+      if (index === 1) return "🥈 2nd";
+      if (index === 2) return "🥉 3rd";
+      return `${index + 1}th`;
+    }
+
+    function buildTable(data) {
+      let html = `<div style="overflow:auto;"><table class="score-table"><thead><tr><th>Player</th>`;
+      holes.forEach(h => html += `<th>${h.hole}</th>`);
+      html += `<th>Total</th></tr></thead><tbody>`;
+      data.forEach(p => {
+        html += `<tr><td>${p.name}</td>`;
+        p.holes.forEach((s, i) => {
+          const adj = Number(p.adjustments?.[i]) || 0;
+          const total = getHoleTotal(p, i);
+          const note = p.notes?.[i] ? ` title="${p.notes[i].trim()}"` : "";
+          html += `<td${note}>${s ?? ""}${adj ? `<br><small>${adj > 0 ? "+" : ""}${adj}</small><br><strong>${total}</strong>` : ""}</td>`;
+        });
+        html += `<td><strong>${totalFor(p)}</strong></td></tr>`;
+      });
+      html += `</tbody></table><p class="muted">Small + or - numbers show challenge adjustments.</p></div>`;
+      return html;
+    }
+
+    function saveGame(results) {
+      const history = JSON.parse(localStorage.getItem("adventureCoveHistory") || "[]");
+      history.unshift({
+        date: new Date().toLocaleString(),
+        winner: results[0].name,
+        winningScore: results[0].total,
+        results
+      });
+      localStorage.setItem("adventureCoveHistory", JSON.stringify(history.slice(0, 50)));
+    }
+
+    function showHistory() {
+      const history = JSON.parse(localStorage.getItem("adventureCoveHistory") || "[]");
+      const list = document.getElementById("historyList");
+      if (!history.length) {
+        list.innerHTML = `<p>No past games saved yet.</p>`;
+      } else {
+        list.innerHTML = history.map(game => `
+          <div class="history-item">
+            <div>
+              <strong>${game.winner}</strong> won with <strong>${game.winningScore}</strong><br>
+              <span class="muted">${game.date}</span>
+            </div>
+            <div>${game.results.map(r => `${r.name}: ${r.total}`).join(" | ")}</div>
+          </div>
+        `).join("");
+      }
+      showOnly("historyScreen");
+    }
+
+    function clearHistory() {
+      if (confirm("Clear all saved games?")) {
+        localStorage.removeItem("adventureCoveHistory");
+        showHistory();
+      }
+    }
+
+    function backHome() {
+      showOnly("setupScreen");
+    }
+
+    function newGame() {
+      players = [];
+      scores = [];
+      currentHoleIndex = 0;
+      currentPlayerIndex = 0;
+      currentChallenge = null;
+      for (let i = 1; i <= 6; i++) document.getElementById(`player${i}`).value = "";
+      showOnly("setupScreen");
+    }
+
+    function launchConfetti() {
+      for (let i = 0; i < 80; i++) {
+        const piece = document.createElement("div");
+        piece.textContent = ["🏴‍☠️", "⛳", "⭐", "💰", "🌊"][Math.floor(Math.random() * 5)];
+        piece.style.position = "fixed";
+        piece.style.left = Math.random() * 100 + "vw";
+        piece.style.top = "-30px";
+        piece.style.fontSize = (18 + Math.random() * 22) + "px";
+        piece.style.zIndex = "9999";
+        piece.style.pointerEvents = "none";
+        piece.style.transition = "transform 2.6s ease-in, opacity 2.6s ease-in";
+        document.body.appendChild(piece);
+        setTimeout(() => {
+          piece.style.transform = `translateY(${window.innerHeight + 80}px) rotate(${Math.random() * 720}deg)`;
+          piece.style.opacity = "0";
+        }, 20);
+        setTimeout(() => piece.remove(), 2800);
+      }
+    }
+
+    buildSetup();
+  </script>
+</body>
+</html>
 
