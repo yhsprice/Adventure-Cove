@@ -542,7 +542,13 @@
       CLOSEST_TO_HOLE: "Putt the ball as close to the hole without going in, but no more than 2 strokes. Closest player who wins deducts 1 point. If a player’s ball goes in, they get an extra 2 points.",
       UNDER_PAR_REMOVE_WORST: "Any player who gets under par this round can eliminate their worst score so far.",
       HOLE_IN_ONE_ATTACK: "Any player who gets a hole-in-one on this round can add two strokes to another player’s score.",
-      SPIN_WHEEL: "Spin the wheel to learn your fate."
+      SPIN_WHEEL: "Spin the wheel to learn your fate.",
+      SAFE_SHOT: "Safe Shot: if your ball touches no wall or obstacle on this hole, deduct 1 stroke.",
+      OBSTACLE_TROUBLE: "Obstacle Trouble: if your ball gets stuck or leaves the green, add 1 stroke.",
+      COMEBACK_COVE: "Comeback Cove: the player with the highest score may deduct 1 stroke if they finish this hole in par or better.",
+      TREASURE_STEAL: "Treasure Steal: if you get a hole-in-one, deduct 1 stroke from your score instead of adding to someone else's.",
+      WATERFALL_WHISPER: "Waterfall Whisper: everyone must take their first shot quietly. If someone talks before everyone shoots, they add 1 stroke.",
+      LUCKY_BOUNCE: "Lucky Bounce: if your ball bounces off a wall and still goes in, deduct 1 stroke."
     };
 
     const challenges = [
@@ -565,25 +571,24 @@
       { text: "Take your 2nd shot of this round with your eyes closed!", type: "NORMAL" },
       { text: "Golf this hole with your unfavored hand.", type: "NORMAL" },
       { text: "Crab Walk Shot: stand sideways when you take your first shot.", type: "NORMAL" },
-      { text: "Tiny Tap Rule: your first shot must be a small tap. No full swing on shot one.", type: "NORMAL" },
-      { text: "Switcheroo: trade putters with another player for this hole.", type: "NORMAL" },
+      { text: "Switcheroo: the person after you is scoring your points.", type: "NORMAL" },
       { text: "Wall First: your first shot must touch a side wall before it can go in.", type: "NORMAL" },
       { text: "No Peeking Putt: look at the hole, then close your eyes before your first shot.", type: "NORMAL" },
       { text: "Two-Finger Grip: hold the putter with only two fingers on your first shot.", type: "NORMAL" },
       { text: "Last Place Rule: the player with the highest score chooses how everyone takes their first shot.", type: "NORMAL" },
       { text: "Leader Trouble: the player with the lowest score must use their non-dominant hand on the first shot.", type: "NORMAL" },
       { text: "One-Step Shot: take one step, stop, then hit the ball without moving your feet again.", type: "NORMAL" },
-      { text: "Tap and Freeze: after your first shot, freeze until the ball stops moving.", type: "NORMAL" },
+      { text: "Tap and Freeze: after your first shot, freeze until your next turn. Each person has to try to shoot around you.", type: "NORMAL" },
       { text: "Partner Pick: the player before you chooses whether you use one hand or two hands for your first shot.", type: "NORMAL" },
       { text: "Straight Arm Shot: keep your elbows straight for your first shot.", type: "NORMAL" },
       { text: "Mini Boss Hole: everyone must use the same challenge from the player who goes first.", type: "NORMAL" },
-      { text: "Safe Shot: if your ball touches no wall or obstacle on this hole, deduct 1 stroke.", type: "NORMAL" },
-      { text: "Obstacle Trouble: if your ball gets stuck or leaves the green, add 1 stroke.", type: "NORMAL" },
-      { text: "Comeback Cove: the player with the highest score may deduct 1 stroke if they finish this hole in par or better.", type: "NORMAL" },
-      { text: "Treasure Steal: if you get a hole-in-one, deduct 1 stroke from your score instead of adding to someone else's.", type: "NORMAL" },
+      { text: challengeTypes.SAFE_SHOT, type: "SAFE_SHOT" },
+      { text: challengeTypes.OBSTACLE_TROUBLE, type: "OBSTACLE_TROUBLE" },
+      { text: challengeTypes.COMEBACK_COVE, type: "COMEBACK_COVE" },
+      { text: challengeTypes.TREASURE_STEAL, type: "TREASURE_STEAL" },
       { text: "Captain's Call: before anyone shoots, the youngest player chooses one rule for this hole: one hand, eyes closed first shot, or sideways stance.", type: "NORMAL" },
-      { text: "Waterfall Whisper: everyone must take their first shot quietly. If someone talks before everyone shoots, they add 1 stroke.", type: "NORMAL" },
-      { text: "Lucky Bounce: if your ball bounces off a wall and still goes in, deduct 1 stroke.", type: "NORMAL" },
+      { text: challengeTypes.WATERFALL_WHISPER, type: "WATERFALL_WHISPER" },
+      { text: challengeTypes.LUCKY_BOUNCE, type: "LUCKY_BOUNCE" },
       { text: "The Detour: your first shot must aim for a wall or obstacle before heading toward the hole.", type: "NORMAL" },
       { text: "Steady Captain: hold the putter with both hands touching each other for the whole hole.", type: "NORMAL" }
     ];
@@ -707,6 +712,7 @@
       if (type === "CLOSEST_TO_HOLE") return "After everyone scores, you will choose the closest player and mark if anyone accidentally sank the ball.";
       if (type === "UNDER_PAR_REMOVE_WORST") return "After the hole, the app will remove the worst previous score for anyone who beats par.";
       if (type === "HOLE_IN_ONE_ATTACK") return "After the hole, anyone with a hole-in-one can add 2 strokes to another player.";
+      if (["SAFE_SHOT", "OBSTACLE_TROUBLE", "COMEBACK_COVE", "TREASURE_STEAL", "WATERFALL_WHISPER", "LUCKY_BOUNCE"].includes(type)) return "After this hole, you can choose who gets the point change so the score stays correct.";
       return "";
     }
 
@@ -926,6 +932,7 @@
         if (currentChallenge.type === "CLOSEST_TO_HOLE") return showClosestToHoleScreen();
         if (currentChallenge.type === "UNDER_PAR_REMOVE_WORST") return applyUnderParRemoveWorst();
         if (currentChallenge.type === "HOLE_IN_ONE_ATTACK") return showHoleInOneAttackScreen();
+        if (["SAFE_SHOT", "OBSTACLE_TROUBLE", "COMEBACK_COVE", "TREASURE_STEAL", "WATERFALL_WHISPER", "LUCKY_BOUNCE"].includes(currentChallenge.type)) return showEditableAdjustmentScreen();
       }
       advanceHole();
     }
@@ -949,6 +956,53 @@
         scores[currentPlayerIndex].notes[currentHoleIndex] = "";
         updatePlayScreen();
       }
+    }
+
+    function showEditableAdjustmentScreen() {
+      const type = currentChallenge.type;
+      const settings = {
+        SAFE_SHOT: { title: "Safe Shot", amount: -1, label: "Who earned the safe shot deduction?", button: "Deduct 1 Stroke" },
+        OBSTACLE_TROUBLE: { title: "Obstacle Trouble", amount: 1, label: "Who got stuck or left the green?", button: "Add 1 Stroke" },
+        COMEBACK_COVE: { title: "Comeback Cove", amount: -1, label: "Who finished in par or better and gets the comeback deduction?", button: "Deduct 1 Stroke" },
+        TREASURE_STEAL: { title: "Treasure Steal", amount: -1, label: "Who got a hole-in-one and gets the deduction?", button: "Deduct 1 Stroke" },
+        WATERFALL_WHISPER: { title: "Waterfall Whisper", amount: 1, label: "Who talked and gets 1 stroke added?", button: "Add 1 Stroke" },
+        LUCKY_BOUNCE: { title: "Lucky Bounce", amount: -1, label: "Who got the lucky bounce deduction?", button: "Deduct 1 Stroke" }
+      };
+
+      const item = settings[type];
+      document.getElementById("specialTitle").textContent = item.title;
+      document.getElementById("specialContent").innerHTML = `
+        <div class="message-box">${currentChallenge.text}</div>
+        <div class="rule-panel">
+          <label><strong>${item.label}</strong></label>
+          ${playerSelectHtml("editableAdjustPlayer")}
+          <div class="center">
+            <button onclick="applyEditableAdjustment('${type}')">${item.button}</button>
+            <button class="gold-btn" onclick="advanceHole()">No Change / Continue</button>
+          </div>
+        </div>
+      `;
+      showOnly("specialScreen");
+    }
+
+    function applyEditableAdjustment(type) {
+      const settings = {
+        SAFE_SHOT: { amount: -1, note: "Safe Shot: -1." },
+        OBSTACLE_TROUBLE: { amount: 1, note: "Obstacle Trouble: +1." },
+        COMEBACK_COVE: { amount: -1, note: "Comeback Cove: -1." },
+        TREASURE_STEAL: { amount: -1, note: "Treasure Steal: -1." },
+        WATERFALL_WHISPER: { amount: 1, note: "Waterfall Whisper: +1." },
+        LUCKY_BOUNCE: { amount: -1, note: "Lucky Bounce: -1." }
+      };
+
+      const playerIndex = Number(document.getElementById("editableAdjustPlayer").value);
+      const item = settings[type];
+      scores[playerIndex].adjustments[currentHoleIndex] += item.amount;
+      scores[playerIndex].notes[currentHoleIndex] += ` ${item.note}`;
+
+      const more = confirm("Do you need to adjust another player's score for this challenge?");
+      if (more) showEditableAdjustmentScreen();
+      else advanceHole();
     }
 
     function showClosestToHoleScreen() {
