@@ -319,32 +319,37 @@
       box-shadow: 0 4px 9px rgba(0,0,0,.25);
     }
 
-   .wheel-label {
-  position: absolute;
-  width: 44%;
-  left: 28%;
-  top: 50%;
+    .wheel-label {
+      position: absolute;
+      width: 44%;
+      left: 28%;
+      top: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: 900;
+      font-size: clamp(.9rem, 2.5vw, 1.15rem);
+      line-height: 1.15;
+      transform-origin: center center;
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,.45);
+      z-index: 3;
+      pointer-events: none;
+    }
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    .wheel-icon {
+      display: block;
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
 
-  text-align: center;
-
-  font-weight: 900;
-  font-size: clamp(.9rem, 2.5vw, 1.15rem);
-  line-height: 1.15;
-
-  transform-origin: center center;
-
-  color: white;
-  text-shadow: 0 2px 4px rgba(0,0,0,.45);
-
-  z-index: 3;
-
-  pointer-events: none;
-}
+    .black-text {
+      color: #102818;
+      text-shadow: 0 1px rgba(255,255,255,.6);
+    }
 
     .winner-card {
       background: linear-gradient(135deg, #fff6d6, #ffffff);
@@ -468,41 +473,38 @@
     <section id="wheelScreen" class="card hidden">
       <h2 class="center">Spin the Wheel</h2>
       <div id="wheelPlayer" class="message-box"></div>
+
       <div class="wheel-wrap">
-        <div class="wheel-pointer"><div id="wheel" class="wheel">
+        <div class="wheel-pointer"></div>
 
-  <div class="wheel-label"
-       style="transform: rotate(36deg) translateY(-128px) rotate(-36deg);">
-    ⛳
-    <div>Instant<br>Hole In One</div>
-  </div>
+        <div id="wheel" class="wheel">
+          <div class="wheel-label" style="transform: rotate(36deg) translateY(-128px) rotate(-36deg);">
+            <span class="wheel-icon">⛳</span>
+            <div>Instant<br>Hole In One</div>
+          </div>
 
-  <div class="wheel-label"
-       style="transform: rotate(108deg) translateY(-128px) rotate(-108deg);">
-    🧍
-    <div>Stand One<br>Legged</div>
-  </div>
+          <div class="wheel-label" style="transform: rotate(108deg) translateY(-128px) rotate(-108deg);">
+            <span class="wheel-icon">🧍</span>
+            <div>Stand One<br>Legged</div>
+          </div>
 
-  <div class="wheel-label black-text"
-       style="transform: rotate(180deg) translateY(-128px) rotate(-180deg);">
-    ✋
-    <div>Non-Dominant<br>Hand</div>
-  </div>
+          <div class="wheel-label black-text" style="transform: rotate(180deg) translateY(-128px) rotate(-180deg);">
+            <span class="wheel-icon">✋</span>
+            <div>Non-Dominant<br>Hand</div>
+          </div>
 
-  <div class="wheel-label"
-       style="transform: rotate(252deg) translateY(-128px) rotate(-252deg);">
-    ➕2
-    <div>Add 2<br>Strokes</div>
-  </div>
+          <div class="wheel-label" style="transform: rotate(252deg) translateY(-128px) rotate(-252deg);">
+            <span class="wheel-icon">➕2</span>
+            <div>Add 2<br>Strokes</div>
+          </div>
 
-  <div class="wheel-label"
-       style="transform: rotate(324deg) translateY(-128px) rotate(-324deg);">
-    🏌️
-    <div>Play<br>Normal</div>
-  </div>
-
-</div>
+          <div class="wheel-label" style="transform: rotate(324deg) translateY(-128px) rotate(-324deg);">
+            <span class="wheel-icon">🏌️</span>
+            <div>Play<br>Normal</div>
+          </div>
+        </div>
       </div>
+
       <div id="wheelResult" class="message-box hidden"></div>
       <div class="center">
         <button id="spinBtn" class="gold-btn" onclick="spinWheel()">Spin</button>
@@ -570,6 +572,7 @@
       { text: "Take your 2nd shot of this round with your eyes closed!", type: "NORMAL" },
       { text: "Golf this hole with your unfavored hand.", type: "NORMAL" },
       { text: "Crab Walk Shot: stand sideways when you take your first shot.", type: "NORMAL" },
+      { text: "Tiny Tap Rule: your first shot must be a small tap. No full swing on shot one.", type: "NORMAL" },
       { text: "Switcheroo: trade putters with another player for this hole.", type: "NORMAL" },
       { text: "Wall First: your first shot must touch a side wall before it can go in.", type: "NORMAL" },
       { text: "No Peeking Putt: look at the hole, then close your eyes before your first shot.", type: "NORMAL" },
