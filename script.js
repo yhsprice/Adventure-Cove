@@ -688,4 +688,3 @@ const holes = [
     }
 
     buildSetup();
-
