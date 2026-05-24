@@ -571,15 +571,14 @@
       { text: "Take your 2nd shot of this round with your eyes closed!", type: "NORMAL" },
       { text: "Golf this hole with your unfavored hand.", type: "NORMAL" },
       { text: "Crab Walk Shot: stand sideways when you take your first shot.", type: "NORMAL" },
-      { text: "Switcheroo: the person after you is scoring your points.", type: "NORMAL" },
+      { text: "Tiny Tap Rule: your first shot must be a small tap. No full swing on shot one.", type: "NORMAL" },
+      { text: "Best Shot Switch: choose another player to take your first shot for you. Pick wisely — you want their best shot, not their villain arc.", type: "NORMAL" },
       { text: "Wall First: your first shot must touch a side wall before it can go in.", type: "NORMAL" },
       { text: "No Peeking Putt: look at the hole, then close your eyes before your first shot.", type: "NORMAL" },
       { text: "Two-Finger Grip: hold the putter with only two fingers on your first shot.", type: "NORMAL" },
       { text: "Last Place Rule: the player with the highest score chooses how everyone takes their first shot.", type: "NORMAL" },
-      { text: "Leader Trouble: the player with the lowest score must use their non-dominant hand on the first shot.", type: "NORMAL" },
-      { text: "One-Step Shot: take one step, stop, then hit the ball without moving your feet again.", type: "NORMAL" },
-      { text: "Tap and Freeze: after your first shot, freeze until your next turn. Each person has to try to shoot around you.", type: "NORMAL" },
-      { text: "Partner Pick: the player before you chooses whether you use one hand or two hands for your first shot.", type: "NORMAL" },
+      { text: "Leader Trouble: the player with the highest score must use their non-dominant hand on the first shot.", type: "NORMAL" },      { text: "Tap and Freeze: after each player takes their first shot, they must stay in place until everyone has taken their turn.", type: "NORMAL" },
+      { text: "Player's Choice: each player chooses how they take their first shot — one hand, two hands, sideways, eyes closed, or any fun way they want.", type: "NORMAL" },
       { text: "Straight Arm Shot: keep your elbows straight for your first shot.", type: "NORMAL" },
       { text: "Mini Boss Hole: everyone must use the same challenge from the player who goes first.", type: "NORMAL" },
       { text: challengeTypes.SAFE_SHOT, type: "SAFE_SHOT" },
@@ -965,7 +964,7 @@
         OBSTACLE_TROUBLE: { title: "Obstacle Trouble", amount: 1, label: "Who got stuck or left the green?", button: "Add 1 Stroke" },
         COMEBACK_COVE: { title: "Comeback Cove", amount: -1, label: "Who finished in par or better and gets the comeback deduction?", button: "Deduct 1 Stroke" },
         TREASURE_STEAL: { title: "Treasure Steal", amount: -1, label: "Who got a hole-in-one and gets the deduction?", button: "Deduct 1 Stroke" },
-        WATERFALL_WHISPER: { title: "Waterfall Whisper", amount: 1, label: "Who talked and gets 1 stroke added?", button: "Add 1 Stroke" },
+        WATERFALL_WHISPER: { title: "Waterfall Whisper", amount: 1, label: "Who talked before everyone took their first shot?", button: "Add 1 Stroke", question: "Did anyone speak before everyone took their first shot?" },
         LUCKY_BOUNCE: { title: "Lucky Bounce", amount: -1, label: "Who got the lucky bounce deduction?", button: "Deduct 1 Stroke" }
       };
 
@@ -974,6 +973,7 @@
       document.getElementById("specialContent").innerHTML = `
         <div class="message-box">${currentChallenge.text}</div>
         <div class="rule-panel">
+          ${item.question ? `<div class="message-box">${item.question}</div>` : ""}
           <label><strong>${item.label}</strong></label>
           ${playerSelectHtml("editableAdjustPlayer")}
           <div class="center">
