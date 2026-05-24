@@ -319,25 +319,32 @@
       box-shadow: 0 4px 9px rgba(0,0,0,.25);
     }
 
-    .wheel-label {
-      position: absolute;
-      width: 35%;
-      left: 32.5%;
-      top: 45%;
-      text-align: center;
-      font-weight: 900;
-      font-size: clamp(.72rem, 2.3vw, .98rem);
-      line-height: 1.05;
-      transform-origin: 50% 18px;
-      color: white;
-      text-shadow: 0 2px 3px rgba(0,0,0,.45);
-      z-index: 3;
-    }
+   .wheel-label {
+  position: absolute;
+  width: 44%;
+  left: 28%;
+  top: 50%;
 
-    .wheel-label.black-text {
-      color: #102818;
-      text-shadow: 0 1px rgba(255,255,255,.55);
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  font-weight: 900;
+  font-size: clamp(.9rem, 2.5vw, 1.15rem);
+  line-height: 1.15;
+
+  transform-origin: center center;
+
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,.45);
+
+  z-index: 3;
+
+  pointer-events: none;
+}
 
     .winner-card {
       background: linear-gradient(135deg, #fff6d6, #ffffff);
@@ -462,14 +469,39 @@
       <h2 class="center">Spin the Wheel</h2>
       <div id="wheelPlayer" class="message-box"></div>
       <div class="wheel-wrap">
-        <div class="wheel-pointer"></div>
-        <div id="wheel" class="wheel">
-          <div class="wheel-label" style="transform: rotate(36deg) translateY(-142px) rotate(-36deg);">⛳<br>Instant<br>Hole In One!</div>
-          <div class="wheel-label" style="transform: rotate(108deg) translateY(-142px) rotate(-108deg);">🧍<br>Stand One<br>Legged</div>
-          <div class="wheel-label black-text" style="transform: rotate(180deg) translateY(-142px) rotate(-180deg);">✋<br>Non-Dominant<br>Hand</div>
-          <div class="wheel-label" style="transform: rotate(252deg) translateY(-142px) rotate(-252deg);">+2<br>Add 2<br>Strokes</div>
-          <div class="wheel-label" style="transform: rotate(324deg) translateY(-142px) rotate(-324deg);">🏌️<br>Play<br>Normal</div>
-        </div>
+        <div class="wheel-pointer"><div id="wheel" class="wheel">
+
+  <div class="wheel-label"
+       style="transform: rotate(36deg) translateY(-128px) rotate(-36deg);">
+    ⛳
+    <div>Instant<br>Hole In One</div>
+  </div>
+
+  <div class="wheel-label"
+       style="transform: rotate(108deg) translateY(-128px) rotate(-108deg);">
+    🧍
+    <div>Stand One<br>Legged</div>
+  </div>
+
+  <div class="wheel-label black-text"
+       style="transform: rotate(180deg) translateY(-128px) rotate(-180deg);">
+    ✋
+    <div>Non-Dominant<br>Hand</div>
+  </div>
+
+  <div class="wheel-label"
+       style="transform: rotate(252deg) translateY(-128px) rotate(-252deg);">
+    ➕2
+    <div>Add 2<br>Strokes</div>
+  </div>
+
+  <div class="wheel-label"
+       style="transform: rotate(324deg) translateY(-128px) rotate(-324deg);">
+    🏌️
+    <div>Play<br>Normal</div>
+  </div>
+
+</div>
       </div>
       <div id="wheelResult" class="message-box hidden"></div>
       <div class="center">
