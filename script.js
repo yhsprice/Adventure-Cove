@@ -109,8 +109,24 @@ const holes = [
     let gameEvents = [];
 
     function makeStats() {
-      return { holeInOnes: 0, underPar: 0, overPar: 0, pars: 0, wheelSpins: 0, penalties: 0, bonuses: 0, challenges: 0, worstHoleScore: 0, worstHole: null, bestHoleScore: Infinity, bestHole: null };
-    }
+  return {
+    holeInOnes: 0,
+    underPar: 0,
+    overPar: 0,
+    pars: 0,
+    wheelSpins: 0,
+    penalties: 0,
+    bonuses: 0,
+    challenges: 0,
+    challengeWins: 0,
+    challengeFails: 0,
+    treasureTokens: 0,
+    worstHoleScore: 0,
+    worstHole: null,
+    bestHoleScore: Infinity,
+    bestHole: null
+  };
+}
 
     function buildSetup() {
       const box = document.getElementById("playerInputs");
@@ -362,14 +378,22 @@ const holes = [
     }
 
     function handleEndOfHole() {
-      if (currentMode === "Challenge" && currentChallenge) {
-        if (currentChallenge.type === "CLOSEST_TO_HOLE") return showClosestToHoleScreen();
-        if (currentChallenge.type === "UNDER_PAR_REMOVE_WORST") return applyUnderParRemoveWorst();
-        if (currentChallenge.type === "HOLE_IN_ONE_ATTACK") return showHoleInOneAttackScreen();
-        if (["SAFE_SHOT", "OBSTACLE_TROUBLE", "COMEBACK_COVE", "TREASURE_STEAL", "WATERFALL_WHISPER", "LUCKY_BOUNCE"].includes(currentChallenge.type)) return showEditableAdjustmentScreen();
-      }
-      advanceHole();
+  if (currentMode === "Challenge" && currentChallenge) {
+    if (currentChallenge.type === "CLOSEST_TO_HOLE") return showClosestToHoleScreen();
+    if (currentChallenge.type === "UNDER_PAR_REMOVE_WORST") return applyUnderParRemoveWorst();
+    if (currentChallenge.type === "HOLE_IN_ONE_ATTACK") return showHoleInOneAttackScreen();
+
+    if (["SAFE_SHOT", "OBSTACLE_TROUBLE", "COMEBACK_COVE", "TREASURE_STEAL", "WATERFALL_WHISPER", "LUCKY_BOUNCE"].includes(currentChallenge.type)) {
+      return showEditableAdjustmentScreen();
     }
+
+    if (["NORMAL", "HIGHEST_PAR_DECIDES"].includes(currentChallenge.type)) {
+      return showChallengeCompletionScreen();
+    }
+  }
+
+  advanceHole();
+}
 
     function advanceHole() {
       currentHoleIndex++;
@@ -540,6 +564,79 @@ const holes = [
       return player.holes.reduce((sum, val, i) => sum + (Number(val) || 0) + (Number(player.adjustments?.[i]) || 0), 0);
     }
 
+function showChallengeCompletionScreen() {
+  document.getElementById("specialTitle").textContent = "Challenge Check";
+
+  const rows = scores.map((player, index) => `
+    <div class="rule-panel">
+      <label><strong>${player.name}</strong></label>
+      <select id="challengeResult${index}">
+        <option value="complete">Completed the challenge (+1 Treasure Token)</option>
+        <option value="bonus">Really went for it (-1 stroke + 1 Treasure Token)</option>
+        <option value="fail">Skipped or did not complete it (+1 stroke)</option>
+        <option value="none">No change</option>
+      </select>
+    </div>
+  `).join("");
+
+  document.getElementById("specialContent").innerHTML = `
+    <div class="message-box">How did everyone do on this challenge?</div>
+    ${rows}
+    <div class="center">
+      <button onclick="applyChallengeCompletion()">Apply Challenge Results</button>
+    </div>
+  `;
+
+  showOnly("specialScreen");
+}
+
+function applyChallengeCompletion() {
+  scores.forEach((player, index) => {
+    const result = document.getElementById(`challengeResult${index}`).value;
+
+    if (result === "complete") {
+      player.stats.challengeWins++;
+      player.stats.treasureTokens++;
+      player.notes[currentHoleIndex] += " Challenge completed.";
+    }
+
+    if (result === "bonus") {
+      player.adjustments[currentHoleIndex] -= 1;
+      player.stats.challengeWins++;
+      player.stats.bonuses++;
+      player.stats.treasureTokens++;
+      player.notes[currentHoleIndex] += " Big challenge effort: -1.";
+    }
+
+    if (result === "fail") {
+      player.adjustments[currentHoleIndex] += 1;
+      player.stats.challengeFails++;
+      player.stats.penalties++;
+      player.notes[currentHoleIndex] += " Challenge skipped/not completed: +1.";
+    }
+  });
+
+  advanceHole();
+}
+
+function generateBadges(results) {
+  return results.map(player => {
+    const badges = [];
+
+    if (player.stats.treasureTokens >= 3) badges.push("💰 Treasure Hunter");
+    if (player.stats.challengeWins >= 3) badges.push("🔥 Challenge Crusher");
+    if (player.stats.holeInOnes > 0) badges.push("⛳ Hole-in-One Hero");
+    if (player.stats.wheelSpins > 0) badges.push("🎡 Wheel Warrior");
+    if (player.stats.bonuses >= 2) badges.push("⭐ Bonus Buccaneer");
+    if (player.stats.penalties === 0) badges.push("⚓ Steady Shooter");
+    if (player.stats.challengeFails > 0) badges.push("🌊 Still Sailing");
+
+    if (!badges.length) badges.push("🏴‍☠️ Cove Explorer");
+
+    return `<div class="highlight"><strong>${player.name}</strong><br>${badges.join("<br>")}</div>`;
+  }).join("");
+}
+
     function finishGame() {
       const results = scores.map(p => ({ name: p.name, total: totalFor(p), holes: p.holes, adjustments: p.adjustments, notes: p.notes, stats: p.stats }));
       results.sort((a, b) => a.total - b.total);
@@ -558,6 +655,7 @@ const holes = [
       document.getElementById("finalScoreTable").innerHTML = buildTable(scores);
       const records = updateCoveRecords(results);
       document.getElementById("coveRecords").innerHTML = renderRecords(records);
+      document.getElementById("playerBadges").innerHTML = generateBadges(results);
       saveGame(results);
       showOnly("finalScreen");
       launchConfetti();
