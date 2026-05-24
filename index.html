@@ -259,96 +259,83 @@
       display: grid;
       place-items: center;
       gap: 12px;
-      margin: 14px 0;
+      margin: 14px auto;
+      max-width: 720px;
     }
 
     .wheel-pointer {
       width: 0;
       height: 0;
-      border-left: 22px solid transparent;
-      border-right: 22px solid transparent;
-      border-top: 42px solid #d3a53c;
+      border-left: 24px solid transparent;
+      border-right: 24px solid transparent;
+      border-top: 46px solid #d3a53c;
       filter: drop-shadow(0 3px 2px rgba(0,0,0,.28));
-      z-index: 2;
-      margin-bottom: -18px;
+      z-index: 4;
+      margin-bottom: -24px;
     }
 
-    .wheel {
-      width: min(390px, 86vw);
-      height: min(390px, 86vw);
-      border-radius: 50%;
-      border: 11px solid var(--green-dark);
-      background: conic-gradient(
-        #1d75ad 0deg 72deg,
-        #e85f3c 72deg 144deg,
-        #f0bd15 144deg 216deg,
-        #6a4a8f 216deg 288deg,
-        #3e9a35 288deg 360deg
-      );
-      position: relative;
-      transition: transform 2.4s cubic-bezier(.08,.8,.18,1);
-      box-shadow: inset 0 0 0 7px #f5d36f, inset 0 0 0 14px var(--green-dark), 0 14px 26px rgba(0,0,0,.28);
-      overflow: hidden;
-    }
-
-    .wheel::before {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.75);
-      pointer-events: none;
-    }
-
-    .wheel::after {
-      content: "✦";
-      width: 62px;
-      height: 62px;
-      background: var(--green-dark);
-      color: #f5d36f;
-      border: 7px solid var(--gold);
-      border-radius: 50%;
-      position: absolute;
-      inset: 50% auto auto 50%;
-      transform: translate(-50%, -50%);
+    .wheel-stage {
+      width: min(520px, 88vw);
+      height: min(520px, 88vw);
       display: grid;
       place-items: center;
-      font-size: 2rem;
-      font-weight: 900;
-      z-index: 5;
-      box-shadow: 0 4px 9px rgba(0,0,0,.25);
+      border-radius: 50%;
+      background: radial-gradient(circle, #f7d777 0 8%, var(--green-dark) 8% 11%, #f7d777 11% 13%, var(--green-dark) 13% 100%);
+      box-shadow: 0 18px 30px rgba(0,0,0,.28);
+      padding: 18px;
     }
 
-    .wheel-label {
-      position: absolute;
-      width: 44%;
-      left: 28%;
-      top: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    .wheel-svg {
+      width: 100%;
+      height: 100%;
+      transition: transform 2.4s cubic-bezier(.08,.8,.18,1);
+      filter: drop-shadow(0 4px 4px rgba(0,0,0,.20));
+    }
+
+    .wheel-slice {
+      stroke: rgba(255,255,255,.85);
+      stroke-width: 3;
+    }
+
+    .wheel-text {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 900;
+      font-size: 23px;
+      text-anchor: middle;
+      dominant-baseline: middle;
+      fill: white;
+      paint-order: stroke;
+      stroke: rgba(0,0,0,.28);
+      stroke-width: 2px;
+      stroke-linejoin: round;
+    }
+
+    .wheel-text.dark {
+      fill: #17321f;
+      stroke: rgba(255,255,255,.45);
+    }
+
+    .wheel-emoji {
+      font-size: 40px;
+      text-anchor: middle;
+      dominant-baseline: middle;
+    }
+
+    .wheel-center-star {
+      fill: var(--green-dark);
+      stroke: var(--gold);
+      stroke-width: 8;
+    }
+
+    .wheel-info {
+      width: min(760px, 94vw);
+      margin: 10px auto 0;
+      background: white;
+      border: 2px solid var(--green);
+      border-radius: 14px;
+      padding: 10px 14px;
       text-align: center;
-      font-weight: 900;
-      font-size: clamp(.9rem, 2.5vw, 1.15rem);
-      line-height: 1.15;
-      transform-origin: center center;
-      color: white;
-      text-shadow: 0 2px 4px rgba(0,0,0,.45);
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    .wheel-icon {
-      display: block;
-      font-size: clamp(1.3rem, 4vw, 2rem);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .black-text {
-      color: #102818;
-      text-shadow: 0 1px rgba(255,255,255,.6);
+      font-weight: 700;
     }
 
     .winner-card {
@@ -477,38 +464,44 @@
       <div class="wheel-wrap">
         <div class="wheel-pointer"></div>
 
-        <div id="wheel" class="wheel">
-          <div class="wheel-label" style="transform: rotate(36deg) translateY(-128px) rotate(-36deg);">
-            <span class="wheel-icon">⛳</span>
-            <div>Instant<br>Hole In One</div>
-          </div>
+        <div class="wheel-stage">
+          <svg id="wheel" class="wheel-svg" viewBox="0 0 500 500" role="img" aria-label="Spin the wheel choices">
+            <circle cx="250" cy="250" r="238" fill="#06451f"></circle>
+            <circle cx="250" cy="250" r="225" fill="#f5d36f"></circle>
+            <circle cx="250" cy="250" r="214" fill="#06451f"></circle>
 
-          <div class="wheel-label" style="transform: rotate(108deg) translateY(-128px) rotate(-108deg);">
-            <span class="wheel-icon">🧍</span>
-            <div>Stand One<br>Legged</div>
-          </div>
+            <path class="wheel-slice" fill="#1d75ad" d="M 250 250 L 250.0 30.0 A 220 220 0 0 1 459.2 182.0 Z"></path>
+            <path class="wheel-slice" fill="#e85f3c" d="M 250 250 L 459.2 182.0 A 220 220 0 0 1 379.3 428.0 Z"></path>
+            <path class="wheel-slice" fill="#f0bd15" d="M 250 250 L 379.3 428.0 A 220 220 0 0 1 120.7 428.0 Z"></path>
+            <path class="wheel-slice" fill="#6a4a8f" d="M 250 250 L 120.7 428.0 A 220 220 0 0 1 40.8 182.0 Z"></path>
+            <path class="wheel-slice" fill="#3e9a35" d="M 250 250 L 40.8 182.0 A 220 220 0 0 1 250.0 30.0 Z"></path>
 
-          <div class="wheel-label black-text" style="transform: rotate(180deg) translateY(-128px) rotate(-180deg);">
-            <span class="wheel-icon">✋</span>
-            <div>Non-Dominant<br>Hand</div>
-          </div>
+            <text class="wheel-emoji" x="323" y="112">⛳</text>
+            <text class="wheel-text" x="323" y="154"><tspan x="323" dy="0">Instant</tspan><tspan x="323" dy="27">Hole In One!</tspan></text>
 
-          <div class="wheel-label" style="transform: rotate(252deg) translateY(-128px) rotate(-252deg);">
-            <span class="wheel-icon">➕2</span>
-            <div>Add 2<br>Strokes</div>
-          </div>
+            <text class="wheel-emoji" x="382" y="240">🧍</text>
+            <text class="wheel-text" x="369" y="294"><tspan x="369" dy="0">Stand One</tspan><tspan x="369" dy="27">Legged</tspan></text>
 
-          <div class="wheel-label" style="transform: rotate(324deg) translateY(-128px) rotate(-324deg);">
-            <span class="wheel-icon">🏌️</span>
-            <div>Play<br>Normal</div>
-          </div>
+            <text class="wheel-emoji" x="250" y="320">✋</text>
+            <text class="wheel-text dark" x="250" y="374"><tspan x="250" dy="0">Non-Dominant</tspan><tspan x="250" dy="27">Hand</tspan></text>
+
+            <text class="wheel-text" x="131" y="260" style="font-size:50px;"><tspan x="131">+2</tspan></text>
+            <text class="wheel-text" x="132" y="318"><tspan x="132" dy="0">Add 2</tspan><tspan x="132" dy="27">Strokes</tspan></text>
+
+            <text class="wheel-emoji" x="177" y="108">🏌️</text>
+            <text class="wheel-text" x="177" y="154"><tspan x="177" dy="0">Play</tspan><tspan x="177" dy="27">Normal</tspan></text>
+
+            <circle class="wheel-center-star" cx="250" cy="250" r="44"></circle>
+            <text x="250" y="258" text-anchor="middle" dominant-baseline="middle" font-size="42" fill="#f5d36f">✦</text>
+          </svg>
         </div>
       </div>
 
+      <div class="wheel-info">Everyone spins one at a time. Spin, take your turn, then the next player spins.</div>
       <div id="wheelResult" class="message-box hidden"></div>
       <div class="center">
-        <button id="spinBtn" class="gold-btn" onclick="spinWheel()">Spin</button>
-        <button id="nextSpinBtn" class="hidden" onclick="nextWheelPlayer()">Next Player</button>
+        <button id="spinBtn" class="gold-btn" onclick="spinWheel()">Spin the Wheel</button>
+        <button id="nextSpinBtn" class="hidden" onclick="nextWheelPlayer()">Take Turn</button>
       </div>
     </section>
 
