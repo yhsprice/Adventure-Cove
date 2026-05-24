@@ -687,4 +687,36 @@ const holes = [
       }
     }
 
+function editCurrentHoleScore() {
+  const playerIndex = Number(prompt(
+    players.map((name, i) => `${i + 1}. ${name}`).join("\n") +
+    "\n\nEnter the player number to edit:"
+  ));
+
+  if (!Number.isInteger(playerIndex) || playerIndex < 1 || playerIndex > players.length) {
+    alert("That player number does not exist.");
+    return;
+  }
+
+  const index = playerIndex - 1;
+  const currentScore = scores[index].holes[currentHoleIndex];
+
+  const newScore = Number(prompt(
+    `Enter the corrected strokes for ${players[index]} on Hole ${holes[currentHoleIndex].hole}:`,
+    currentScore ?? ""
+  ));
+
+  if (!Number.isInteger(newScore) || newScore < 1) {
+    alert("Enter a whole number greater than 0.");
+    return;
+  }
+
+  scores[index].holes[currentHoleIndex] = newScore;
+  scores[index].notes[currentHoleIndex] += " Score edited.";
+
+  renderLiveScoreboard("playScoreboard");
+  renderLiveScoreboard("choiceScoreboard");
+  updatePlayScreen();
+}
+
     buildSetup();
