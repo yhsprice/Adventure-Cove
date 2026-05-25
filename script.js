@@ -16,7 +16,7 @@ const holes = [
       SAFE_SHOT: "Safe Shot: if your ball touches no wall or obstacle on this hole, deduct 1 stroke.",
       OBSTACLE_TROUBLE: "Obstacle Trouble: if your ball gets stuck or leaves the green, add 1 stroke.",
       COMEBACK_COVE: "Comeback Cove: the player with the highest score may deduct 1 stroke if they finish this hole in par or better.",
-      TREASURE_STEAL: "Treasure Steal: if you get a hole-in-one, deduct 1 stroke from your score instead of adding to someone else's.",
+      TREASURE_STEAL: "Treasure Steal: score a hole-in-one and earn an extra 1-stroke deduction.",
       WATERFALL_WHISPER: "Waterfall Whisper: everyone must take their first shot quietly. If someone talks before everyone shoots, they add 1 stroke.",
       LUCKY_BOUNCE: "Lucky Bounce: if your ball bounces off a wall and still goes in, deduct 1 stroke."
     };
