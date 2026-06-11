@@ -157,6 +157,11 @@
     <button onclick="newGame()">Start New Game</button>
 
     <button class="gold-btn" onclick="showHistory()">View Past Games</button>
+
+    <button class="blue-btn" onclick="championPhoto()">
+📸 Champion Photo
+</button>
+    
   </div>
 </section>
     <section id="historyScreen" class="card hidden">
@@ -174,16 +179,16 @@
     <h2>Edit Scores</h2>
     <div id="editScoresList"></div>
 
-    <div class="center">
-      <button onclick="saveEditedScores()">Save Changes</button>
-      <button class="danger-btn" onclick="closeEditScores()">Cancel</button>
-    </div>
-  </div>
-</div>
+ <canvas id="shareCanvas" class="hidden" width="1080" height="1080"></canvas>
 
-  <canvas id="shareCanvas" class="hidden" width="1080" height="1080"></canvas>
-  
-  <script src="script.js"></script>
+<input
+  type="file"
+  accept="image/*"
+  capture="environment"
+  id="championCamera"
+  class="hidden"
+/>
+
+<script src="script.js"></script>
 </body>
 </html>
-
