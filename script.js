@@ -126,6 +126,114 @@ function makeStats() {
   };
 }
 
+function championPhoto() {
+  const cameraInput = document.getElementById("championCamera");
+
+  if (!cameraInput) {
+    alert("Champion camera input is missing from the HTML.");
+    return;
+  }
+
+  cameraInput.value = "";
+  cameraInput.click();
+}
+
+document.getElementById("championCamera").addEventListener("change", function (event) {
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    const img = new Image();
+
+    img.onload = function () {
+      createChampionPhoto(img);
+    };
+
+    img.src = e.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
+
+function createChampionPhoto(img) {
+  const results = scores
+    .map(p => ({
+      name: p.name,
+      total: totalFor(p)
+    }))
+    .sort((a, b) => a.total - b.total);
+
+  const winner = results[0];
+
+  const canvas = document.getElementById("shareCanvas");
+  const ctx = canvas.getContext("2d");
+
+  canvas.width = 1080;
+  canvas.height = 1080;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  const scale = Math.max(canvas.width / img.width, canvas.height / img.height);
+  const x = (canvas.width / 2) - (img.width / 2) * scale;
+  const y = (canvas.height / 2) - (img.height / 2) * scale;
+
+  ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+
+  ctx.fillStyle = "rgba(0, 0, 0, 0.35)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#f5d36f";
+  ctx.fillRect(40, 40, 1000, 115);
+
+  ctx.fillStyle = "#06451f";
+  ctx.font = "bold 52px Arial";
+  ctx.textAlign = "center";
+  ctx.fillText("🏴‍☠️ ADVENTURE COVE CHAMPION 🏴‍☠️", 540, 115);
+
+  ctx.fillStyle = "rgba(255, 248, 234, 0.92)";
+  ctx.fillRect(90, 710, 900, 260);
+
+  ctx.strokeStyle = "#c8953f";
+  ctx.lineWidth = 8;
+  ctx.strokeRect(90, 710, 900, 260);
+
+  ctx.fillStyle = "#06451f";
+  ctx.font = "bold 72px Arial";
+  ctx.fillText(winner.name, 540, 805);
+
+  ctx.fillStyle = "#17321f";
+  ctx.font = "bold 46px Arial";
+  ctx.fillText(`${winner.total} STROKES`, 540, 875);
+
+  ctx.font = "bold 34px Arial";
+  ctx.fillText("Can you beat this score?", 540, 930);
+
+  ctx.fillStyle = "#f5d36f";
+  ctx.font = "bold 80px Arial";
+  ctx.fillText("🏆", 540, 690);
+
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "bold 34px Arial";
+  ctx.fillText("Adventure Cove Mini Golf • Wilmington, Ohio", 540, 1035);
+
+  canvas.toBlob(function (blob) {
+    if (!blob) {
+      alert("Could not create champion photo.");
+      return;
+    }
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "Adventure-Cove-Champion-Photo.png";
+    link.click();
+
+    alert("Champion photo created! Post it, text it, brag shamelessly.");
+  }, "image/png");
+}
+
 function buildSetup() {
   const box = document.getElementById("playerInputs");
 
