@@ -1433,7 +1433,7 @@ async function shareResults() {
   }, "image/png");
 }
 
-function challengeFriends() {
+async function challengeFriends() {
   if (!scores.length) {
     alert("No completed game to challenge from yet.");
     return;
@@ -1445,17 +1445,28 @@ function challengeFriends() {
 
   const winner = results[0];
 
-  const text =
-    "🏴‍☠️ I just scored " + winner.total +
-    " at Adventure Cove Mini Golf! Think you can beat me? Play here: https://yhsprice.github.io/Adventure-Cove/";
+  const shareText =
+    `🏴‍☠️ ${winner.name} scored ${winner.total} at Adventure Cove Mini Golf! Think you can beat it?`;
 
-  navigator.clipboard.writeText(text)
-    .then(() => {
+  const gameUrl = "https://yhsprice.github.io/Adventure-Cove/";
+
+  try {
+    if (navigator.share) {
+      await navigator.share({
+        title: "Beat My Adventure Cove Score",
+        text: shareText,
+        url: gameUrl
+      });
+    } else {
+      navigator.clipboard.writeText(`${shareText} Play here: ${gameUrl}`);
       alert("Challenge copied to clipboard!");
-    })
-    .catch(() => {
-      alert(text);
-    });
+    }
+  } catch (error) {
+    console.log(error);
+
+    navigator.clipboard.writeText(`${shareText} Play here: ${gameUrl}`);
+    alert("Sharing was cancelled or blocked, so the challenge copied instead.");
+  }
 }
 
 function launchConfetti() {
