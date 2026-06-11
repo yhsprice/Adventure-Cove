@@ -78,7 +78,7 @@
       <div class="score-buttons" id="scoreButtons"></div>
       <div class="center">
         <button class="small-btn danger-btn" onclick="goBackOnePlayer()">Back One Player</button>
-        <button class="small-btn blue-btn" onclick="editCurrentHoleScore()">Edit Score</button>
+        <button class="small-btn blue-btn" onclick="openEditScores()">Edit Scores</button>
       </div>
     </section>
 
@@ -153,6 +153,18 @@
     </section>
   </main>
 
+  <div id="editScoresModal" class="modal hidden">
+  <div class="modal-box">
+    <h2>Edit Scores</h2>
+    <div id="editScoresList"></div>
+
+    <div class="center">
+      <button onclick="saveEditedScores()">Save Changes</button>
+      <button class="danger-btn" onclick="closeEditScores()">Cancel</button>
+    </div>
+  </div>
+</div>
+  
   <script src="script.js"></script>
 </body>
 </html>
