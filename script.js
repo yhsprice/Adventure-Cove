@@ -926,39 +926,4 @@ results.forEach((player, index) => {
       }
     }
 
-const holeInOnes = scores.reduce(
-  (sum, p) => sum + p.stats.holeInOnes,
-  0
-);
-
-const penalties = scores.reduce(
-  (sum, p) => sum + p.stats.penalties,
-  0
-);
-
-const bonuses = scores.reduce(
-  (sum, p) => sum + p.stats.bonuses,
-  0
-);
-
-ctx.font = "bold 32px Arial";
-
-ctx.fillText(
-  `⛳ Hole In Ones: ${holeInOnes}`,
-  540,
-  900
-);
-
-ctx.fillText(
-  `💰 Bonuses: ${bonuses}`,
-  540,
-  945
-);
-
-ctx.fillText(
-  `⚓ Penalties: ${penalties}`,
-  540,
-  990
-);
-
     buildSetup();
