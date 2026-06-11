@@ -1459,26 +1459,42 @@ function challengeFriends() {
 }
 
 function launchConfetti() {
-  for (let i = 0; i < 90; i++) {
+  const emojis = ["🏴‍☠️", "⛳", "⭐", "💰", "🌊", "🦜", "⚓", "🏆"];
+
+  for (let i = 0; i < 110; i++) {
     const piece = document.createElement("div");
 
-    piece.textContent = ["🏴‍☠️", "⛳", "⭐", "💰", "🌊", "🦜", "⚓"][Math.floor(Math.random() * 7)];
+    piece.textContent = emojis[Math.floor(Math.random() * emojis.length)];
     piece.style.position = "fixed";
     piece.style.left = Math.random() * 100 + "vw";
-    piece.style.top = "-30px";
-    piece.style.fontSize = (18 + Math.random() * 22) + "px";
+    piece.style.top = "-40px";
+    piece.style.fontSize = (16 + Math.random() * 24) + "px";
     piece.style.zIndex = "9999";
     piece.style.pointerEvents = "none";
-    piece.style.transition = "transform 2.8s ease-in, opacity 2.8s ease-in";
+
+    const fallTime = 2200 + Math.random() * 2600;
+    const delay = Math.random() * 900;
+    const drift = (Math.random() * 240) - 120;
+    const spin = (Math.random() * 1440) - 720;
+
+    piece.style.transition = `
+      transform ${fallTime}ms cubic-bezier(.18,.72,.35,1),
+      opacity ${fallTime}ms ease-in
+    `;
 
     document.body.appendChild(piece);
 
     setTimeout(() => {
-      piece.style.transform = `translateY(${window.innerHeight + 80}px) rotate(${Math.random() * 720}deg)`;
+      piece.style.transform = `
+        translate(${drift}px, ${window.innerHeight + 100}px)
+        rotate(${spin}deg)
+      `;
       piece.style.opacity = "0";
-    }, 20);
+    }, delay);
 
-    setTimeout(() => piece.remove(), 3000);
+    setTimeout(() => {
+      piece.remove();
+    }, fallTime + delay + 200);
   }
 }
 
