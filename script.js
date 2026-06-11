@@ -235,23 +235,44 @@ function createChampionPhoto(img) {
     `🏆 ${winner.name} is the Adventure Cove Champion with ${winner.total} strokes! Think you can beat this score?`;
 
   try {
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({
-        title: "Adventure Cove Champion",
-        text: shareText,
-        files: [file]
-      });
-    } else {
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = "Adventure-Cove-Champion-Photo.png";
-      link.click();
 
-      alert("Champion photo downloaded. You can post it or text it.");
-    }
-  } catch (error) {
-    console.log(error);
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+
+    await navigator.share({
+      title: "Adventure Cove Champion",
+      text: shareText,
+      files: [file]
+    });
+
+  } else if (navigator.share) {
+
+    await navigator.share({
+      title: "Adventure Cove Champion",
+      text: shareText,
+      url: "https://yhsprice.github.io/Adventure-Cove/"
+    });
+
+  } else {
+
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "Adventure-Cove-Champion-Photo.png";
+    link.click();
+
+    alert("Champion photo downloaded.");
   }
+
+} catch (error) {
+  console.log(error);
+
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "Adventure-Cove-Champion-Photo.png";
+  link.click();
+
+  alert("Sharing was cancelled or blocked, so the photo downloaded instead.");
+}
+}
 }, "image/png");
 }
 
