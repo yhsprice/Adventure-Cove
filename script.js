@@ -212,6 +212,89 @@ function recalculateAllStats() {
   });
 }
 
+async function shareResults() {
+  if (!scores.length) return alert("No scores to share yet.");
+
+  const results = scores
+    .map(p => ({ name: p.name, total: totalFor(p) }))
+    .sort((a, b) => a.total - b.total);
+
+  const winner = results[0];
+
+  const canvas = document.getElementById("shareCanvas");
+  const ctx = canvas.getContext("2d");
+
+  ctx.fillStyle = "#fff8ea";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  ctx.fillStyle = "#06451f";
+  ctx.fillRect(0, 0, canvas.width, 170);
+
+  ctx.fillStyle = "#f5d36f";
+  ctx.font = "bold 56px Arial";
+  ctx.textAlign = "center";
+  ctx.fillText("Adventure Cove", 540, 70);
+
+  ctx.fillStyle = "white";
+  ctx.font = "bold 42px Arial";
+  ctx.fillText("Treasure Quest Champion", 540, 130);
+
+  ctx.fillStyle = "#06451f";
+  ctx.font = "bold 76px Arial";
+  ctx.fillText(`🏆 ${winner.name} WINS!`, 540, 265);
+
+  ctx.fillStyle = "#17321f";
+  ctx.font = "bold 54px Arial";
+  ctx.fillText(`${winner.total} Strokes`, 540, 345);
+
+  ctx.font = "bold 36px Arial";
+  ctx.fillText("Final Scores", 540, 430);
+
+  let y = 500;
+
+  results.forEach((player, index) => {
+    ctx.fillStyle = index === 0 ? "#c8953f" : "#17321f";
+    ctx.font = "bold 38px Arial";
+
+    const place = index === 0 ? "1st" : index === 1 ? "2nd" : index === 2 ? "3rd" : `${index + 1}th`;
+
+    ctx.fillText(`${place} - ${player.name}: ${player.total}`, 540, y);
+    y += 58;
+  });
+
+  ctx.fillStyle = "#06451f";
+  ctx.font = "bold 42px Arial";
+  ctx.fillText("Think you can beat this score?", 540, 870);
+
+  ctx.fillStyle = "#17321f";
+  ctx.font = "bold 32px Arial";
+  ctx.fillText("Play at Adventure Cove Mini Golf", 540, 930);
+
+  ctx.font = "28px Arial";
+  ctx.fillText("Wilmington, Ohio", 540, 975);
+
+  canvas.toBlob(async blob => {
+    const file = new File([blob], "adventure-cove-score.png", {
+      type: "image/png"
+    });
+
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({
+        title: "Adventure Cove Score",
+        text: `${winner.name} won at Adventure Cove with ${winner.total} strokes! Think you can beat it?`,
+        files: [file]
+      });
+    } else {
+      const link = document.createElement("a");
+      link.download = "adventure-cove-score.png";
+      link.href = URL.createObjectURL(blob);
+      link.click();
+
+      alert("Your score image downloaded. You can now post it on Facebook, Instagram, or text it.");
+    }
+  });
+}
+
     function buildSetup() {
       const box = document.getElementById("playerInputs");
       box.innerHTML = "";
