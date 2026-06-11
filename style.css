@@ -368,3 +368,10 @@
 #shareCanvas {
   display: none !important;
 }
+
+#playerInputs input {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  touch-action: manipulation;
+}
