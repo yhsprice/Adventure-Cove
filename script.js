@@ -1215,104 +1215,71 @@ function newGame() {
   showOnly("setupScreen");
 }
 
-function shareResults() {
+async function shareResults() {
+
   if (!scores.length) {
     alert("No scores to share yet.");
     return;
   }
 
   const results = scores
-    .map(p => ({ name: p.name, total: totalFor(p) }))
+    .map(p => ({
+      name: p.name,
+      total: totalFor(p)
+    }))
     .sort((a, b) => a.total - b.total);
 
   const winner = results[0];
+
   const canvas = document.getElementById("shareCanvas");
-
-  if (!canvas) {
-    alert("Share canvas is missing from the HTML.");
-    return;
-  }
-
   const ctx = canvas.getContext("2d");
 
-  ctx.fillStyle = "#0f6b36";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  // draw image here
+  // KEEP ALL OF YOUR EXISTING CANVAS DRAWING CODE
 
-  ctx.fillStyle = "#f5d36f";
-  ctx.fillRect(40, 40, 1000, 1000);
+  canvas.toBlob(async function(blob) {
 
-  ctx.fillStyle = "#fff8ea";
-  ctx.fillRect(60, 60, 960, 960);
-
-  ctx.textAlign = "center";
-
-  ctx.fillStyle = "#06451f";
-  ctx.font = "bold 70px Arial";
-  ctx.fillText("ADVENTURE COVE", 540, 140);
-
-  ctx.font = "bold 44px Arial";
-  ctx.fillText("TREASURE QUEST CHAMPION", 540, 210);
-
-  ctx.fillStyle = "#c8953f";
-  ctx.font = "bold 90px Arial";
-  ctx.fillText("🏆", 540, 330);
-
-  ctx.fillStyle = "#06451f";
-  ctx.font = "bold 80px Arial";
-  ctx.fillText(winner.name, 540, 430);
-
-  ctx.font = "bold 58px Arial";
-  ctx.fillText(`${winner.total} STROKES`, 540, 500);
-
-  ctx.fillStyle = "#17321f";
-  ctx.font = "bold 40px Arial";
-  ctx.fillText("FINAL STANDINGS", 540, 600);
-
-  let y = 680;
-
-  results.forEach((player, index) => {
-    let medal = "";
-
-    if (index === 0) medal = "1st";
-    else if (index === 1) medal = "2nd";
-    else if (index === 2) medal = "3rd";
-    else medal = `${index + 1}th`;
-
-    ctx.font = "bold 36px Arial";
-    ctx.fillStyle = "#17321f";
-    ctx.fillText(`${medal} - ${player.name}: ${player.total}`, 540, y);
-
-    y += 55;
-  });
-
-  ctx.fillStyle = "#06451f";
-  ctx.font = "bold 42px Arial";
-  ctx.fillText("Think you can beat this score?", 540, 870);
-
-  ctx.fillStyle = "#17321f";
-  ctx.font = "bold 32px Arial";
-  ctx.fillText("Adventure Cove Mini Golf", 540, 930);
-
-  ctx.font = "28px Arial";
-  ctx.fillText("Wilmington, Ohio", 540, 975);
-
-  canvas.toBlob(function(blob) {
     if (!blob) {
-      alert("Could not create the share image.");
+      alert("Could not create share image.");
       return;
     }
 
-    const imageUrl = URL.createObjectURL(blob);
-    const link = document.createElement("a");
+    const file = new File(
+      [blob],
+      "AdventureCoveChampion.png",
+      { type: "image/png" }
+    );
 
-    link.href = imageUrl;
-    link.download = "adventure-cove-score.png";
+    const shareText =
+      `🏆 ${winner.name} won Adventure Cove with ${winner.total} strokes! Think you can beat this score?`;
 
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    try {
 
-    alert("Score image downloaded. Post it to Facebook, Instagram, or text it.");
+      if (
+        navigator.canShare &&
+        navigator.canShare({ files: [file] })
+      ) {
+
+        await navigator.share({
+          title: "Adventure Cove Champion",
+          text: shareText,
+          files: [file]
+        });
+
+      } else {
+
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "AdventureCoveChampion.png";
+        link.click();
+
+        alert("Your device doesn't support direct sharing. Image downloaded instead.");
+      }
+
+    } catch (err) {
+      console.log(err);
+    }
+
   }, "image/png");
 }
 
