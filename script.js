@@ -416,12 +416,26 @@ function buildScoreButtons() {
     }
 
     function updateChoiceScreen() {
-      const hole = holes[currentHoleIndex];
-      document.getElementById("choiceHole").textContent = hole.hole;
-      document.getElementById("choicePar").textContent = hole.par;
-      document.getElementById("choicePlayers").textContent = players.length;
-      renderLiveScoreboard("choiceScoreboard");
-    }
+  const hole = holes[currentHoleIndex];
+
+  document.getElementById("choiceHole").textContent = hole.hole;
+  document.getElementById("choicePar").textContent = hole.par;
+  document.getElementById("choicePlayers").textContent = players.length;
+
+  renderLiveScoreboard("choiceScoreboard");
+
+  const scoreboard = document.getElementById("choiceScoreboard");
+
+  if (!document.getElementById("editScoresAfterHoleBtn")) {
+    scoreboard.insertAdjacentHTML("beforeend", `
+      <div class="center">
+        <button id="editScoresAfterHoleBtn" class="small-btn blue-btn" onclick="openEditScores()">
+          ✏️ Edit Scores
+        </button>
+      </div>
+    `);
+  }
+}
 
     function chooseNormal() {
       currentMode = "Normal";
@@ -632,10 +646,17 @@ function buildScoreButtons() {
 }
 
     function advanceHole() {
-      currentHoleIndex++;
-      if (currentHoleIndex >= holes.length) finishGame();
-      else { currentChallenge = null; currentMode = "Normal"; updateChoiceScreen(); showOnly("choiceScreen"); }
-    }
+  currentHoleIndex++;
+
+  if (currentHoleIndex >= holes.length) {
+    finishGame();
+  } else {
+    currentChallenge = null;
+    currentMode = "Normal";
+    updateChoiceScreen();
+    showOnly("choiceScreen");
+  }
+}
 
     function goBackOnePlayer() {
       if (currentPlayerIndex > 0) {
