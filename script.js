@@ -320,17 +320,21 @@ results.forEach((player, index) => {
 }
 
     function buildSetup() {
-      const box = document.getElementById("playerInputs");
-      box.innerHTML = "";
-      for (let i = 1; i <= 6; i++) {
-        const input = document.createElement("input");
-        input.maxLength = 8;
-        input.placeholder = `Player ${i}`;
-        input.id = `player${i}`;
-        box.appendChild(input);
-      }
-      buildScoreButtons();
+  const box = document.getElementById("playerInputs");
+
+  if (box.children.length === 0) {
+    for (let i = 1; i <= 6; i++) {
+      const input = document.createElement("input");
+      input.maxLength = 8;
+      input.placeholder = `Player ${i}`;
+      input.id = `player${i}`;
+      input.autocomplete = "off";
+      box.appendChild(input);
     }
+  }
+
+  buildScoreButtons();
+}
 
     function buildScoreButtons() {
       const box = document.getElementById("scoreButtons");
