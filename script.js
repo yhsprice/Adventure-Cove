@@ -233,47 +233,61 @@ function shareResults() {
 
   const ctx = canvas.getContext("2d");
 
-  ctx.fillStyle = "#fff8ea";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#0f6b36";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = "#06451f";
-  ctx.fillRect(0, 0, canvas.width, 170);
+ctx.fillStyle = "#f5d36f";
+ctx.fillRect(40, 40, 1000, 1000);
 
-  ctx.fillStyle = "#f5d36f";
-  ctx.font = "bold 56px Arial";
-  ctx.textAlign = "center";
-  ctx.fillText("Adventure Cove", 540, 70);
+ctx.fillStyle = "#fff8ea";
+ctx.fillRect(60, 60, 960, 960);
 
-  ctx.fillStyle = "white";
-  ctx.font = "bold 42px Arial";
-  ctx.fillText("Treasure Quest Champion", 540, 130);
+ctx.textAlign = "center";
 
-  ctx.fillStyle = "#06451f";
-  ctx.font = "bold 76px Arial";
-  ctx.fillText(`${winner.name} WINS!`, 540, 265);
+ctx.fillStyle = "#06451f";
+ctx.font = "bold 70px Arial";
+ctx.fillText("🏴‍☠️ ADVENTURE COVE 🏴‍☠️", 540, 140);
 
+ctx.font = "bold 44px Arial";
+ctx.fillText("TREASURE QUEST CHAMPION", 540, 210);
+
+ctx.fillStyle = "#c8953f";
+ctx.font = "bold 90px Arial";
+ctx.fillText("🏆", 540, 330);
+
+ctx.fillStyle = "#06451f";
+ctx.font = "bold 80px Arial";
+ctx.fillText(winner.name, 540, 430);
+
+ctx.font = "bold 58px Arial";
+ctx.fillText(`${winner.total} STROKES`, 540, 500);
+
+ctx.fillStyle = "#17321f";
+ctx.font = "bold 40px Arial";
+ctx.fillText("FINAL STANDINGS", 540, 600);
+
+ let y = 680;
+
+results.forEach((player, index) => {
+
+  let medal = "";
+
+  if(index === 0) medal = "🥇";
+  else if(index === 1) medal = "🥈";
+  else if(index === 2) medal = "🥉";
+  else medal = `${index + 1}.`;
+
+  ctx.font = "bold 36px Arial";
   ctx.fillStyle = "#17321f";
-  ctx.font = "bold 54px Arial";
-  ctx.fillText(`${winner.total} Strokes`, 540, 345);
 
-  ctx.font = "bold 38px Arial";
-  ctx.fillText("Final Scores", 540, 430);
+  ctx.fillText(
+    `${medal} ${player.name} - ${player.total}`,
+    540,
+    y
+  );
 
-  let y = 500;
-
-  results.forEach((player, index) => {
-    ctx.fillStyle = index === 0 ? "#c8953f" : "#17321f";
-    ctx.font = "bold 38px Arial";
-
-    const place =
-      index === 0 ? "1st" :
-      index === 1 ? "2nd" :
-      index === 2 ? "3rd" :
-      `${index + 1}th`;
-
-    ctx.fillText(`${place} - ${player.name}: ${player.total}`, 540, y);
-    y += 58;
-  });
+  y += 55;
+});
 
   ctx.fillStyle = "#06451f";
   ctx.font = "bold 42px Arial";
@@ -911,5 +925,40 @@ function shareResults() {
         setTimeout(() => piece.remove(), 3000);
       }
     }
+
+const holeInOnes = scores.reduce(
+  (sum, p) => sum + p.stats.holeInOnes,
+  0
+);
+
+const penalties = scores.reduce(
+  (sum, p) => sum + p.stats.penalties,
+  0
+);
+
+const bonuses = scores.reduce(
+  (sum, p) => sum + p.stats.bonuses,
+  0
+);
+
+ctx.font = "bold 32px Arial";
+
+ctx.fillText(
+  `⛳ Hole In Ones: ${holeInOnes}`,
+  540,
+  900
+);
+
+ctx.fillText(
+  `💰 Bonuses: ${bonuses}`,
+  540,
+  945
+);
+
+ctx.fillText(
+  `⚓ Penalties: ${penalties}`,
+  540,
+  990
+);
 
     buildSetup();
