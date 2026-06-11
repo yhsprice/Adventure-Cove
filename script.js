@@ -219,19 +219,40 @@ function createChampionPhoto(img) {
   ctx.font = "bold 34px Arial";
   ctx.fillText("Adventure Cove Mini Golf • Wilmington, Ohio", 540, 1035);
 
-  canvas.toBlob(function (blob) {
-    if (!blob) {
-      alert("Could not create champion photo.");
-      return;
+ canvas.toBlob(async function (blob) {
+  if (!blob) {
+    alert("Could not create champion photo.");
+    return;
+  }
+
+  const file = new File(
+    [blob],
+    "Adventure-Cove-Champion-Photo.png",
+    { type: "image/png" }
+  );
+
+  const shareText =
+    `🏆 ${winner.name} is the Adventure Cove Champion with ${winner.total} strokes! Think you can beat this score?`;
+
+  try {
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({
+        title: "Adventure Cove Champion",
+        text: shareText,
+        files: [file]
+      });
+    } else {
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "Adventure-Cove-Champion-Photo.png";
+      link.click();
+
+      alert("Champion photo downloaded. You can post it or text it.");
     }
-
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "Adventure-Cove-Champion-Photo.png";
-    link.click();
-
-    alert("Champion photo created! Post it, text it, brag shamelessly.");
-  }, "image/png");
+  } catch (error) {
+    console.log(error);
+  }
+}, "image/png");
 }
 
 function buildSetup() {
