@@ -212,8 +212,11 @@ function recalculateAllStats() {
   });
 }
 
-async function shareResults() {
-  if (!scores.length) return alert("No scores to share yet.");
+function shareResults() {
+  if (!scores.length) {
+    alert("No scores to share yet.");
+    return;
+  }
 
   const results = scores
     .map(p => ({ name: p.name, total: totalFor(p) }))
@@ -222,6 +225,12 @@ async function shareResults() {
   const winner = results[0];
 
   const canvas = document.getElementById("shareCanvas");
+
+  if (!canvas) {
+    alert("Share canvas is missing from the HTML.");
+    return;
+  }
+
   const ctx = canvas.getContext("2d");
 
   ctx.fillStyle = "#fff8ea";
@@ -241,13 +250,13 @@ async function shareResults() {
 
   ctx.fillStyle = "#06451f";
   ctx.font = "bold 76px Arial";
-  ctx.fillText(`🏆 ${winner.name} WINS!`, 540, 265);
+  ctx.fillText(`${winner.name} WINS!`, 540, 265);
 
   ctx.fillStyle = "#17321f";
   ctx.font = "bold 54px Arial";
   ctx.fillText(`${winner.total} Strokes`, 540, 345);
 
-  ctx.font = "bold 36px Arial";
+  ctx.font = "bold 38px Arial";
   ctx.fillText("Final Scores", 540, 430);
 
   let y = 500;
@@ -256,7 +265,11 @@ async function shareResults() {
     ctx.fillStyle = index === 0 ? "#c8953f" : "#17321f";
     ctx.font = "bold 38px Arial";
 
-    const place = index === 0 ? "1st" : index === 1 ? "2nd" : index === 2 ? "3rd" : `${index + 1}th`;
+    const place =
+      index === 0 ? "1st" :
+      index === 1 ? "2nd" :
+      index === 2 ? "3rd" :
+      `${index + 1}th`;
 
     ctx.fillText(`${place} - ${player.name}: ${player.total}`, 540, y);
     y += 58;
@@ -268,31 +281,28 @@ async function shareResults() {
 
   ctx.fillStyle = "#17321f";
   ctx.font = "bold 32px Arial";
-  ctx.fillText("Play at Adventure Cove Mini Golf", 540, 930);
+  ctx.fillText("Adventure Cove Mini Golf", 540, 930);
 
   ctx.font = "28px Arial";
   ctx.fillText("Wilmington, Ohio", 540, 975);
 
-  canvas.toBlob(async blob => {
-    const file = new File([blob], "adventure-cove-score.png", {
-      type: "image/png"
-    });
-
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({
-        title: "Adventure Cove Score",
-        text: `${winner.name} won at Adventure Cove with ${winner.total} strokes! Think you can beat it?`,
-        files: [file]
-      });
-    } else {
-      const link = document.createElement("a");
-      link.download = "adventure-cove-score.png";
-      link.href = URL.createObjectURL(blob);
-      link.click();
-
-      alert("Your score image downloaded. You can now post it on Facebook, Instagram, or text it.");
+  canvas.toBlob(function(blob) {
+    if (!blob) {
+      alert("Could not create the share image.");
+      return;
     }
-  });
+
+    const imageUrl = URL.createObjectURL(blob);
+
+    const link = document.createElement("a");
+    link.href = imageUrl;
+    link.download = "adventure-cove-score.png";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    alert("Score image downloaded. Post it to Facebook, Instagram, or text it.");
+  }, "image/png");
 }
 
     function buildSetup() {
