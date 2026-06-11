@@ -138,24 +138,30 @@ function championPhoto() {
   cameraInput.click();
 }
 
-document.getElementById("championCamera").addEventListener("change", function (event) {
-  const file = event.target.files[0];
+document.addEventListener("DOMContentLoaded", function () {
+  const cameraInput = document.getElementById("championCamera");
 
-  if (!file) return;
+  if (!cameraInput) return;
 
-  const reader = new FileReader();
+  cameraInput.addEventListener("change", function (event) {
+    const file = event.target.files[0];
 
-  reader.onload = function (e) {
-    const img = new Image();
+    if (!file) return;
 
-    img.onload = function () {
-      createChampionPhoto(img);
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      const img = new Image();
+
+      img.onload = function () {
+        createChampionPhoto(img);
+      };
+
+      img.src = e.target.result;
     };
 
-    img.src = e.target.result;
-  };
-
-  reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
+  });
 });
 
 function createChampionPhoto(img) {
