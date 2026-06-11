@@ -27,7 +27,14 @@
     <section id="setupScreen" class="card">
       <h2>Players</h2>
       <p class="muted">Enter up to 6 players. Names are limited to 8 letters.</p>
-      <div class="player-grid" id="playerInputs"></div>
+      <div class="player-grid" id="playerInputs">
+  <input id="player1" maxlength="8" placeholder="Player 1" autocomplete="off">
+  <input id="player2" maxlength="8" placeholder="Player 2" autocomplete="off">
+  <input id="player3" maxlength="8" placeholder="Player 3" autocomplete="off">
+  <input id="player4" maxlength="8" placeholder="Player 4" autocomplete="off">
+  <input id="player5" maxlength="8" placeholder="Player 5" autocomplete="off">
+  <input id="player6" maxlength="8" placeholder="Player 6" autocomplete="off">
+</div>
       <div class="center">
         <button onclick="startGame()">Next</button>
         <button class="gold-btn" onclick="showHistory()">Past Games</button>
