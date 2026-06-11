@@ -568,19 +568,25 @@ function buildScoreButtons() {
       else messageBox.classList.add("hidden");
     }
 
-    function renderLiveScoreboard(elementId) {
-      const box = document.getElementById(elementId);
-      if (!box || !scores.length) return;
-      const rows = scores.map(player => {
-        const total = totalFor(player);
-        const currentRaw = player.holes[currentHoleIndex];
-        const currentAdj = Number(player.adjustments?.[currentHoleIndex]) || 0;
-        let currentText = currentRaw === null ? "—" : `${getHoleTotal(player, currentHoleIndex)}`;
-        if (currentRaw !== null && currentAdj !== 0) currentText += `<div class="score-adjust-note">${currentRaw} ${currentAdj > 0 ? "+" : ""}${currentAdj}</div>`;
-        return `<div class="live-score-row"><div>${player.name}</div><div>${currentText}</div><div>${total}</div></div>`;
-      }).join("");
-      box.innerHTML = `<h3>Current Scorecard</h3><div class="live-score-row header"><div>Player</div><div>Hole ${holes[currentHoleIndex].hole}</div><div>Total</div></div>${rows}<p class="muted center">Scores update as each player is entered. Challenge adjustments are included in totals.</p>`;
-    }
+   box.innerHTML = `
+  <h3>Current Scorecard</h3>
+
+  <div class="live-score-row header">
+    <div>Player</div>
+    <div>Hole ${holes[currentHoleIndex].hole}</div>
+    <div>Total</div>
+  </div>
+
+  ${rows}
+
+  <p class="muted center">
+    Scores update as each player is entered. Challenge adjustments are included in totals.
+  </p>
+
+  <div class="center">
+    <button class="small-btn blue-btn" onclick="openEditScores()">✏️ Edit Scores</button>
+  </div>
+`;
 
     function enterScore(strokes) {
       const bonus = currentChallenge?.type === "SPIN_WHEEL" ? wheelBonuses[currentPlayerIndex] : null;
