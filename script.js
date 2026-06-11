@@ -899,20 +899,6 @@ results.forEach((player, index) => {
 
     function backHome() { showOnly("setupScreen"); }
 
-<div class="center">
-  <button class="gold-btn" onclick="shareResults()">📣 Share Results</button>
-
-  <button class="blue-btn" onclick="challengeFriends()">
-    ⚔️ Challenge Friends
-  </button>
-
-  <button onclick="newGame()">Start New Game</button>
-
-  <button class="gold-btn" onclick="showHistory()">
-    View Past Games
-  </button>
-</div>
-
     function newGame() {
       players = [];
       scores = [];
