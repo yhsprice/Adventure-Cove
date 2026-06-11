@@ -125,6 +125,93 @@ const holes = [
   };
 }
 
+function openEditScores() {
+  const list = document.getElementById("editScoresList");
+  list.innerHTML = "";
+
+  scores.forEach((player, playerIndex) => {
+    const title = document.createElement("h3");
+    title.textContent = player.name;
+    list.appendChild(title);
+
+    player.holes.forEach((score, holeIndex) => {
+      if (score === null) return;
+
+      const row = document.createElement("div");
+      row.className = "edit-score-row";
+
+      row.innerHTML = `
+        <label>Hole ${holeIndex + 1}</label>
+        <input 
+          type="number"
+          min="1"
+          max="20"
+          value="${score}"
+          data-player="${playerIndex}"
+          data-hole="${holeIndex}"
+        >
+      `;
+
+      list.appendChild(row);
+    });
+  });
+
+  document.getElementById("editScoresModal").classList.remove("hidden");
+}
+
+function closeEditScores() {
+  document.getElementById("editScoresModal").classList.add("hidden");
+}
+
+function saveEditedScores() {
+  const inputs = document.querySelectorAll("#editScoresList input");
+
+  inputs.forEach(input => {
+    const playerIndex = Number(input.dataset.player);
+    const holeIndex = Number(input.dataset.hole);
+    const newScore = Number(input.value);
+
+    if (Number.isInteger(newScore) && newScore > 0) {
+      scores[playerIndex].holes[holeIndex] = newScore;
+    }
+  });
+
+  recalculateAllStats();
+
+  closeEditScores();
+
+  renderLiveScoreboard("choiceScoreboard");
+  renderLiveScoreboard("playScoreboard");
+
+  if (!document.getElementById("finalScreen").classList.contains("hidden")) {
+    finishGame();
+  } else {
+    updatePlayScreen();
+  }
+}
+
+function recalculateAllStats() {
+  scores.forEach(player => {
+    const oldPenalties = player.stats.penalties;
+    const oldBonuses = player.stats.bonuses;
+    const oldWheelSpins = player.stats.wheelSpins;
+    const oldChallenges = player.stats.challenges;
+
+    player.stats = makeStats();
+
+    player.stats.penalties = oldPenalties;
+    player.stats.bonuses = oldBonuses;
+    player.stats.wheelSpins = oldWheelSpins;
+    player.stats.challenges = oldChallenges;
+
+    player.holes.forEach((score, holeIndex) => {
+      if (score !== null) {
+        updatePlayerStatsForHole(player, holeIndex);
+      }
+    });
+  });
+}
+
     function buildSetup() {
       const box = document.getElementById("playerInputs");
       box.innerHTML = "";
