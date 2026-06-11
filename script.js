@@ -272,7 +272,6 @@ function createChampionPhoto(img) {
 
   alert("Sharing was cancelled or blocked, so the photo downloaded instead.");
 }
-}
 }, "image/png");
 }
 
