@@ -138,8 +138,9 @@
       <div id="coveRecords" class="records-list"></div>
       <div id="finalScoreTable"></div>
       <div class="center">
-        <button onclick="newGame()">Start New Game</button>
-        <button class="gold-btn" onclick="showHistory()">View Past Games</button>
+       <button class="gold-btn" onclick="shareResults()">📣 Share Results</button>
+       <button onclick="newGame()">Start New Game</button>
+       <button class="gold-btn" onclick="showHistory()">View Past Games</button>
       </div>
     </section>
 
@@ -164,6 +165,8 @@
     </div>
   </div>
 </div>
+
+  <canvas id="shareCanvas" class="hidden" width="1080" height="1080"></canvas>
   
   <script src="script.js"></script>
 </body>
