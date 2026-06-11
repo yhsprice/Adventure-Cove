@@ -336,6 +336,44 @@ results.forEach((player, index) => {
   buildScoreButtons();
 }
 
+function buildScoreButtons() {
+  const box = document.getElementById("scoreButtons");
+
+  if (!box) {
+    alert("Score button area is missing.");
+    return;
+  }
+
+  box.innerHTML = "";
+
+  for (let i = 1; i <= 8; i++) {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = i;
+    btn.onclick = function () {
+      enterScore(i);
+    };
+    box.appendChild(btn);
+  }
+
+  const plus = document.createElement("button");
+  plus.type = "button";
+  plus.textContent = "9+";
+  plus.className = "gold-btn";
+  plus.onclick = function () {
+    const val = Number(prompt("Enter strokes:"));
+    if (Number.isInteger(val) && val > 0) {
+      enterScore(val);
+    }
+  };
+
+  box.appendChild(plus);
+}
+  }
+
+  buildScoreButtons();
+}
+
     function buildScoreButtons() {
       const box = document.getElementById("scoreButtons");
       box.innerHTML = "";
