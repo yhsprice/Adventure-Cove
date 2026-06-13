@@ -175,10 +175,17 @@
     </section>
   </main>
 
-  <div id="editScoresModal" class="modal hidden">
+ <div id="editScoresModal" class="modal hidden">
   <div class="modal-box">
     <h2>Edit Scores</h2>
     <div id="editScoresList"></div>
+
+    <div class="center">
+      <button onclick="saveEditedScores()">Save Scores</button>
+      <button class="danger-btn" onclick="closeEditScores()">Cancel</button>
+    </div>
+  </div>
+</div>
 
  <canvas id="shareCanvas" class="hidden" width="1080" height="1080"></canvas>
 
