@@ -1572,4 +1572,12 @@ function saveCurrentGame() {
   }));
 }
 
+function cancelChallengeGoNormal() {
+  currentMode = "Normal";
+  currentChallenge = null;
+  pendingAfterHole = null;
+  saveCurrentGame();
+  startHolePlay();
+}
+
 buildSetup();
