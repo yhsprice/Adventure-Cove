@@ -123,15 +123,15 @@ window.addEventListener("popstate", function () {
     }
   }
 
-  window.addEventListener("beforeunload", function (event) {
+  showOnly("setupScreen");
+});
+
+window.addEventListener("beforeunload", function (event) {
   if (gameInProgress && scores.length) {
     saveCurrentGame();
     event.preventDefault();
     event.returnValue = "";
   }
-});
-
-  showOnly("setupScreen");
 });
 
 function makeStats() {
