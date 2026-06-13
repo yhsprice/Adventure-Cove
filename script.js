@@ -123,6 +123,14 @@ window.addEventListener("popstate", function () {
     }
   }
 
+  window.addEventListener("beforeunload", function (event) {
+  if (gameInProgress && scores.length) {
+    saveCurrentGame();
+    event.preventDefault();
+    event.returnValue = "";
+  }
+});
+
   showOnly("setupScreen");
 });
 
@@ -710,6 +718,8 @@ function handleEndOfHole() {
 
 function advanceHole() {
   currentHoleIndex++;
+
+  saveCurrentGame();
 
   if (currentHoleIndex >= holes.length) {
     finishGame();
@@ -1578,6 +1588,39 @@ function saveCurrentGame() {
   }));
 }
 
+function loadCurrentGame() {
+  const saved = localStorage.getItem("adventureCoveCurrentGame");
+
+  if (!saved) return false;
+
+  const resume = confirm("You have an unfinished Adventure Cove game. Resume it?");
+
+  if (!resume) {
+    localStorage.removeItem("adventureCoveCurrentGame");
+    return false;
+  }
+
+  const game = JSON.parse(saved);
+
+  players = game.players || [];
+  scores = game.scores || [];
+  currentHoleIndex = game.currentHoleIndex || 0;
+  currentPlayerIndex = game.currentPlayerIndex || 0;
+  currentMode = game.currentMode || "Normal";
+  currentChallenge = game.currentChallenge || null;
+  wheelPlayerIndex = game.wheelPlayerIndex || 0;
+  wheelBonuses = game.wheelBonuses || {};
+  wheelNotes = game.wheelNotes || {};
+  pendingAfterHole = game.pendingAfterHole || null;
+  gameEvents = game.gameEvents || [];
+  gameInProgress = true;
+
+  updateChoiceScreen();
+  showOnly("choiceScreen");
+
+  return true;
+}
+
 function cancelChallengeGoNormal() {
   currentMode = "Normal";
   currentChallenge = null;
@@ -1587,3 +1630,4 @@ function cancelChallengeGoNormal() {
 }
 
 buildSetup();
+loadCurrentGame();
