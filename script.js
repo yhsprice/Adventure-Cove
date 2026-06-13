@@ -1392,15 +1392,21 @@ function backHome() {
 }
 
 function newGame() {
-if (scores.length && !confirm("Start a new game? This will clear the current scores.")) {
-  return;
-}
+  if (scores.length && !confirm("Start a new game? This will clear the current scores.")) {
+    return;
+  }
+
   players = [];
   scores = [];
   currentHoleIndex = 0;
   currentPlayerIndex = 0;
   currentMode = "Normal";
   currentChallenge = null;
+  pendingAfterHole = null;
+  gameEvents = [];
+  gameInProgress = false;
+
+  localStorage.removeItem("adventureCoveCurrentGame");
 
   for (let i = 1; i <= 6; i++) {
     const input = document.getElementById(`player${i}`);
