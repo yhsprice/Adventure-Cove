@@ -109,6 +109,23 @@ let wheelRotation = 0;
 let pendingAfterHole = null;
 let gameEvents = [];
 
+let gameInProgress = false;
+
+history.pushState({ screen: "app" }, "", location.href);
+
+window.addEventListener("popstate", function () {
+  if (gameInProgress && scores.length) {
+    const leave = confirm("Leave this game? Your current scores could be lost.");
+
+    if (!leave) {
+      history.pushState({ screen: "app" }, "", location.href);
+      return;
+    }
+  }
+
+  showOnly("setupScreen");
+});
+
 function makeStats() {
   return {
     holeInOnes: 0,
@@ -372,7 +389,8 @@ function startGame() {
   currentChallenge = null;
   pendingAfterHole = null;
   gameEvents = [];
-
+  gameInProgress = true;
+  saveCurrentGame();
   updateChoiceScreen();
   showOnly("choiceScreen");
 }
@@ -590,6 +608,8 @@ function enterScore(strokes) {
   scores[currentPlayerIndex].holes[currentHoleIndex] = finalStrokes;
   scores[currentPlayerIndex].notes[currentHoleIndex] = note;
 
+  saveCurrentGame();
+
   recalculateAllStats();
 
   if (currentMode === "Challenge") {
@@ -653,13 +673,25 @@ function recalculateAllStats() {
 }
 
 function goBackOnePlayer() {
-  if (currentPlayerIndex > 0) {
-    currentPlayerIndex--;
-    scores[currentPlayerIndex].holes[currentHoleIndex] = null;
-    scores[currentPlayerIndex].notes[currentHoleIndex] = "";
-    recalculateAllStats();
-    updatePlayScreen();
+  if (currentPlayerIndex <= 0) {
+    alert("You are already on the first player for this hole.");
+    return;
   }
+
+  const previousPlayer = players[currentPlayerIndex - 1];
+
+  if (!confirm(`Go back and erase ${previousPlayer}'s score for this hole?`)) {
+    return;
+  }
+
+  currentPlayerIndex--;
+  scores[currentPlayerIndex].holes[currentHoleIndex] = null;
+  scores[currentPlayerIndex].notes[currentHoleIndex] = "";
+  scores[currentPlayerIndex].adjustments[currentHoleIndex] = 0;
+
+  recalculateAllStats();
+  saveCurrentGame();
+  updatePlayScreen();
 }
 
 function handleEndOfHole() {
@@ -742,6 +774,8 @@ function saveEditedScores() {
 
   recalculateAllStats();
   closeEditScores();
+
+  saveCurrentGame();
 
   if (!document.getElementById("finalScreen").classList.contains("hidden")) {
     finishGame();
@@ -1157,7 +1191,10 @@ function finishGame() {
 
   const records = updateCoveRecords(results);
   document.getElementById("coveRecords").innerHTML = renderRecords(records);
-
+ 
+  gameInProgress = false;
+  localStorage.removeItem("adventureCoveCurrentGame");
+ 
   saveGame(results);
   showOnly("finalScreen");
   launchConfetti();
@@ -1355,6 +1392,9 @@ function backHome() {
 }
 
 function newGame() {
+if (scores.length && !confirm("Start a new game? This will clear the current scores.")) {
+  return;
+}
   players = [];
   scores = [];
   currentHoleIndex = 0;
@@ -1512,6 +1552,24 @@ function launchConfetti() {
       piece.remove();
     }, fallTime + delay + 200);
   }
+}
+
+function saveCurrentGame() {
+  if (!scores.length) return;
+
+  localStorage.setItem("adventureCoveCurrentGame", JSON.stringify({
+    players,
+    scores,
+    currentHoleIndex,
+    currentPlayerIndex,
+    currentMode,
+    currentChallenge,
+    wheelPlayerIndex,
+    wheelBonuses,
+    wheelNotes,
+    pendingAfterHole,
+    gameEvents
+  }));
 }
 
 buildSetup();
