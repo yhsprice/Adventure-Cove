@@ -18,7 +18,7 @@ const challengeTypes = {
   COMEBACK_COVE: "Comeback Cove: losing player gets -1 if they finish par or better.",
   TREASURE_STEAL: "Treasure Steal: hole-in-one earns -1 stroke.",
   WATERFALL_WHISPER: "Waterfall Whisper: everyone stays quiet for first shots. Talk early = +1.",
-  LUCKY_BOUNCE: "Lucky Bounce: bounce off a wall and sink it = -1 stroke."
+  LUCKY_BOUNCE: "Lucky Bounce: bounce off a wall and sink it = -1 stroke.",
   TRIVIA: "Do You Dare? Answer a trivia question correctly before your turn. If correct, move your ball forward 1 normal step. No jumping or lunging."
 };
 
@@ -61,8 +61,8 @@ const challenges = [
 { text: "Lucky Bounce: if your ball bounces off a wall and then goes in, earn a 1-stroke deduction. After the hole, select qualifying players and the app will apply it.", type: "LUCKY_BOUNCE" },
 { text: "The Detour: your first shot must be aimed at a wall or obstacle instead of directly at the hole.", type: "NORMAL" },
 { text: "Steady Captain: keep both hands touching each other on the putter for the entire hole.", type: "NORMAL" },
-{ text: "Do You Dare? Answer a trivia question correctly before your turn. If correct, move your ball forward 1 normal step. No jumping or lunging.", type: "TRIVIA" }
 { text: challengeTypes.TRIVIA, type: "TRIVIA" },
+  ];
 
 const triviaQuestions = [
   { question: "What color do you get when you mix red and yellow?", choices: ["Green", "Orange", "Purple", "Blue"], answer: 1 },
