@@ -22,46 +22,83 @@ const challengeTypes = {
 };
 
 const challenges = [
-  { text: "Ahoy! Hit the ball standing on one foot.", type: "NORMAL" },
-  { text: "Turn the club upside down and hit with the handle.", type: "NORMAL" },
-  { text: challengeTypes.HIGHEST_PAR_DECIDES, type: "HIGHEST_PAR_DECIDES" },
-  { text: "Face backward and putt between your legs.", type: "NORMAL" },
-  { text: challengeTypes.CLOSEST_TO_HOLE, type: "CLOSEST_TO_HOLE" },
-  { text: "Play one-handed with your dominant hand.", type: "NORMAL" },
-  { text: "Hit the ball like a pool shot.", type: "NORMAL" },
-  { text: challengeTypes.UNDER_PAR_REMOVE_WORST, type: "UNDER_PAR_REMOVE_WORST" },
-  { text: challengeTypes.HOLE_IN_ONE_ATTACK, type: "HOLE_IN_ONE_ATTACK" },
-  { text: "Swing granny style between the legs.", type: "NORMAL" },
-  { text: challengeTypes.SPIN_WHEEL, type: "SPIN_WHEEL" },
-  { text: "First player to sink a shot may move another player's ball one club length.", type: "NORMAL" },
-  { text: "Use your foot instead of the club for this hole.", type: "NORMAL" },
-  { text: "Hit while sitting cross-legged.", type: "NORMAL" },
-  { text: "Putt with your eyes closed.", type: "NORMAL" },
-  { text: "Bowl the ball like you're aiming for pins. No club.", type: "NORMAL" },
-  { text: "First shot is normal, but take your second shot with your eyes closed.", type: "NORMAL" },
-  { text: "Use your non-dominant hand for this whole play.", type: "NORMAL" },
-  { text: "Crab Walk Shot: stand sideways and bend over like a crab for your first shot.", type: "NORMAL" },
-  { text: "Best Shot Switch: choose another player to take your first shot.", type: "NORMAL" },
-  { text: "Wall First: your first shot must touch a side wall. If it doesn't you have to keep hitting until it does and points matter.", type: "NORMAL" },
-  { text: "No Peeking Putt: look once, then close your eyes for the first shot.", type: "NORMAL" },
-  { text: "Two-Finger Grip: use only two fingers on your first shot.", type: "NORMAL" },
-  { text: "Last Place Rule: the losing player chooses everyone's first shot style.", type: "NORMAL" },
-  { text: "Leader Trouble: the winning player uses their non-dominant hand for the first shot.", type: "NORMAL" },
-  { text: "Tap and Freeze: after your first shot, stay still until everyone shoots. Everyone must shoot around the others until the last player goes.", type: "NORMAL" },
-  { text: "Player's Choice: each player chooses their own silly first-shot style.", type: "NORMAL" },
-  { text: "Straight Arm Shot: keep elbows straight for your first shot. If you bend, you must try again. Points add up.", type: "NORMAL" },
-  { text: "Mini Boss Hole: everyone uses the same challenge chosen by the first player.", type: "NORMAL" },
-  { text: challengeTypes.SAFE_SHOT, type: "SAFE_SHOT" },
-  { text: challengeTypes.OBSTACLE_TROUBLE, type: "OBSTACLE_TROUBLE" },
-  { text: challengeTypes.COMEBACK_COVE, type: "COMEBACK_COVE" },
-  { text: challengeTypes.TREASURE_STEAL, type: "TREASURE_STEAL" },
-  { text: "Captain's Call: youngest player picks one rule — one hand, eyes closed, or shoot granny style.", type: "NORMAL" },
-  { text: challengeTypes.WATERFALL_WHISPER, type: "WATERFALL_WHISPER" },
-  { text: challengeTypes.LUCKY_BOUNCE, type: "LUCKY_BOUNCE" },
-  { text: "The Detour: first shot must aim for a wall or obstacle first. If you miss, you keep trying and points add up.", type: "NORMAL" },
-  { text: "Steady Captain: keep both hands touching on the putter all hole. If you let go with one hand you must add 2 points to your score.", type: "NORMAL" }
-];
+  { text: "Ahoy! Stand on one foot for your first shot.", type: "NORMAL" },
 
+{ text: "Turn the putter upside down and use the handle for your first shot.", type: "NORMAL" },
+
+{ text: "Challenge Captain: the player with the highest score chooses how everyone takes their first shot.", type: "HIGHEST_PAR_DECIDES" },
+
+{ text: "Face away from the hole and putt between your legs for your first shot.", type: "NORMAL" },
+
+{ text: "Closest Wins: after the hole, choose the player whose ball stopped closest to the hole without going in. The app will deduct 1 stroke from their score. Any player whose ball goes in during the challenge gets 2 strokes added.", type: "CLOSEST_TO_HOLE" },
+
+{ text: "Use only one hand for your first shot.", type: "NORMAL" },
+
+{ text: "Pool Shark: strike the ball like you're shooting pool.", type: "NORMAL" },
+
+{ text: "Lucky Break: finish this hole under par and the app will automatically remove your worst hole score so far.", type: "UNDER_PAR_REMOVE_WORST" },
+
+{ text: "Pirate Revenge: score a hole-in-one and the app will let you add 2 strokes to another player's score.", type: "HOLE_IN_ONE_ATTACK" },
+
+{ text: "Swing granny style between your legs for your first shot.", type: "NORMAL" },
+
+{ text: "Spin the wheel to learn your fate.", type: "SPIN_WHEEL" },
+
+{ text: "First player to sink a putt may move another player's ball up to one club length.", type: "NORMAL" },
+
+{ text: "Forget the putter! Use your foot for the entire hole.", type: "NORMAL" },
+
+{ text: "Sit cross-legged and take your first shot.", type: "NORMAL" },
+
+{ text: "Eyes Closed: close your eyes before your first putt.", type: "NORMAL" },
+
+{ text: "Bowl the ball toward the hole. No putter allowed.", type: "NORMAL" },
+
+{ text: "Take your second shot with your eyes closed.", type: "NORMAL" },
+
+{ text: "Use your non-dominant hand for the entire hole.", type: "NORMAL" },
+
+{ text: "Crab Walk Shot: stand sideways for your first shot.", type: "NORMAL" },
+
+{ text: "Best Shot Switch: choose another player to take your first shot for you.", type: "NORMAL" },
+
+{ text: "Bank Shot: your first shot must touch any wall before your second shot.", type: "NORMAL" },
+
+{ text: "No Peeking: look at the hole, then close your eyes before your first shot.", type: "NORMAL" },
+
+{ text: "Two-Finger Grip: hold the putter with only two fingers on your first shot.", type: "NORMAL" },
+
+{ text: "Last Place Rule: the player with the highest score chooses how everyone takes their first shot.", type: "NORMAL" },
+
+{ text: "Leader Trouble: the player with the highest score must use their non-dominant hand on their first shot.", type: "NORMAL" },
+
+{ text: "Tap and Freeze: after your first shot, stay where you are until everyone has taken their turn. Other players must shoot around you.", type: "NORMAL" },
+
+{ text: "Player's Choice: choose any fun way to take your first shot.", type: "NORMAL" },
+
+{ text: "Straight Arm Shot: keep your elbows straight on your first shot.", type: "NORMAL" },
+
+{ text: "Mini Boss Hole: everyone must use the same challenge chosen by the first player.", type: "NORMAL" },
+
+{ text: "Safe Shot: if your ball reaches the hole without touching a wall or obstacle, earn 1 stroke deduction. After the hole, select qualifying players and the app will apply it.", type: "SAFE_SHOT" },
+
+{ text: "Obstacle Trouble: if your ball gets stuck or leaves the playing area, add 1 stroke. After the hole, select affected players and the app will apply it.", type: "OBSTACLE_TROUBLE" },
+
+{ text: "Comeback Cove: if the player currently in last place finishes at par or better, they earn a 1 stroke deduction. After the hole, select the player and the app will apply it.", type: "COMEBACK_COVE" },
+
+{ text: "Treasure Steal: score a hole-in-one and earn an extra 1-stroke deduction. After the hole, select the player and the app will apply it.", type: "TREASURE_STEAL" },
+
+{ text: "Captain's Call: the youngest player chooses one rule for everyone's first shot.", type: "NORMAL" },
+
+{ text: "Waterfall Whisper: everyone must stay quiet until all first shots are complete. Anyone who talks receives 1 extra stroke. After the hole, select those players and the app will apply it.", type: "WATERFALL_WHISPER" },
+
+{ text: "Lucky Bounce: if your ball bounces off a wall and then goes in, earn a 1-stroke deduction. After the hole, select qualifying players and the app will apply it.", type: "LUCKY_BOUNCE" },
+
+{ text: "The Detour: your first shot must be aimed at a wall or obstacle instead of directly at the hole.", type: "NORMAL" },
+
+{ text: "Steady Captain: keep both hands touching each other on the putter for the entire hole.", type: "NORMAL" },
+
+{ text: "Do You Dare? Answer a trivia question correctly before your turn. If correct, move your ball forward 1 normal step. No jumping or lunging.", type: "TRIVIA" }
 const wheelOptions = [
   { label: "Instant hole in one", action: "INSTANT_ONE" },
   { label: "Interlock your arms with another player and try to swing", action: "PLAY_NOTE" },
