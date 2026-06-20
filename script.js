@@ -19,87 +19,98 @@ const challengeTypes = {
   TREASURE_STEAL: "Treasure Steal: hole-in-one earns -1 stroke.",
   WATERFALL_WHISPER: "Waterfall Whisper: everyone stays quiet for first shots. Talk early = +1.",
   LUCKY_BOUNCE: "Lucky Bounce: bounce off a wall and sink it = -1 stroke."
+  TRIVIA: "Do You Dare? Answer a trivia question correctly before your turn. If correct, move your ball forward 1 normal step. No jumping or lunging."
 };
 
 const challenges = [
-  { text: "Ahoy! Stand on one foot for your first shot.", type: "NORMAL" },
-
+{ text: "Ahoy! Stand on one foot for your first shot.", type: "NORMAL" },
 { text: "Turn the putter upside down and use the handle for your first shot.", type: "NORMAL" },
-
 { text: "Challenge Captain: the player with the highest score chooses how everyone takes their first shot.", type: "HIGHEST_PAR_DECIDES" },
-
 { text: "Face away from the hole and putt between your legs for your first shot.", type: "NORMAL" },
-
 { text: "Closest Wins: after the hole, choose the player whose ball stopped closest to the hole without going in. The app will deduct 1 stroke from their score. Any player whose ball goes in during the challenge gets 2 strokes added.", type: "CLOSEST_TO_HOLE" },
-
 { text: "Use only one hand for your first shot.", type: "NORMAL" },
-
 { text: "Pool Shark: strike the ball like you're shooting pool.", type: "NORMAL" },
-
 { text: "Lucky Break: finish this hole under par and the app will automatically remove your worst hole score so far.", type: "UNDER_PAR_REMOVE_WORST" },
-
 { text: "Pirate Revenge: score a hole-in-one and the app will let you add 2 strokes to another player's score.", type: "HOLE_IN_ONE_ATTACK" },
-
 { text: "Swing granny style between your legs for your first shot.", type: "NORMAL" },
-
 { text: "Spin the wheel to learn your fate.", type: "SPIN_WHEEL" },
-
 { text: "First player to sink a putt may move another player's ball up to one club length.", type: "NORMAL" },
-
 { text: "Forget the putter! Use your foot for the entire hole.", type: "NORMAL" },
-
 { text: "Sit cross-legged and take your first shot.", type: "NORMAL" },
-
 { text: "Eyes Closed: close your eyes before your first putt.", type: "NORMAL" },
-
 { text: "Bowl the ball toward the hole. No putter allowed.", type: "NORMAL" },
-
 { text: "Take your second shot with your eyes closed.", type: "NORMAL" },
-
 { text: "Use your non-dominant hand for the entire hole.", type: "NORMAL" },
-
 { text: "Crab Walk Shot: stand sideways for your first shot.", type: "NORMAL" },
-
 { text: "Best Shot Switch: choose another player to take your first shot for you.", type: "NORMAL" },
-
 { text: "Bank Shot: your first shot must touch any wall before your second shot.", type: "NORMAL" },
-
 { text: "No Peeking: look at the hole, then close your eyes before your first shot.", type: "NORMAL" },
-
 { text: "Two-Finger Grip: hold the putter with only two fingers on your first shot.", type: "NORMAL" },
-
 { text: "Last Place Rule: the player with the highest score chooses how everyone takes their first shot.", type: "NORMAL" },
-
 { text: "Leader Trouble: the player with the highest score must use their non-dominant hand on their first shot.", type: "NORMAL" },
-
 { text: "Tap and Freeze: after your first shot, stay where you are until everyone has taken their turn. Other players must shoot around you.", type: "NORMAL" },
-
 { text: "Player's Choice: choose any fun way to take your first shot.", type: "NORMAL" },
-
 { text: "Straight Arm Shot: keep your elbows straight on your first shot.", type: "NORMAL" },
-
 { text: "Mini Boss Hole: everyone must use the same challenge chosen by the first player.", type: "NORMAL" },
-
 { text: "Safe Shot: if your ball reaches the hole without touching a wall or obstacle, earn 1 stroke deduction. After the hole, select qualifying players and the app will apply it.", type: "SAFE_SHOT" },
-
 { text: "Obstacle Trouble: if your ball gets stuck or leaves the playing area, add 1 stroke. After the hole, select affected players and the app will apply it.", type: "OBSTACLE_TROUBLE" },
-
 { text: "Comeback Cove: if the player currently in last place finishes at par or better, they earn a 1 stroke deduction. After the hole, select the player and the app will apply it.", type: "COMEBACK_COVE" },
-
 { text: "Treasure Steal: score a hole-in-one and earn an extra 1-stroke deduction. After the hole, select the player and the app will apply it.", type: "TREASURE_STEAL" },
-
 { text: "Captain's Call: the youngest player chooses one rule for everyone's first shot.", type: "NORMAL" },
-
 { text: "Waterfall Whisper: everyone must stay quiet until all first shots are complete. Anyone who talks receives 1 extra stroke. After the hole, select those players and the app will apply it.", type: "WATERFALL_WHISPER" },
-
 { text: "Lucky Bounce: if your ball bounces off a wall and then goes in, earn a 1-stroke deduction. After the hole, select qualifying players and the app will apply it.", type: "LUCKY_BOUNCE" },
-
 { text: "The Detour: your first shot must be aimed at a wall or obstacle instead of directly at the hole.", type: "NORMAL" },
-
 { text: "Steady Captain: keep both hands touching each other on the putter for the entire hole.", type: "NORMAL" },
-
 { text: "Do You Dare? Answer a trivia question correctly before your turn. If correct, move your ball forward 1 normal step. No jumping or lunging.", type: "TRIVIA" }
-const wheelOptions = [
+{ text: challengeTypes.TRIVIA, type: "TRIVIA" },
+
+const triviaQuestions = [
+  { question: "What color do you get when you mix red and yellow?", choices: ["Green", "Orange", "Purple", "Blue"], answer: 1 },
+  { question: "How many legs does a spider have?", choices: ["6", "8", "10", "12"], answer: 1 },
+  { question: "Which planet is known as the Red Planet?", choices: ["Earth", "Mars", "Jupiter", "Venus"], answer: 1 },
+  { question: "What animal says moo?", choices: ["Horse", "Cow", "Pig", "Sheep"], answer: 1 },
+  { question: "How many days are in a week?", choices: ["5", "6", "7", "8"], answer: 2 },
+  { question: "Which ocean is the largest?", choices: ["Atlantic", "Indian", "Pacific", "Arctic"], answer: 2 },
+  { question: "What fruit is yellow and curved?", choices: ["Apple", "Pear", "Banana", "Peach"], answer: 2 },
+  { question: "What do bees make?", choices: ["Milk", "Honey", "Butter", "Cheese"], answer: 1 },
+  { question: "How many wheels does a bicycle have?", choices: ["1", "2", "3", "4"], answer: 1 },
+  { question: "Which animal is called the King of the Jungle?", choices: ["Tiger", "Lion", "Elephant", "Bear"], answer: 1 },
+
+  { question: "What is frozen water called?", choices: ["Steam", "Ice", "Snow", "Rain"], answer: 1 },
+  { question: "Which holiday comes on December 25?", choices: ["Halloween", "Thanksgiving", "Christmas", "Easter"], answer: 2 },
+  { question: "What color are emeralds?", choices: ["Blue", "Red", "Green", "Purple"], answer: 2 },
+  { question: "How many months are in a year?", choices: ["10", "11", "12", "13"], answer: 2 },
+  { question: "Which bird is often linked with pirates?", choices: ["Parrot", "Crow", "Robin", "Owl"], answer: 0 },
+  { question: "What shape has three sides?", choices: ["Square", "Circle", "Triangle", "Rectangle"], answer: 2 },
+  { question: "Which season comes after spring?", choices: ["Winter", "Fall", "Summer", "Rainy"], answer: 2 },
+  { question: "What do you call a baby dog?", choices: ["Kitten", "Puppy", "Cub", "Foal"], answer: 1 },
+  { question: "Which sport uses a bat and ball?", choices: ["Soccer", "Baseball", "Swimming", "Hockey"], answer: 1 },
+  { question: "What color is the sky on a clear day?", choices: ["Blue", "Green", "Purple", "Orange"], answer: 0 },
+
+  { question: "How many hours are in a day?", choices: ["12", "18", "24", "36"], answer: 2 },
+  { question: "Which animal has a long trunk?", choices: ["Hippo", "Elephant", "Rhino", "Camel"], answer: 1 },
+  { question: "What do plants need to make food?", choices: ["Sunlight", "Candy", "Milk", "Sand"], answer: 0 },
+  { question: "Which month comes after June?", choices: ["May", "July", "August", "September"], answer: 1 },
+  { question: "What is the opposite of hot?", choices: ["Warm", "Cool", "Cold", "Dry"], answer: 2 },
+  { question: "How many sides does a square have?", choices: ["3", "4", "5", "6"], answer: 1 },
+  { question: "Which animal lives in a shell?", choices: ["Snail", "Dog", "Horse", "Rabbit"], answer: 0 },
+  { question: "What color is a stop sign?", choices: ["Blue", "Green", "Yellow", "Red"], answer: 3 },
+  { question: "What do you use to tell time?", choices: ["Clock", "Fork", "Pillow", "Book"], answer: 0 },
+  { question: "Which planet do we live on?", choices: ["Mars", "Earth", "Venus", "Mercury"], answer: 1 },
+
+  { question: "How many letters are in the English alphabet?", choices: ["24", "25", "26", "27"], answer: 2 },
+  { question: "Which animal is known for hopping?", choices: ["Kangaroo", "Bear", "Lion", "Shark"], answer: 0 },
+  { question: "What do cows drink?", choices: ["Milk", "Water", "Juice", "Soda"], answer: 1 },
+  { question: "Which day comes before Friday?", choices: ["Wednesday", "Thursday", "Saturday", "Monday"], answer: 1 },
+  { question: "What is the largest land animal?", choices: ["Giraffe", "Elephant", "Hippo", "Rhino"], answer: 1 },
+  { question: "What color are school buses usually?", choices: ["Yellow", "Blue", "Green", "Red"], answer: 0 },
+  { question: "How many fingers are on one hand?", choices: ["4", "5", "6", "7"], answer: 1 },
+  { question: "Which animal says oink?", choices: ["Pig", "Cow", "Dog", "Duck"], answer: 0 },
+  { question: "What is the first month of the year?", choices: ["December", "January", "February", "March"], answer: 1 },
+  { question: "What do fish breathe through?", choices: ["Lungs", "Gills", "Noses", "Mouths"], answer: 1 }
+];
+  
+  const wheelOptions = [
   { label: "Instant hole in one", action: "INSTANT_ONE" },
   { label: "Interlock your arms with another player and try to swing", action: "PLAY_NOTE" },
   { label: "Kick the ball and use no hands or club", action: "PLAY_NOTE" },
@@ -145,6 +156,9 @@ let wheelNotes = {};
 let wheelRotation = 0;
 let pendingAfterHole = null;
 let gameEvents = [];
+let triviaPlayerIndex = 0;
+let usedTriviaQuestions = [];
+let currentTriviaQuestion = null;
 
 let gameInProgress = false;
 
@@ -502,6 +516,8 @@ function acceptChallenge() {
 
   if (currentChallenge.type === "SPIN_WHEEL") {
     startWheelChallenge();
+  } else if (currentChallenge.type === "TRIVIA") {
+    startTriviaChallenge();
   } else {
     startHolePlay();
   }
@@ -528,6 +544,81 @@ function highestScoreMessage() {
 
   const randomLeader = leaders[Math.floor(Math.random() * leaders.length)];
   return `There is a tie for highest score. Random pick: ${randomLeader} decides how everyone must hit the ball.`;
+}
+
+  function startTriviaChallenge() {
+  triviaPlayerIndex = 0;
+  usedTriviaQuestions = [];
+  showTriviaQuestion();
+}
+
+function showTriviaQuestion() {
+  currentPlayerIndex = triviaPlayerIndex;
+  currentTriviaQuestion = getRandomTriviaQuestion();
+
+  document.getElementById("specialTitle").textContent = `Do You Dare, ${players[triviaPlayerIndex]}?`;
+
+  document.getElementById("specialContent").innerHTML = `
+    <div class="message-box">
+      Answer correctly and move your ball forward <strong>1 normal step</strong>.<br>
+      No jumping, running, or lunging.
+    </div>
+
+    <div class="rule-panel">
+      <h3>${currentTriviaQuestion.question}</h3>
+
+      ${currentTriviaQuestion.choices.map((choice, index) => `
+        <button class="blue-btn" onclick="answerTrivia(${index})">
+          ${choice}
+        </button>
+      `).join("")}
+    </div>
+  `;
+
+  showOnly("specialScreen");
+}
+
+function getRandomTriviaQuestion() {
+  if (usedTriviaQuestions.length >= triviaQuestions.length) {
+    usedTriviaQuestions = [];
+  }
+
+  let index;
+
+  do {
+    index = Math.floor(Math.random() * triviaQuestions.length);
+  } while (usedTriviaQuestions.includes(index));
+
+  usedTriviaQuestions.push(index);
+  return triviaQuestions[index];
+}
+
+function answerTrivia(choiceIndex) {
+  const correct = choiceIndex === currentTriviaQuestion.answer;
+
+  document.getElementById("specialTitle").textContent = correct ? "Correct!" : "Not This Time!";
+
+  document.getElementById("specialContent").innerHTML = `
+    <div class="message-box">
+      ${correct
+        ? `${players[triviaPlayerIndex]}, move your ball forward <strong>1 normal step</strong>.`
+        : `${players[triviaPlayerIndex]}, play from where your ball is.`}
+    </div>
+
+    <div class="center">
+      <button onclick="continueTriviaChallenge()">Continue</button>
+    </div>
+  `;
+}
+
+function continueTriviaChallenge() {
+  triviaPlayerIndex++;
+
+  if (triviaPlayerIndex >= players.length) {
+    startHolePlay();
+  } else {
+    showTriviaQuestion();
+  }
 }
 
 function startHolePlay() {
