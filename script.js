@@ -116,7 +116,34 @@ hard: [
     { question: "What gas do plants take in from the air?", choices: ["Oxygen", "Carbon dioxide", "Helium", "Hydrogen"], answer: 1 },
     { question: "How many continents are there?", choices: ["5", "6", "7", "8"], answer: 2 },
     { question: "What is the capital of the United States?", choices: ["New York City", "Washington, D.C.", "Boston", "Chicago"], answer: 1 },
-    { question: "Which ocean is on the east coast of the United States?", choices: ["Pacific", "Atlantic", "Indian", "Arctic"], answer: 1 }
+    { question: "Which ocean is on the east coast of the United States?", choices: ["Pacific", "Atlantic", "Indian", "Arctic"], answer: 1 },
+  { question: "Which U.S. state is known as the Buckeye State?", choices: ["Indiana", "Kentucky", "Ohio", "Pennsylvania"], answer: 2 },
+{ question: "How many sides does a hexagon have?", choices: ["5", "6", "7", "8"], answer: 1 },
+{ question: "What is the largest ocean on Earth?", choices: ["Atlantic", "Indian", "Pacific", "Arctic"], answer: 2 },
+{ question: "Who painted the Mona Lisa?", choices: ["Van Gogh", "Picasso", "Leonardo da Vinci", "Michelangelo"], answer: 2 },
+{ question: "What is the capital of Canada?", choices: ["Toronto", "Vancouver", "Ottawa", "Montreal"], answer: 2 },
+{ question: "How many bones are in the adult human body?", choices: ["186", "206", "226", "246"], answer: 1 },
+{ question: "Which planet has the most moons?", choices: ["Mars", "Jupiter", "Saturn", "Neptune"], answer: 2 },
+{ question: "What is the smallest U.S. state?", choices: ["Delaware", "Rhode Island", "Connecticut", "Vermont"], answer: 1 },
+{ question: "Which metal is liquid at room temperature?", choices: ["Mercury", "Silver", "Lead", "Tin"], answer: 0 },
+{ question: "What year did the Titanic sink?", choices: ["1905", "1912", "1920", "1931"], answer: 1 },
+
+{ question: "What is the largest desert in the world?", choices: ["Sahara", "Gobi", "Antarctica", "Arabian"], answer: 2 },
+{ question: "How many players are on a baseball field for one team?", choices: ["8", "9", "10", "11"], answer: 1 },
+{ question: "Which country invented pizza?", choices: ["France", "Italy", "Spain", "Greece"], answer: 1 },
+{ question: "Which animal is known as the fastest land animal?", choices: ["Lion", "Horse", "Cheetah", "Gazelle"], answer: 2 },
+{ question: "What is the largest organ in the human body?", choices: ["Liver", "Heart", "Skin", "Lungs"], answer: 2 },
+{ question: "Which U.S. president appears on the $20 bill?", choices: ["Lincoln", "Washington", "Jackson", "Grant"], answer: 2 },
+{ question: "How many stripes are on the U.S. flag?", choices: ["10", "13", "15", "50"], answer: 1 },
+{ question: "Which company created the iPhone?", choices: ["Samsung", "Apple", "Google", "Sony"], answer: 1 },
+{ question: "What is the tallest mountain in the world?", choices: ["K2", "Denali", "Everest", "Kilimanjaro"], answer: 2 },
+{ question: "What is the only mammal capable of true flight?", choices: ["Flying Squirrel", "Bat", "Sugar Glider", "Penguin"], answer: 1 },
+
+{ question: "Which famous ship was commanded by Captain Jack Sparrow?", choices: ["Black Pearl", "Flying Dutchman", "Queen Anne's Revenge", "Interceptor"], answer: 0 },
+{ question: "How many colors are in a rainbow?", choices: ["5", "6", "7", "8"], answer: 2 },
+{ question: "Which gas do humans breathe in to survive?", choices: ["Nitrogen", "Carbon Dioxide", "Oxygen", "Hydrogen"], answer: 2 },
+{ question: "What is the world's longest river?", choices: ["Amazon", "Mississippi", "Yangtze", "Nile"], answer: 3 },
+{ question: "How many holes are played in a standard round of golf?", choices: ["9", "12", "18", "24"], answer: 2 }
   ]
   };
 
@@ -170,6 +197,7 @@ let triviaPlayerIndex = 0;
 let usedTriviaQuestions = [];
 let currentTriviaQuestion = null;
 let currentTriviaDifficulty = "easy";
+let challengeDifficulty = "simple";
 
 let gameInProgress = false;
 
@@ -483,12 +511,42 @@ function chooseNormal() {
 }
 
 function choosePath() {
+  document.getElementById("specialTitle").textContent = "Choose Challenge Style";
+
+  document.getElementById("specialContent").innerHTML = `
+    <div class="message-box">
+      Pick how wild you want this hole to be.
+    </div>
+
+    <div class="center">
+      <button onclick="startChallengeStyle('simple')">Simple Challenge</button>
+      <button class="gold-btn" onclick="startChallengeStyle('hard')">Hard Challenge</button>
+    </div>
+
+    <p class="muted center">
+      Simple = mostly mini-golf challenges. Hard = more trivia and bigger rewards.
+    </p>
+  `;
+
+  showOnly("specialScreen");
+}
+
+function startChallengeStyle(style) {
+  challengeDifficulty = style;
   newChallenge();
   showOnly("pathScreen");
 }
 
 function newChallenge() {
-  currentChallenge = challenges[Math.floor(Math.random() * challenges.length)];
+  const triviaChance = challengeDifficulty === "hard" ? 0.50 : 0.25;
+  const shouldUseTrivia = Math.random() < triviaChance;
+
+  if (shouldUseTrivia) {
+    currentChallenge = { text: challengeTypes.TRIVIA, type: "TRIVIA" };
+  } else {
+    const nonTriviaChallenges = challenges.filter(challenge => challenge.type !== "TRIVIA");
+    currentChallenge = nonTriviaChallenges[Math.floor(Math.random() * nonTriviaChallenges.length)];
+  }
 
   document.getElementById("challengeText").textContent = currentChallenge.text;
 
@@ -561,6 +619,7 @@ function highestScoreMessage() {
   function startTriviaChallenge() {
   triviaPlayerIndex = 0;
   usedTriviaQuestions = [];
+  currentTriviaDifficulty = challengeDifficulty === "hard" ? "hard" : "easy";
   showTriviaQuestion();
 }
 
