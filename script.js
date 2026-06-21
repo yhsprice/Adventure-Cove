@@ -802,6 +802,11 @@ function startGame() {
     stats: makeStats()
   }));
 
+  usedTriviaQuestions = {
+  easy: [],
+  hard: []
+};
+
   currentHoleIndex = 0;
   currentPlayerIndex = 0;
  // Keep whatever mode was selected
@@ -938,14 +943,12 @@ function highestScoreMessage() {
  function startTriviaChallenge() {
   triviaPlayerIndex = 0;
 
-  usedTriviaQuestions.easy = [];
-  usedTriviaQuestions.hard = [];
-
   currentTriviaDifficulty =
     currentChallenge.difficulty || "easy";
 
   showTriviaQuestion();
 }
+
 function showTriviaQuestion() {
   currentPlayerIndex = triviaPlayerIndex;
 
@@ -995,6 +998,7 @@ function getRandomTriviaQuestion(difficulty) {
   const bank = triviaQuestions[difficulty];
 
   if (!bank || !bank.length) {
+    alert("No trivia questions found for this difficulty.");
     return triviaQuestions.easy[0];
   }
 
@@ -1009,7 +1013,6 @@ function getRandomTriviaQuestion(difficulty) {
   } while (usedTriviaQuestions[difficulty].includes(index));
 
   usedTriviaQuestions[difficulty].push(index);
-
   return bank[index];
 }
 
