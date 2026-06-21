@@ -203,7 +203,66 @@ hard: [
 { question: "Which superhero is known as the Dark Knight?", choices: ["Superman", "Batman", "Iron Man", "Thor"], answer: 1 },
 { question: "How many Olympic rings are there?", choices: ["4", "5", "6", "7"], answer: 1 },
 { question: "Which state borders Ohio to the east?", choices: ["Indiana", "Kentucky", "Pennsylvania", "Michigan"], answer: 2 },
-{ question: "What is the largest planet in the solar system?", choices: ["Saturn", "Jupiter", "Neptune", "Earth"], answer: 1 }
+{ question: "What is the largest planet in the solar system?", choices: ["Saturn", "Jupiter", "Neptune", "Earth"], answer: 1 },
+  { question: "What is a pirate's flag commonly called?", choices: ["Sea Banner", "Jolly Roger", "Black Crest", "Pirate Mark"], answer: 1 },
+{ question: "What treasure map symbol usually marks the treasure?", choices: ["Circle", "Star", "X", "Arrow"], answer: 2 },
+{ question: "What ocean lies between North America and Europe?", choices: ["Indian", "Pacific", "Atlantic", "Arctic"], answer: 2 },
+{ question: "What is the largest ocean on Earth?", choices: ["Atlantic", "Indian", "Pacific", "Arctic"], answer: 2 },
+{ question: "What is a group of fish called?", choices: ["Pack", "School", "Herd", "Flock"], answer: 1 },
+
+{ question: "Which Disney ride inspired Pirates of the Caribbean?", choices: ["Haunted Mansion", "Pirates of the Caribbean", "Jungle Cruise", "Big Thunder Mountain"], answer: 1 },
+{ question: "What does a ship captain use to steer a ship?", choices: ["Anchor", "Wheel", "Compass", "Rudder"], answer: 1 },
+{ question: "Which sea creature has eight arms?", choices: ["Squid", "Octopus", "Crab", "Lobster"], answer: 1 },
+{ question: "What is buried treasure usually stored in?", choices: ["Barrel", "Chest", "Crate", "Bucket"], answer: 1 },
+{ question: "What is the name of Captain Jack Sparrow's ship?", choices: ["Flying Dutchman", "Interceptor", "Black Pearl", "Sea Ghost"], answer: 2 },
+
+{ question: "Which direction does a compass needle point?", choices: ["South", "East", "West", "North"], answer: 3 },
+{ question: "What is a baby shark called?", choices: ["Pup", "Cub", "Calf", "Kit"], answer: 0 },
+{ question: "What do pirates often search for?", choices: ["Diamonds", "Treasure", "Maps", "Gold"], answer: 1 },
+{ question: "Which sea animal is known for squirting ink?", choices: ["Whale", "Octopus", "Seal", "Dolphin"], answer: 1 },
+{ question: "What is the deepest ocean?", choices: ["Indian", "Atlantic", "Pacific", "Arctic"], answer: 2 },
+
+{ question: "What is another name for a treasure hunter?", choices: ["Explorer", "Seeker", "Prospector", "Adventurer"], answer: 3 },
+{ question: "What do sailors call the left side of a ship?", choices: ["Port", "Starboard", "Bow", "Stern"], answer: 0 },
+{ question: "What do sailors call the right side of a ship?", choices: ["Port", "Bow", "Starboard", "Deck"], answer: 2 },
+{ question: "What is the front of a ship called?", choices: ["Bow", "Port", "Hull", "Deck"], answer: 0 },
+{ question: "What is the back of a ship called?", choices: ["Bow", "Stern", "Hull", "Deck"], answer: 1 },
+
+{ question: "Which ocean animal is the largest in the world?", choices: ["Whale Shark", "Blue Whale", "Giant Squid", "Orca"], answer: 1 },
+{ question: "What is a pirate's telescope often called?", choices: ["Spyglass", "Sea Scope", "Looker", "Far Viewer"], answer: 0 },
+{ question: "What is the study of maps called?", choices: ["Geology", "Cartography", "Archaeology", "Topography"], answer: 1 },
+{ question: "What color is most pirate treasure shown as?", choices: ["Silver", "Gold", "Bronze", "Black"], answer: 1 },
+{ question: "What is an island completely surrounded by water?", choices: ["Lake", "Bay", "Island", "Reef"], answer: 2 },
+
+{ question: "What sea creature is known for its giant claws?", choices: ["Seal", "Crab", "Lobster", "Shrimp"], answer: 2 },
+{ question: "What is a ship's anchor used for?", choices: ["Steering", "Stopping", "Speed", "Fishing"], answer: 1 },
+{ question: "What is the largest coral reef system?", choices: ["Red Reef", "Great Barrier Reef", "Blue Reef", "Coral Coast"], answer: 1 },
+{ question: "What is buried treasure often measured in?", choices: ["Coins", "Dollars", "Bills", "Checks"], answer: 0 },
+{ question: "Which sea animal is famous for carrying a shell on its back?", choices: ["Turtle", "Shark", "Dolphin", "Seal"], answer: 0 },
+
+{ question: "What is the name of the famous ghost ship in pirate stories?", choices: ["Black Pearl", "Flying Dutchman", "Sea Wraith", "Storm Chaser"], answer: 1 },
+{ question: "Which ocean touches California?", choices: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: 1 },
+{ question: "What is a treasure map usually used to find?", choices: ["Food", "Treasure", "People", "Ships"], answer: 1 },
+{ question: "Which pirate weapon is curved?", choices: ["Spear", "Cutlass", "Axe", "Club"], answer: 1 },
+{ question: "What is a pirate's lookout often called?", choices: ["Watcher", "Scout", "Crow's Nest Lookout", "Observer"], answer: 2 },
+
+{ question: "Which sea creature has a spiral shell?", choices: ["Crab", "Snail", "Lobster", "Clam"], answer: 1 },
+{ question: "What is a ship's deck?", choices: ["Roof", "Floor", "Engine", "Sail"], answer: 1 },
+{ question: "What helps ships avoid rocks near shore?", choices: ["Buoys", "Lighthouses", "Anchors", "Docks"], answer: 1 },
+{ question: "What is the world's longest coral reef system?", choices: ["Great Barrier Reef", "Florida Reef", "Red Sea Reef", "Belize Reef"], answer: 0 },
+{ question: "What is the name of a pirate's hidden treasure location?", choices: ["Fort", "Vault", "Treasure Cache", "Harbor"], answer: 2 },
+
+{ question: "Which sea animal is known for echolocation?", choices: ["Seal", "Shark", "Dolphin", "Crab"], answer: 2 },
+{ question: "What do sailors use to determine direction?", choices: ["Compass", "Anchor", "Spyglass", "Sail"], answer: 0 },
+{ question: "Which famous pirate is mostly fictional?", choices: ["Blackbeard", "Captain Kidd", "Jack Sparrow", "Anne Bonny"], answer: 2 },
+{ question: "What is the largest species of turtle?", choices: ["Loggerhead", "Sea Turtle", "Leatherback", "Box Turtle"], answer: 2 },
+{ question: "What is the name for a narrow waterway connecting two larger bodies of water?", choices: ["Canal", "Strait", "Bay", "Harbor"], answer: 1 },
+
+{ question: "What does 'X marks the spot' usually mean?", choices: ["Danger", "Camp", "Treasure", "Food"], answer: 2 },
+{ question: "Which ocean is the warmest?", choices: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: 2 },
+{ question: "What is a pirate crew led by?", choices: ["Navigator", "Captain", "Quartermaster", "Cook"], answer: 1 },
+{ question: "What famous pirate had a black beard?", choices: ["Captain Kidd", "Blackbeard", "Long John Silver", "Calico Jack"], answer: 1 },
+{ question: "What is a voyage?", choices: ["A treasure", "A storm", "A journey by sea", "A pirate flag"], answer: 2 }
   ]
   };
 
