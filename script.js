@@ -837,9 +837,13 @@ function handleEndOfHole() {
     if (currentChallenge.type === "UNDER_PAR_REMOVE_WORST") return applyUnderParRemoveWorst();
     if (currentChallenge.type === "HOLE_IN_ONE_ATTACK") return showHoleInOneAttackScreen();
 
-    if (["SAFE_SHOT", "OBSTACLE_TROUBLE", "COMEBACK_COVE", "TREASURE_STEAL", "WATERFALL_WHISPER", "LUCKY_BOUNCE"].includes(currentChallenge.type)) {
-      return showEditableAdjustmentScreen();
-    }
+   if (currentChallenge.type === "OBSTACLE_TROUBLE") {
+  return applyMutiny();
+}
+
+if (["SAFE_SHOT", "COMEBACK_COVE", "TREASURE_STEAL", "WATERFALL_WHISPER", "LUCKY_BOUNCE"].includes(currentChallenge.type)) {
+  return showEditableAdjustmentScreen();
+}
   }
 
   advanceHole();
@@ -941,6 +945,44 @@ function startWheelChallenge() {
 
   updateWheelScreen();
   showOnly("wheelScreen");
+}
+
+function applyMutiny() {
+  const totals = scores.map((player, index) => ({
+    index,
+    name: player.name,
+    total: totalFor(player)
+  }));
+
+  const lowestScore = Math.min(...totals.map(p => p.total));
+  const leaders = totals.filter(p => p.total === lowestScore);
+  const chosen = leaders[Math.floor(Math.random() * leaders.length)];
+
+  scores[chosen.index].adjustments[currentHoleIndex] += 1;
+  scores[chosen.index].notes[currentHoleIndex] += " Mutiny: +1.";
+  scores[chosen.index].stats.penalties++;
+
+  gameEvents.push({
+    type: "penalty",
+    player: chosen.name,
+    amount: 1,
+    note: "Mutiny: +1.",
+    hole: holes[currentHoleIndex].hole
+  });
+
+  document.getElementById("specialTitle").textContent = "Mutiny!";
+
+  document.getElementById("specialContent").innerHTML = `
+    <div class="message-box">
+      The crew has rebelled against <strong>${chosen.name}</strong>!<br>
+      The app added <strong>+1 stroke</strong>.
+    </div>
+    <div class="center">
+      <button onclick="advanceHole()">Continue</button>
+    </div>
+  `;
+
+  showOnly("specialScreen");
 }
 
 function updateWheelScreen() {
