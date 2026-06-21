@@ -344,7 +344,66 @@ const triviaQuestions = {
 { question: "What game has villagers trading items?", choices: ["Minecraft", "Pac-Man", "Mario Kart", "Sonic"], answer: 0 },
 { question: "Who evolves from Charmander?", choices: ["Bulbasaur", "Charmeleon", "Squirtle", "Pikachu"], answer: 1 },
 { question: "What is the main collectible in Mario games?", choices: ["Coins", "Rings", "Blocks", "Stars"], answer: 0 },
-{ question: "What game features crafting tables?", choices: ["Minecraft", "Pokemon", "Fortnite", "Pac-Man"], answer: 0 }
+{ question: "What game features crafting tables?", choices: ["Minecraft", "Pokemon", "Fortnite", "Pac-Man"], answer: 0 },
+    { question: "What color is Shrek?", choices: ["Blue", "Green", "Yellow", "Purple"], answer: 1 },
+{ question: "What kind of animal is Scooby-Doo?", choices: ["Beagle", "Great Dane", "Bulldog", "Poodle"], answer: 1 },
+{ question: "Who lives in a pineapple under the sea?", choices: ["Patrick", "SpongeBob", "Squidward", "Mr. Krabs"], answer: 1 },
+{ question: "What color are the Minions?", choices: ["Blue", "Yellow", "Green", "Orange"], answer: 1 },
+{ question: "What is Baby Yoda's real name?", choices: ["Grogu", "Yoda Jr.", "Mando", "Luke"], answer: 0 },
+
+{ question: "Who is Harry Potter's owl?", choices: ["Crookshanks", "Hedwig", "Scabbers", "Fawkes"], answer: 1 },
+{ question: "What house is Harry Potter in?", choices: ["Slytherin", "Ravenclaw", "Hufflepuff", "Gryffindor"], answer: 3 },
+{ question: "What color is the Grinch?", choices: ["Blue", "Green", "Purple", "Red"], answer: 1 },
+{ question: "What is the name of the snowman in Frosty the Snowman?", choices: ["Olaf", "Frosty", "Jack", "Snowy"], answer: 1 },
+{ question: "Who says 'What's up, Doc?'", choices: ["Daffy Duck", "Tweety", "Bugs Bunny", "Elmer Fudd"], answer: 2 },
+
+{ question: "What animal is Kung Fu Panda?", choices: ["Bear", "Panda", "Tiger", "Monkey"], answer: 1 },
+{ question: "What is the name of the panda in Kung Fu Panda?", choices: ["Tai Lung", "Po", "Shifu", "Monkey"], answer: 1 },
+{ question: "Who is Lightning McQueen's best friend?", choices: ["Mater", "Doc", "Sally", "Ramone"], answer: 0 },
+{ question: "What type of vehicle is Mater?", choices: ["Race Car", "Tow Truck", "Fire Truck", "Bus"], answer: 1 },
+{ question: "What is the name of the ogre princess in Shrek?", choices: ["Fiona", "Anna", "Belle", "Jasmine"], answer: 0 },
+
+{ question: "Who is the sheriff in Toy Story?", choices: ["Buzz", "Woody", "Rex", "Slinky"], answer: 1 },
+{ question: "What animal is Alex in Madagascar?", choices: ["Lion", "Tiger", "Bear", "Zebra"], answer: 0 },
+{ question: "What animal is Marty in Madagascar?", choices: ["Horse", "Donkey", "Zebra", "Moose"], answer: 2 },
+{ question: "What is the name of the dragon in How to Train Your Dragon?", choices: ["Spike", "Toothless", "Smaug", "Draco"], answer: 1 },
+{ question: "What color is Toothless?", choices: ["Red", "Green", "Blue", "Black"], answer: 3 },
+
+{ question: "Who wears glass slippers?", choices: ["Belle", "Cinderella", "Ariel", "Rapunzel"], answer: 1 },
+{ question: "What animal is Puss in Boots?", choices: ["Dog", "Cat", "Fox", "Tiger"], answer: 1 },
+{ question: "What is the name of Mickey Mouse's girlfriend?", choices: ["Daisy", "Minnie", "Clarabelle", "Pearl"], answer: 1 },
+{ question: "What is Donald Duck's girlfriend's name?", choices: ["Minnie", "Pearl", "Daisy", "Clarabelle"], answer: 2 },
+{ question: "Who lives with seven dwarfs?", choices: ["Snow White", "Cinderella", "Aurora", "Belle"], answer: 0 },
+
+{ question: "What animal is Tom in Tom and Jerry?", choices: ["Dog", "Cat", "Mouse", "Rabbit"], answer: 1 },
+{ question: "What animal is Jerry?", choices: ["Cat", "Mouse", "Hamster", "Rabbit"], answer: 1 },
+{ question: "Who is the main villain in The Lion King?", choices: ["Mufasa", "Scar", "Simba", "Timon"], answer: 1 },
+{ question: "What animal is Scar?", choices: ["Tiger", "Lion", "Leopard", "Hyena"], answer: 1 },
+{ question: "Who is Simba's father?", choices: ["Scar", "Mufasa", "Timon", "Pumbaa"], answer: 1 },
+
+{ question: "What color is Elmo?", choices: ["Blue", "Green", "Yellow", "Red"], answer: 3 },
+{ question: "What color is Cookie Monster?", choices: ["Blue", "Red", "Green", "Purple"], answer: 0 },
+{ question: "What food does Cookie Monster love?", choices: ["Pizza", "Cookies", "Cake", "Candy"], answer: 1 },
+{ question: "What is the name of the yellow bird on Sesame Street?", choices: ["Big Bird", "Tweety", "Sunny", "Goldie"], answer: 0 },
+{ question: "What shape is SpongeBob?", choices: ["Circle", "Square", "Triangle", "Rectangle"], answer: 1 },
+
+{ question: "What color is Patrick Star?", choices: ["Blue", "Pink", "Purple", "Green"], answer: 1 },
+{ question: "What animal is Garfield?", choices: ["Dog", "Cat", "Tiger", "Fox"], answer: 1 },
+{ question: "What food does Garfield love?", choices: ["Pizza", "Lasagna", "Tacos", "Burgers"], answer: 1 },
+{ question: "Who is Scooby-Doo's best friend?", choices: ["Fred", "Shaggy", "Velma", "Daphne"], answer: 1 },
+{ question: "What color shirt does Shaggy wear?", choices: ["Blue", "Green", "Red", "Yellow"], answer: 1 },
+
+{ question: "What kind of bear is Paddington?", choices: ["Brown Bear", "Polar Bear", "Panda", "Black Bear"], answer: 0 },
+{ question: "What food does Paddington love?", choices: ["Peanut Butter", "Jam", "Honey", "Marmalade"], answer: 3 },
+{ question: "What animal is Bluey?", choices: ["Cat", "Dog", "Rabbit", "Fox"], answer: 1 },
+{ question: "What color is Bluey?", choices: ["Blue", "Red", "Green", "Purple"], answer: 0 },
+{ question: "Who is Bluey's little sister?", choices: ["Bingo", "Muffin", "Socks", "Chilli"], answer: 0 },
+
+{ question: "What is the name of the clownfish in Finding Nemo?", choices: ["Dory", "Marlin", "Nemo", "Bruce"], answer: 2 },
+{ question: "What fish helps Nemo's dad find him?", choices: ["Nemo", "Dory", "Bruce", "Gill"], answer: 1 },
+{ question: "What color is Nemo?", choices: ["Blue", "Yellow", "Orange", "Green"], answer: 2 },
+{ question: "Who is the snow queen in Frozen?", choices: ["Anna", "Elsa", "Olaf", "Kristoff"], answer: 1 },
+{ question: "What is the name of Moana's island?", choices: ["Motunui", "Atlantis", "Corona", "Arendelle"], answer: 0 }
 ],
 
 hard: [
@@ -569,7 +628,7 @@ hard: [
 { question: "What is Ohio's state bird?", choices: ["Cardinal", "Blue Jay", "Robin", "Eagle"], answer: 0 },
 { question: "What Great Lake borders Ohio?", choices: ["Lake Michigan", "Lake Superior", "Lake Erie", "Lake Ontario"], answer: 2 },
 
-{ question: "What city hosts the Cincinnati Reds?", choices: ["Columbus", "Dayton", "Cincinnati", "Toledo"], answer: 2 },
+{ question: "What city hosts the Reds?", choices: ["Columbus", "Dayton", "Cincinnati", "Toledo"], answer: 2 },
 { question: "What city hosts the Cleveland Browns?", choices: ["Akron", "Cleveland", "Dayton", "Youngstown"], answer: 1 },
 { question: "What candy is famous in Ohio and made in Cleveland?", choices: ["M&M's", "Reese's", "Malley's", "Hershey's"], answer: 2 },
 { question: "What color is Ohio's state flower, the scarlet carnation?", choices: ["Yellow", "Blue", "Red", "White"], answer: 2 },
