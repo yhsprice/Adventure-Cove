@@ -109,7 +109,7 @@ const triviaQuestions = {
   { question: "Which animal says oink?", choices: ["Pig", "Cow", "Dog", "Duck"], answer: 0 },
   { question: "What is the first month of the year?", choices: ["December", "January", "February", "March"], answer: 1 },
   { question: "What do fish breathe through?", choices: ["Lungs", "Gills", "Noses", "Mouths"], answer: 1 }
-];
+],
 
 hard: [
     { question: "Which planet is the largest in our solar system?", choices: ["Earth", "Saturn", "Jupiter", "Mars"], answer: 2 },
@@ -120,14 +120,13 @@ hard: [
   ]
   };
 
-  const wheelOptions = [
+const wheelOptions = [
   { label: "Instant hole in one", action: "INSTANT_ONE" },
   { label: "Interlock your arms with another player and try to swing", action: "PLAY_NOTE" },
   { label: "Kick the ball and use no hands or club", action: "PLAY_NOTE" },
   { label: "Add 2 to your score for this round", action: "ADD_TWO" },
   { label: "Play normal", action: "PLAY_NOTE" }
-};
-
+];
 
 const roastLines = [
   "{name} spent the day negotiating with the walls. The walls won.",
