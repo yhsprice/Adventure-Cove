@@ -403,7 +403,66 @@ const triviaQuestions = {
 { question: "What fish helps Nemo's dad find him?", choices: ["Nemo", "Dory", "Bruce", "Gill"], answer: 1 },
 { question: "What color is Nemo?", choices: ["Blue", "Yellow", "Orange", "Green"], answer: 2 },
 { question: "Who is the snow queen in Frozen?", choices: ["Anna", "Elsa", "Olaf", "Kristoff"], answer: 1 },
-{ question: "What is the name of Moana's island?", choices: ["Motunui", "Atlantis", "Corona", "Arendelle"], answer: 0 }
+{ question: "What is the name of Moana's island?", choices: ["Motunui", "Atlantis", "Corona", "Arendelle"], answer: 0 },
+    { question: "What color is a banana when ripe?", choices: ["Blue", "Yellow", "Green", "Red"], answer: 1 },
+{ question: "What food do cows help make?", choices: ["Cheese", "Milk", "Both", "Neither"], answer: 2 },
+{ question: "What topping is usually on a pepperoni pizza?", choices: ["Pepperoni", "Pineapple", "Bacon", "Mushrooms"], answer: 0 },
+{ question: "What vegetable is Bugs Bunny famous for eating?", choices: ["Carrot", "Potato", "Celery", "Corn"], answer: 0 },
+{ question: "What fruit keeps the doctor away?", choices: ["Banana", "Apple", "Orange", "Pear"], answer: 1 },
+
+{ question: "What color is a lime?", choices: ["Red", "Green", "Blue", "Purple"], answer: 1 },
+{ question: "What food is made from potatoes and often served with burgers?", choices: ["Fries", "Rice", "Pasta", "Beans"], answer: 0 },
+{ question: "What candy is shaped like a peanut and covered in chocolate?", choices: ["M&M", "Peanut M&M", "Skittle", "Starburst"], answer: 1 },
+{ question: "What fruit is known for being yellow and curved?", choices: ["Apple", "Banana", "Pear", "Peach"], answer: 1 },
+{ question: "What color are most grapes sold in stores?", choices: ["Purple or Green", "Blue", "Orange", "Pink"], answer: 0 },
+
+{ question: "What is the main ingredient in peanut butter?", choices: ["Almonds", "Peanuts", "Cashews", "Walnuts"], answer: 1 },
+{ question: "What candy comes in many colors and has an 'M' on it?", choices: ["Skittles", "M&M's", "Starburst", "Nerds"], answer: 1 },
+{ question: "What fruit is orange in color and shares its name with a color?", choices: ["Apple", "Orange", "Peach", "Mango"], answer: 1 },
+{ question: "What food do bees make?", choices: ["Honey", "Syrup", "Jam", "Jelly"], answer: 0 },
+{ question: "What shape is a typical slice of pizza?", choices: ["Square", "Triangle", "Circle", "Oval"], answer: 1 },
+
+{ question: "What candy is known for the slogan 'Taste the Rainbow'?", choices: ["M&M's", "Skittles", "Starburst", "Reese's"], answer: 1 },
+{ question: "What fruit is often red and has seeds on the outside?", choices: ["Apple", "Cherry", "Strawberry", "Grape"], answer: 2 },
+{ question: "What breakfast food is made from oats?", choices: ["Pancakes", "Oatmeal", "Eggs", "Toast"], answer: 1 },
+{ question: "What food is a hot dog usually served in?", choices: ["Tortilla", "Bowl", "Bun", "Pita"], answer: 2 },
+{ question: "What vegetable is orange and grows underground?", choices: ["Potato", "Carrot", "Corn", "Pepper"], answer: 1 },
+
+{ question: "What candy combines chocolate and peanut butter?", choices: ["Kit Kat", "Snickers", "Reese's", "Twix"], answer: 2 },
+{ question: "What fruit is used to make applesauce?", choices: ["Pears", "Peaches", "Apples", "Plums"], answer: 2 },
+{ question: "What food is often eaten at birthday parties and has candles?", choices: ["Pie", "Cake", "Cookies", "Brownies"], answer: 1 },
+{ question: "What is the most common flavor of ice cream?", choices: ["Chocolate", "Strawberry", "Vanilla", "Mint"], answer: 2 },
+{ question: "What candy bar is made of wafers covered in chocolate?", choices: ["Kit Kat", "Milky Way", "Snickers", "Twix"], answer: 0 },
+
+{ question: "What fruit is green on the outside and red on the inside?", choices: ["Apple", "Watermelon", "Pear", "Kiwi"], answer: 1 },
+{ question: "What food is made from milk and often put on pizza?", choices: ["Butter", "Cheese", "Yogurt", "Ice Cream"], answer: 1 },
+{ question: "What candy is small, fruity, and chewy?", choices: ["Skittles", "Reese's", "Kit Kat", "Hershey Bar"], answer: 0 },
+{ question: "What drink is made from oranges?", choices: ["Apple Juice", "Orange Juice", "Lemonade", "Milk"], answer: 1 },
+{ question: "What fruit is famous for having a pit?", choices: ["Peach", "Banana", "Grape", "Orange"], answer: 0 },
+
+{ question: "What food is often topped with syrup?", choices: ["Pizza", "Pancakes", "Spaghetti", "Hamburgers"], answer: 1 },
+{ question: "What candy has two cookie bars covered in chocolate?", choices: ["Twix", "Kit Kat", "Snickers", "Milky Way"], answer: 0 },
+{ question: "What fruit is tiny, blue, and often in muffins?", choices: ["Blueberry", "Blackberry", "Cherry", "Grape"], answer: 0 },
+{ question: "What food do chickens lay?", choices: ["Potatoes", "Eggs", "Carrots", "Beans"], answer: 1 },
+{ question: "What food is commonly served in a taco shell?", choices: ["Taco Filling", "Pasta", "Soup", "Rice"], answer: 0 },
+
+{ question: "What candy is known for peanut butter inside a chocolate cup?", choices: ["Twix", "Reese's", "Kit Kat", "Skittles"], answer: 1 },
+{ question: "What fruit is yellow and sour?", choices: ["Lemon", "Apple", "Banana", "Pear"], answer: 0 },
+{ question: "What frozen treat is served on a cone?", choices: ["Cake", "Ice Cream", "Pudding", "Pie"], answer: 1 },
+{ question: "What vegetable is used to make French fries?", choices: ["Corn", "Potato", "Carrot", "Pea"], answer: 1 },
+{ question: "What candy bar contains caramel, peanuts, and chocolate?", choices: ["Snickers", "Kit Kat", "Twix", "Hershey"], answer: 0 },
+
+{ question: "What fruit is often made into jelly?", choices: ["Grapes", "Bananas", "Oranges", "Pears"], answer: 0 },
+{ question: "What food is usually eaten with a spoon and cereal?", choices: ["Juice", "Milk", "Water", "Tea"], answer: 1 },
+{ question: "What candy is chewy and comes in fruit flavors?", choices: ["Starburst", "Hershey", "Reese's", "Kit Kat"], answer: 0 },
+{ question: "What fruit has a crown of leaves on top?", choices: ["Pineapple", "Apple", "Pear", "Peach"], answer: 0 },
+{ question: "What food is made from dough, sauce, and cheese?", choices: ["Burger", "Pizza", "Taco", "Soup"], answer: 1 },
+
+{ question: "What candy melts in your mouth, not in your hand?", choices: ["Skittles", "M&M's", "Starburst", "Twix"], answer: 1 },
+{ question: "What fruit is known for being fuzzy on the outside?", choices: ["Peach", "Orange", "Apple", "Grape"], answer: 0 },
+{ question: "What food is often served at baseball games in a bun?", choices: ["Hot Dog", "Pizza", "Taco", "Chicken"], answer: 0 },
+{ question: "What fruit is green inside and brown outside?", choices: ["Pear", "Kiwi", "Apple", "Lime"], answer: 1 },
+{ question: "What candy is often given out on Halloween in fun-sized bars?", choices: ["Chocolate Bars", "Broccoli", "Pretzels", "Crackers"], answer: 0 }
 ],
 
 hard: [
