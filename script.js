@@ -169,6 +169,7 @@ let gameEvents = [];
 let triviaPlayerIndex = 0;
 let usedTriviaQuestions = [];
 let currentTriviaQuestion = null;
+let currentTriviaDifficulty = "easy";
 
 let gameInProgress = false;
 
@@ -565,54 +566,86 @@ function highestScoreMessage() {
 
 function showTriviaQuestion() {
   currentPlayerIndex = triviaPlayerIndex;
-  currentTriviaQuestion = getRandomTriviaQuestion();
 
   document.getElementById("specialTitle").textContent = `Do You Dare, ${players[triviaPlayerIndex]}?`;
 
   document.getElementById("specialContent").innerHTML = `
     <div class="message-box">
-      Answer correctly and move your ball forward <strong>1 normal step</strong>.<br>
-      No jumping, running, or lunging.
+      Choose your trivia level before your turn.
+    </div>
+
+    <div class="center">
+      <button onclick="chooseTriviaDifficulty('easy')">Easy: 1 Step</button>
+      <button class="gold-btn" onclick="chooseTriviaDifficulty('hard')">Hard: 2 Steps</button>
+    </div>
+
+    <p class="muted center">No jumping, running, or lunging.</p>
+  `;
+
+  showOnly("specialScreen");
+}
+
+function chooseTriviaDifficulty(difficulty) {
+  currentTriviaDifficulty = difficulty;
+  currentTriviaQuestion = getRandomTriviaQuestion(difficulty);
+
+  document.getElementById("specialTitle").textContent =
+    difficulty === "hard" ? "Hard Question!" : "Easy Question!";
+
+  document.getElementById("specialContent").innerHTML = `
+    <div class="message-box">
+      ${difficulty === "hard"
+        ? "Correct answer = move forward 2 normal steps."
+        : "Correct answer = move forward 1 normal step."}
     </div>
 
     <div class="rule-panel">
       <h3>${currentTriviaQuestion.question}</h3>
 
       ${currentTriviaQuestion.choices.map((choice, index) => `
-        <button class="blue-btn" onclick="answerTrivia(${index})">
-          ${choice}
-        </button>
+        <button class="blue-btn" onclick="answerTrivia(${index})">${choice}</button>
       `).join("")}
     </div>
   `;
-
-  showOnly("specialScreen");
 }
 
-function getRandomTriviaQuestion() {
-  if (usedTriviaQuestions.length >= triviaQuestions.length) {
-    usedTriviaQuestions = [];
+function getRandomTriviaQuestion(difficulty) {
+  const bank = triviaQuestions[difficulty];
+
+  if (!bank || !bank.length) {
+    alert("No trivia questions found for this difficulty.");
+    return triviaQuestions.easy[0];
+  }
+
+  const usedKey = `${difficulty}:${currentHoleIndex}`;
+  if (!usedTriviaQuestions[usedKey]) {
+    usedTriviaQuestions[usedKey] = [];
+  }
+
+  if (usedTriviaQuestions[usedKey].length >= bank.length) {
+    usedTriviaQuestions[usedKey] = [];
   }
 
   let index;
 
   do {
-    index = Math.floor(Math.random() * triviaQuestions.length);
-  } while (usedTriviaQuestions.includes(index));
+    index = Math.floor(Math.random() * bank.length);
+  } while (usedTriviaQuestions[usedKey].includes(index));
 
-  usedTriviaQuestions.push(index);
-  return triviaQuestions[index];
+  usedTriviaQuestions[usedKey].push(index);
+  return bank[index];
 }
 
 function answerTrivia(choiceIndex) {
   const correct = choiceIndex === currentTriviaQuestion.answer;
+  const steps = currentTriviaDifficulty === "hard" ? 2 : 1;
 
   document.getElementById("specialTitle").textContent = correct ? "Correct!" : "Not This Time!";
 
   document.getElementById("specialContent").innerHTML = `
     <div class="message-box">
       ${correct
-        ? `${players[triviaPlayerIndex]}, move your ball forward <strong>1 normal step</strong>.`
+        ? `${players[triviaPlayerIndex]}, move your ball forward <strong>${steps} normal step${steps === 1 ? "" : "s"}</strong>.`
         : `${players[triviaPlayerIndex]}, play from where your ball is.`}
     </div>
 
