@@ -144,7 +144,66 @@ hard: [
 { question: "How many colors are in a rainbow?", choices: ["5", "6", "7", "8"], answer: 2 },
 { question: "Which gas do humans breathe in to survive?", choices: ["Nitrogen", "Carbon Dioxide", "Oxygen", "Hydrogen"], answer: 2 },
 { question: "What is the world's longest river?", choices: ["Amazon", "Mississippi", "Yangtze", "Nile"], answer: 3 },
-{ question: "How many holes are played in a standard round of golf?", choices: ["9", "12", "18", "24"], answer: 2 }
+{ question: "How many holes are played in a standard round of golf?", choices: ["9", "12", "18", "24"], answer: 2 },
+  { question: "What is the capital of Australia?", choices: ["Sydney", "Melbourne", "Canberra", "Perth"], answer: 2 },
+{ question: "Which planet is closest to the Sun?", choices: ["Venus", "Mercury", "Earth", "Mars"], answer: 1 },
+{ question: "How many hearts does an octopus have?", choices: ["1", "2", "3", "4"], answer: 2 },
+{ question: "Which country gifted the Statue of Liberty to the United States?", choices: ["England", "France", "Spain", "Germany"], answer: 1 },
+{ question: "What is the largest species of shark?", choices: ["Great White", "Hammerhead", "Whale Shark", "Tiger Shark"], answer: 2 },
+
+{ question: "Which element has the chemical symbol Au?", choices: ["Silver", "Gold", "Aluminum", "Argon"], answer: 1 },
+{ question: "Which Disney movie features the song 'Let It Go'?", choices: ["Moana", "Frozen", "Tangled", "Encanto"], answer: 1 },
+{ question: "How many time zones are there in the continental United States?", choices: ["3", "4", "5", "6"], answer: 1 },
+{ question: "Which bird cannot fly?", choices: ["Eagle", "Parrot", "Penguin", "Robin"], answer: 2 },
+{ question: "What is the longest-running animated TV show?", choices: ["Family Guy", "South Park", "The Simpsons", "Futurama"], answer: 2 },
+
+{ question: "Which state has the Grand Canyon?", choices: ["Utah", "Nevada", "Arizona", "Colorado"], answer: 2 },
+{ question: "What is the largest island in the world?", choices: ["Australia", "Greenland", "Madagascar", "Iceland"], answer: 1 },
+{ question: "Who wrote 'Romeo and Juliet'?", choices: ["Charles Dickens", "Mark Twain", "William Shakespeare", "Edgar Allan Poe"], answer: 2 },
+{ question: "Which country is famous for maple syrup?", choices: ["Canada", "Sweden", "Norway", "Germany"], answer: 0 },
+{ question: "How many players are on a soccer field for one team?", choices: ["9", "10", "11", "12"], answer: 2 },
+
+{ question: "What is the fastest bird in the world?", choices: ["Eagle", "Falcon", "Hawk", "Owl"], answer: 1 },
+{ question: "Which blood type is known as the universal donor?", choices: ["A", "B", "AB", "O Negative"], answer: 3 },
+{ question: "How many strings does a standard guitar have?", choices: ["4", "5", "6", "7"], answer: 2 },
+{ question: "Which U.S. state has the most people?", choices: ["Texas", "Florida", "California", "New York"], answer: 2 },
+{ question: "Which ocean is between North America and Europe?", choices: ["Pacific", "Atlantic", "Indian", "Southern"], answer: 1 },
+
+{ question: "What is the largest cat species?", choices: ["Lion", "Tiger", "Jaguar", "Leopard"], answer: 1 },
+{ question: "Which sport uses the term 'home run'?", choices: ["Football", "Baseball", "Soccer", "Basketball"], answer: 1 },
+{ question: "What color are the stars on the U.S. flag?", choices: ["Blue", "Red", "White", "Gold"], answer: 2 },
+{ question: "Which famous scientist developed the theory of relativity?", choices: ["Newton", "Tesla", "Einstein", "Galileo"], answer: 2 },
+{ question: "How many planets are in our solar system?", choices: ["7", "8", "9", "10"], answer: 1 },
+
+{ question: "What is the largest freshwater lake in the world by surface area?", choices: ["Lake Superior", "Lake Victoria", "Lake Michigan", "Lake Baikal"], answer: 0 },
+{ question: "Which company makes PlayStation?", choices: ["Nintendo", "Sony", "Microsoft", "Sega"], answer: 1 },
+{ question: "Which country has the Great Pyramid of Giza?", choices: ["Greece", "Egypt", "Turkey", "Israel"], answer: 1 },
+{ question: "What is the tallest animal?", choices: ["Elephant", "Giraffe", "Camel", "Moose"], answer: 1 },
+{ question: "What is the national sport of Japan?", choices: ["Karate", "Baseball", "Judo", "Sumo Wrestling"], answer: 3 },
+
+{ question: "How many chambers are in the human heart?", choices: ["2", "3", "4", "5"], answer: 2 },
+{ question: "Which city is known as the Big Apple?", choices: ["Chicago", "Boston", "New York City", "Los Angeles"], answer: 2 },
+{ question: "What is the hardest natural substance on Earth?", choices: ["Gold", "Diamond", "Quartz", "Iron"], answer: 1 },
+{ question: "Which state is famous for potatoes?", choices: ["Ohio", "Nebraska", "Idaho", "Kansas"], answer: 2 },
+{ question: "How many sides does an octagon have?", choices: ["6", "7", "8", "9"], answer: 2 },
+
+{ question: "Which famous ship sank in 1912?", choices: ["Mayflower", "Titanic", "Lusitania", "Bismarck"], answer: 1 },
+{ question: "Which U.S. president was nicknamed Honest Abe?", choices: ["Lincoln", "Washington", "Jefferson", "Grant"], answer: 0 },
+{ question: "What is the capital of Italy?", choices: ["Venice", "Milan", "Rome", "Naples"], answer: 2 },
+{ question: "Which mammal lays eggs?", choices: ["Bat", "Platypus", "Whale", "Otter"], answer: 1 },
+{ question: "Which gas makes up most of Earth's atmosphere?", choices: ["Oxygen", "Nitrogen", "Hydrogen", "Carbon Dioxide"], answer: 1 },
+
+{ question: "What is the largest U.S. state by area?", choices: ["Texas", "California", "Alaska", "Montana"], answer: 2 },
+{ question: "Which fruit is known for keeping the doctor away?", choices: ["Banana", "Orange", "Apple", "Pear"], answer: 2 },
+{ question: "Which country is home to the kangaroo?", choices: ["South Africa", "Australia", "New Zealand", "India"], answer: 1 },
+{ question: "How many cards are in a standard deck?", choices: ["48", "50", "52", "54"], answer: 2 },
+{ question: "Which famous clock tower is in London?", choices: ["Big Ben", "Liberty Bell", "The Shard", "Westminster"], answer: 0 },
+
+{ question: "What is the smallest planet in our solar system?", choices: ["Mercury", "Mars", "Venus", "Pluto"], answer: 0 },
+{ question: "Which superhero is known as the Dark Knight?", choices: ["Superman", "Batman", "Iron Man", "Thor"], answer: 1 },
+{ question: "How many Olympic rings are there?", choices: ["4", "5", "6", "7"], answer: 1 },
+{ question: "Which state borders Ohio to the east?", choices: ["Indiana", "Kentucky", "Pennsylvania", "Michigan"], answer: 2 },
+{ question: "What is the largest planet in the solar system?", choices: ["Saturn", "Jupiter", "Neptune", "Earth"], answer: 1 }
   ]
   };
 
