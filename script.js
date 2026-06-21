@@ -2309,5 +2309,57 @@ function cancelChallengeGoNormal() {
   startHolePlay();
 }
 
+function showRules() {
+  document.getElementById("specialTitle").textContent = "Adventure Cove Rules";
+
+  document.getElementById("specialContent").innerHTML = `
+    <div class="rule-panel">
+      <h3>Normal Game Rules</h3>
+      <ul>
+        <li>Play mini golf like usual.</li>
+        <li>Enter each player's strokes after their turn.</li>
+        <li>Lowest score wins.</li>
+        <li>The app keeps score for you.</li>
+        <li>If you make a mistake, use Edit Scores.</li>
+      </ul>
+
+      <h3>Challenge Game Rules</h3>
+      <ul>
+        <li>Choose Your Path for a random challenge.</li>
+        <li>Read the challenge before starting the hole.</li>
+        <li>If the app says it will add or subtract strokes, follow the screen after the hole.</li>
+        <li>If the app asks you to select players, choose the correct player and the app updates the score.</li>
+        <li><strong>Trivia:</strong> answer correctly to move your ball forward.</li>
+        <li><strong>Fortune Teller:</strong> predict your score before the hole. If correct, the app deducts 1 stroke.</li>
+        <li><strong>Spin Wheel:</strong> each player spins, then takes their turn right away.</li>
+        <li>Lowest total score wins.</li>
+      </ul>
+
+      <h3>Safety Rules</h3>
+      <ul>
+        <li>No running, jumping, lunging, or swinging hard.</li>
+        <li>Do not block walkways.</li>
+        <li>Be careful around water, rocks, walls, and decorations.</li>
+        <li>Keep it fun. Don’t be the reason we need a rule sign.</li>
+      </ul>
+
+      <div class="center">
+        <button onclick="returnFromRules()">Back to Game</button>
+      </div>
+    </div>
+  `;
+
+  showOnly("specialScreen");
+}
+
+function returnFromRules() {
+  if (scores.length && currentHoleIndex < holes.length) {
+    updateChoiceScreen();
+    showOnly("choiceScreen");
+  } else {
+    showOnly("setupScreen");
+  }
+}
+
 buildSetup();
 loadCurrentGame();
