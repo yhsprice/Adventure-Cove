@@ -14,7 +14,7 @@ const challengeTypes = {
   HOLE_IN_ONE_ATTACK: "Get a hole-in-one and give +2 strokes to any player.",
   SPIN_WHEEL: "Spin the wheel to learn your fate.",
   SAFE_SHOT: "Safe Shot: no walls or obstacles touched = -1 stroke.",
-  OBSTACLE_TROUBLE: "Obstacle Trouble: stuck or off the green = +1 stroke.",
+  OBSTACLE_TROUBLE: "Mutiny! The player currently in first place receives +1 stroke after the hole. The app will apply it.",
   COMEBACK_COVE: "Comeback Cove: losing player gets -1 if they finish par or better.",
   TREASURE_STEAL: "Treasure Steal: hole-in-one earns -1 stroke.",
   WATERFALL_WHISPER: "Waterfall Whisper: everyone stays quiet for first shots. Talk early = +1.",
@@ -53,7 +53,7 @@ const challenges = [
 { text: "Straight Arm Shot: keep your elbows straight on your first shot.", type: "NORMAL" },
 { text: "Mini Boss Hole: everyone must use the same challenge chosen by the first player.", type: "NORMAL" },
 { text: "Safe Shot: if your ball reaches the hole without touching a wall or obstacle, earn 1 stroke deduction. After the hole, select qualifying players and the app will apply it.", type: "SAFE_SHOT" },
-{ text: "Obstacle Trouble: if your ball gets stuck or leaves the playing area, add 1 stroke. After the hole, select affected players and the app will apply it.", type: "OBSTACLE_TROUBLE" },
+{ text: "Obstacle Trouble: Mutiny! The player currently in first place receives +1 stroke after the hole. The app will apply it.", type: "OBSTACLE_TROUBLE" },
 { text: "Comeback Cove: if the player currently in last place finishes at par or better, they earn a 1 stroke deduction. After the hole, select the player and the app will apply it.", type: "COMEBACK_COVE" },
 { text: "Treasure Steal: score a hole-in-one and earn an extra 1-stroke deduction. After the hole, select the player and the app will apply it.", type: "TREASURE_STEAL" },
 { text: "Captain's Call: the youngest player chooses one rule for everyone's first shot.", type: "NORMAL" },
@@ -1016,7 +1016,7 @@ function showEditableAdjustmentScreen() {
 
   const settings = {
     SAFE_SHOT: { title: "Safe Shot", amount: -1, label: "Who earned the safe shot deduction?", button: "Deduct 1 Stroke" },
-    OBSTACLE_TROUBLE: { title: "Obstacle Trouble", amount: 1, label: "Who got stuck or left the green?", button: "Add 1 Stroke" },
+    OBSTACLE_TROUBLE: { title: "Mutiny!", amount: 1, label: "Who is currently in first place?", button: "Add 1 Stroke" },
     COMEBACK_COVE: { title: "Comeback Cove", amount: -1, label: "Who finished in par or better and gets the comeback deduction?", button: "Deduct 1 Stroke" },
     TREASURE_STEAL: { title: "Treasure Steal", amount: -1, label: "Who got a hole-in-one and gets the deduction?", button: "Deduct 1 Stroke" },
     WATERFALL_WHISPER: { title: "Waterfall Whisper", amount: 1, label: "Who talked before everyone took their first shot?", button: "Add 1 Stroke", question: "Did anyone speak before everyone took their first shot?" },
