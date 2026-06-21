@@ -20,7 +20,8 @@ const challengeTypes = {
   WATERFALL_WHISPER: "Waterfall Whisper: everyone stays quiet for first shots. Talk early = +1.",
   LUCKY_BOUNCE: "Lucky Bounce: bounce off a wall and sink it = -1 stroke.",
   TRIVIA: "Do You Dare? Answer a trivia question correctly before your turn. If correct, move your ball forward 1 normal step. No jumping or lunging.",
-  FORTUNE_TELLER: "Fortune Teller: predict your score before the hole starts. If your prediction is exactly correct, the app deducts 1 stroke."
+  FORTUNE_TELLER: "Fortune Teller: predict your score before the hole starts. If your prediction is exactly correct, the app deducts 1 stroke.",
+  STEADY_CAPTAIN: "Steady Captain: keep both hands touching each other on the putter for the entire hole. If your hands separate at any time, add 1 stroke. After the hole, select affected players and the app will apply it."
 };
 
 const challenges = [
@@ -61,7 +62,7 @@ const challenges = [
 { text: "Waterfall Whisper: everyone must stay quiet until all first shots are complete. Anyone who talks receives 1 extra stroke. After the hole, select those players and the app will apply it.", type: "WATERFALL_WHISPER" },
 { text: "Lucky Bounce: if your ball bounces off a wall and then goes in, earn a 1-stroke deduction. After the hole, select qualifying players and the app will apply it.", type: "LUCKY_BOUNCE" },
 { text: challengeTypes.FORTUNE_TELLER, type: "FORTUNE_TELLER" },
-{ text: "Steady Captain: keep both hands touching each other on the putter for the entire hole.", type: "NORMAL" },
+{ text: "Steady Captain: keep both hands touching each other on the putter for the entire hole. If your hands separate at any time, add 1 stroke. After the hole, select affected players and the app will apply it.", type: "STEADY_CAPTAIN" },
 { text: challengeTypes.TRIVIA, type: "TRIVIA" },
   ];
 
@@ -803,7 +804,7 @@ function startGame() {
 
   currentHoleIndex = 0;
   currentPlayerIndex = 0;
-  currentMode = "Normal";
+ // Keep whatever mode was selected
   currentChallenge = null;
   pendingAfterHole = null;
   gameEvents = [];
@@ -906,7 +907,7 @@ function getChallengePreviewMessage(type) {
   if (type === "CLOSEST_TO_HOLE") return "After everyone scores, choose the closest player and mark if anyone sank the ball.";
   if (type === "UNDER_PAR_REMOVE_WORST") return "After the hole, the app removes the worst previous score for anyone who beats par.";
   if (type === "HOLE_IN_ONE_ATTACK") return "After the hole, anyone with a hole-in-one can add +2 to another player.";
-  if (["SAFE_SHOT", "OBSTACLE_TROUBLE", "COMEBACK_COVE", "TREASURE_STEAL", "WATERFALL_WHISPER", "LUCKY_BOUNCE"].includes(type)) {
+  if (["SAFE_SHOT", "OBSTACLE_TROUBLE", "COMEBACK_COVE", "TREASURE_STEAL", "WATERFALL_WHISPER", "LUCKY_BOUNCE","STEADY_CAPTAIN"].includes(type)) {
     return "After this hole, you can choose who gets the score change.";
   }
   return "";
@@ -1279,13 +1280,20 @@ function handleEndOfHole() {
     if (currentChallenge.type === "HOLE_IN_ONE_ATTACK") return showHoleInOneAttackScreen();
     if (currentChallenge.type === "FORTUNE_TELLER") return applyFortuneTeller();
 
-   if (currentChallenge.type === "OBSTACLE_TROUBLE") {
-  return applyMutiny();
-}
+    if (currentChallenge.type === "OBSTACLE_TROUBLE") {
+      return applyMutiny();
+    }
 
-if (["SAFE_SHOT", "COMEBACK_COVE", "TREASURE_STEAL", "WATERFALL_WHISPER", "LUCKY_BOUNCE"].includes(currentChallenge.type)) {
-  return showEditableAdjustmentScreen();
-}
+    if ([
+      "SAFE_SHOT",
+      "COMEBACK_COVE",
+      "TREASURE_STEAL",
+      "WATERFALL_WHISPER",
+      "LUCKY_BOUNCE",
+      "STEADY_CAPTAIN"
+    ].includes(currentChallenge.type)) {
+      return showEditableAdjustmentScreen();
+    }
   }
 
   advanceHole();
