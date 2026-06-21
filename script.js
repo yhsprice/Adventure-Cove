@@ -195,7 +195,10 @@ let wheelRotation = 0;
 let pendingAfterHole = null;
 let gameEvents = [];
 let triviaPlayerIndex = 0;
-let usedTriviaQuestions = [];
+let usedTriviaQuestions = {
+  easy: [],
+  hard: []
+};
 let currentTriviaQuestion = null;
 let currentTriviaDifficulty = "easy";
 let challengeDifficulty = "simple";
@@ -676,26 +679,21 @@ function getRandomTriviaQuestion(difficulty) {
   const bank = triviaQuestions[difficulty];
 
   if (!bank || !bank.length) {
-    alert("No trivia questions found for this difficulty.");
     return triviaQuestions.easy[0];
   }
 
-  const usedKey = `${difficulty}:${currentHoleIndex}`;
-  if (!usedTriviaQuestions[usedKey]) {
-    usedTriviaQuestions[usedKey] = [];
-  }
-
-  if (usedTriviaQuestions[usedKey].length >= bank.length) {
-    usedTriviaQuestions[usedKey] = [];
+  if (usedTriviaQuestions[difficulty].length >= bank.length) {
+    usedTriviaQuestions[difficulty] = [];
   }
 
   let index;
 
   do {
     index = Math.floor(Math.random() * bank.length);
-  } while (usedTriviaQuestions[usedKey].includes(index));
+  } while (usedTriviaQuestions[difficulty].includes(index));
 
-  usedTriviaQuestions[usedKey].push(index);
+  usedTriviaQuestions[difficulty].push(index);
+
   return bank[index];
 }
 
