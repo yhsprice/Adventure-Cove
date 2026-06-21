@@ -501,6 +501,7 @@ let challengeDifficulty = "simple";
 let fortunePredictions = {};
 let gameDifficulty = "easy";
 let previousScreenBeforeRules = "setupScreen";
+let spinWheelHasAppeared = false;
 
 let gameInProgress = false;
 
@@ -789,6 +790,8 @@ function startGame() {
     }
   }
 
+  spinWheelHasAppeared = false;
+
   if (players.length < 1) {
     alert("Enter at least one player. Even pirates need a crew.");
     return;
@@ -861,6 +864,16 @@ function newChallenge() {
     triviaDifficulty = "hard";
   }
 
+  const holesLeft = holes.length - currentHoleIndex;
+
+if (!spinWheelHasAppeared && holesLeft <= 3) {
+  currentChallenge = { text: challengeTypes.SPIN_WHEEL, type: "SPIN_WHEEL" };
+  spinWheelHasAppeared = true;
+
+  document.getElementById("challengeText").textContent = currentChallenge.text;
+  return;
+}
+  
   const shouldUseTrivia = Math.random() < triviaChance;
 
   if (shouldUseTrivia) {
@@ -907,6 +920,7 @@ function acceptChallenge() {
   });
 
   if (currentChallenge.type === "SPIN_WHEEL") {
+    spinWheelHasAppeared = true;
     startWheelChallenge();
   } else if (currentChallenge.type === "TRIVIA") {
     startTriviaChallenge();
