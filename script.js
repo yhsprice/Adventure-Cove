@@ -169,7 +169,23 @@ const triviaQuestions = {
 { question: "What color are Minions?", choices: ["Blue", "Yellow", "Green", "Orange"], answer: 1 },
 { question: "Who is the cowboy's best friend in Toy Story?", choices: ["Rex", "Buzz", "Slinky", "Forky"], answer: 1 },
 { question: "What is the name of the kingdom in Frozen?", choices: ["Arendelle", "Avalon", "Atlantis", "Corona"], answer: 0 },
-{ question: "Who swings through New York using webs?", choices: ["Batman", "Spider-Man", "Flash", "Thor"], answer: 1 }
+{ question: "Who swings through New York using webs?", choices: ["Batman", "Spider-Man", "Flash", "Thor"], answer: 1 },
+    { question: "What color is the Hulk?", choices: ["Blue", "Green", "Red", "Purple"], answer: 1 },
+{ question: "What superhero uses a shield?", choices: ["Spider-Man", "Captain America", "Thor", "Batman"], answer: 1 },
+{ question: "What city does Batman protect?", choices: ["Gotham", "Metropolis", "New York", "Central City"], answer: 0 },
+{ question: "What weapon does Thor use?", choices: ["Sword", "Hammer", "Bow", "Shield"], answer: 1 },
+{ question: "Who can climb walls and shoot webs?", choices: ["Batman", "Spider-Man", "Flash", "Hulk"], answer: 1 },
+{ question: "What is Superman's symbol shaped like?", choices: ["Circle", "Star", "Diamond", "Triangle"], answer: 2 },
+{ question: "What color is Iron Man's suit often shown as?", choices: ["Red and Gold", "Blue and White", "Green", "Black"], answer: 0 },
+{ question: "Who is Batman's sidekick?", choices: ["Robin", "Falcon", "Bucky", "Vision"], answer: 0 },
+{ question: "What superhero is very fast?", choices: ["Flash", "Hulk", "Aquaman", "Ant-Man"], answer: 0 },
+{ question: "Which superhero lives under the sea?", choices: ["Batman", "Aquaman", "Thor", "Iron Man"], answer: 1 },
+
+{ question: "What does Spider-Man shoot?", choices: ["Fire", "Webs", "Ice", "Lasers"], answer: 1 },
+{ question: "What superhero turns big and green?", choices: ["Hulk", "Flash", "Batman", "Wolverine"], answer: 0 },
+{ question: "Who wears a cape and has an S symbol?", choices: ["Superman", "Batman", "Thor", "Loki"], answer: 0 },
+{ question: "Which hero has a lasso?", choices: ["Wonder Woman", "Black Widow", "Captain Marvel", "Gamora"], answer: 0 },
+{ question: "What animal is Batman named after?", choices: ["Cat", "Bat", "Wolf", "Eagle"], answer: 1 }
 ],
 
 hard: [
