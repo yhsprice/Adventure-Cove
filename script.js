@@ -185,7 +185,48 @@ const triviaQuestions = {
 { question: "What superhero turns big and green?", choices: ["Hulk", "Flash", "Batman", "Wolverine"], answer: 0 },
 { question: "Who wears a cape and has an S symbol?", choices: ["Superman", "Batman", "Thor", "Loki"], answer: 0 },
 { question: "Which hero has a lasso?", choices: ["Wonder Woman", "Black Widow", "Captain Marvel", "Gamora"], answer: 0 },
-{ question: "What animal is Batman named after?", choices: ["Cat", "Bat", "Wolf", "Eagle"], answer: 1 }
+{ question: "What animal is Batman named after?", choices: ["Cat", "Bat", "Wolf", "Eagle"], answer: 1 },
+    { question: "What is Captain America's shield mostly made from?", choices: ["Wood", "Vibranium", "Steel", "Gold"], answer: 1 },
+{ question: "Who is Iron Man?", choices: ["Tony Stark", "Bruce Wayne", "Clark Kent", "Peter Parker"], answer: 0 },
+{ question: "What color is Spider-Man's costume?", choices: ["Red and Blue", "Green and Yellow", "Black and White", "Purple"], answer: 0 },
+{ question: "Who is Batman's butler?", choices: ["Alfred", "James", "Robin", "Gordon"], answer: 0 },
+{ question: "What superhero shrinks very small?", choices: ["Ant-Man", "Hulk", "Flash", "Thor"], answer: 0 },
+
+{ question: "What superhero can talk to fish?", choices: ["Aquaman", "Batman", "Iron Man", "Green Lantern"], answer: 0 },
+{ question: "What superhero is from Krypton?", choices: ["Batman", "Thor", "Superman", "Flash"], answer: 2 },
+{ question: "What color is the Flash's suit?", choices: ["Blue", "Red", "Green", "Black"], answer: 1 },
+{ question: "Who is Hulk before he transforms?", choices: ["Bruce Banner", "Tony Stark", "Steve Rogers", "Peter Parker"], answer: 0 },
+{ question: "What superhero uses a magic hammer?", choices: ["Thor", "Aquaman", "Iron Man", "Black Panther"], answer: 0 },
+
+{ question: "What is Wonder Woman's weapon famous for making people tell the truth?", choices: ["Sword", "Shield", "Lasso", "Spear"], answer: 2 },
+{ question: "Who is Spider-Man's aunt?", choices: ["May", "June", "Anna", "Sarah"], answer: 0 },
+{ question: "What superhero is known as the Dark Knight?", choices: ["Batman", "Superman", "Flash", "Thor"], answer: 0 },
+{ question: "Which superhero has claws made of metal?", choices: ["Wolverine", "Cyclops", "Hawkeye", "Falcon"], answer: 0 },
+{ question: "What animal inspires Black Panther?", choices: ["Tiger", "Lion", "Panther", "Leopard"], answer: 2 },
+
+{ question: "Who is Superman's reporter friend?", choices: ["Lois Lane", "Mary Jane", "Pepper Potts", "Black Widow"], answer: 0 },
+{ question: "What superhero uses arrows?", choices: ["Hawkeye", "Hulk", "Thor", "Vision"], answer: 0 },
+{ question: "What color ring does Green Lantern use?", choices: ["Blue", "Red", "Green", "Yellow"], answer: 2 },
+{ question: "What is Batman's vehicle called?", choices: ["Batmobile", "Bat Car", "Night Rider", "Bat Cruiser"], answer: 0 },
+{ question: "What superhero is half human and half Atlantean?", choices: ["Thor", "Aquaman", "Namor", "Flash"], answer: 1 },
+
+{ question: "What superhero carries a trident?", choices: ["Aquaman", "Batman", "Thor", "Superman"], answer: 0 },
+{ question: "Who is Peter Parker?", choices: ["Batman", "Iron Man", "Spider-Man", "Hulk"], answer: 2 },
+{ question: "What superhero can fly and shoot lasers from his eyes?", choices: ["Batman", "Superman", "Hawkeye", "Flash"], answer: 1 },
+{ question: "What metal is Wolverine's skeleton coated with?", choices: ["Steel", "Titanium", "Adamantium", "Iron"], answer: 2 },
+{ question: "What superhero is known for saying 'I am Groot'?", choices: ["Rocket", "Groot", "Drax", "Star-Lord"], answer: 1 },
+
+{ question: "What superhero team includes Iron Man, Thor, and Hulk?", choices: ["Justice League", "X-Men", "Avengers", "Guardians"], answer: 2 },
+{ question: "Who is Batman's police ally?", choices: ["Commissioner Gordon", "Alfred", "Robin", "Joker"], answer: 0 },
+{ question: "What superhero wears red boots and a blue suit with a cape?", choices: ["Superman", "Batman", "Flash", "Aquaman"], answer: 0 },
+{ question: "Which superhero has a spider symbol on his suit?", choices: ["Spider-Man", "Batman", "Ant-Man", "Flash"], answer: 0 },
+{ question: "What superhero can run through walls by vibrating?", choices: ["Flash", "Thor", "Hulk", "Vision"], answer: 0 },
+
+{ question: "What superhero lives in Gotham City?", choices: ["Batman", "Superman", "Flash", "Aquaman"], answer: 0 },
+{ question: "What superhero uses shrinking technology?", choices: ["Ant-Man", "Iron Man", "Thor", "Hulk"], answer: 0 },
+{ question: "What superhero wears armor instead of having powers?", choices: ["Iron Man", "Hulk", "Thor", "Superman"], answer: 0 },
+{ question: "What superhero comes from Asgard?", choices: ["Thor", "Batman", "Aquaman", "Flash"], answer: 0 },
+{ question: "What superhero is known for super speed?", choices: ["Flash", "Batman", "Iron Man", "Aquaman"], answer: 0 }
 ],
 
 hard: [
