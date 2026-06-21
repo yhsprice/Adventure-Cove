@@ -110,21 +110,22 @@ const triviaQuestions = {
   { question: "What is the first month of the year?", choices: ["December", "January", "February", "March"], answer: 1 },
   { question: "What do fish breathe through?", choices: ["Lungs", "Gills", "Noses", "Mouths"], answer: 1 }
 ];
-  
-  const wheelOptions = [
-  { label: "Instant hole in one", action: "INSTANT_ONE" },
-  { label: "Interlock your arms with another player and try to swing", action: "PLAY_NOTE" },
-  { label: "Kick the ball and use no hands or club", action: "PLAY_NOTE" },
-  { label: "Add 2 to your score for this round", action: "ADD_TWO" },
-  { label: "Play normal", action: "PLAY_NOTE" }
-  ],
-  hard: [
+
+hard: [
     { question: "Which planet is the largest in our solar system?", choices: ["Earth", "Saturn", "Jupiter", "Mars"], answer: 2 },
     { question: "What gas do plants take in from the air?", choices: ["Oxygen", "Carbon dioxide", "Helium", "Hydrogen"], answer: 1 },
     { question: "How many continents are there?", choices: ["5", "6", "7", "8"], answer: 2 },
     { question: "What is the capital of the United States?", choices: ["New York City", "Washington, D.C.", "Boston", "Chicago"], answer: 1 },
     { question: "Which ocean is on the east coast of the United States?", choices: ["Pacific", "Atlantic", "Indian", "Arctic"], answer: 1 }
   ]
+  };
+
+  const wheelOptions = [
+  { label: "Instant hole in one", action: "INSTANT_ONE" },
+  { label: "Interlock your arms with another player and try to swing", action: "PLAY_NOTE" },
+  { label: "Kick the ball and use no hands or club", action: "PLAY_NOTE" },
+  { label: "Add 2 to your score for this round", action: "ADD_TWO" },
+  { label: "Play normal", action: "PLAY_NOTE" }
 };
 
 
