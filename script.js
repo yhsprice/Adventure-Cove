@@ -832,28 +832,6 @@ function chooseNormal() {
 }
 
 function choosePath() {
-  document.getElementById("specialTitle").textContent = "Choose Challenge Style";
-
-  document.getElementById("specialContent").innerHTML = `
-    <div class="message-box">
-      Pick how wild you want this hole to be.
-    </div>
-
-    <div class="center">
-      <button onclick="startChallengeStyle('simple')">Simple Challenge</button>
-      <button class="gold-btn" onclick="startChallengeStyle('hard')">Hard Challenge</button>
-    </div>
-
-    <p class="muted center">
-      Simple = mostly mini-golf challenges. Hard = more trivia and bigger rewards.
-    </p>
-  `;
-
-  showOnly("specialScreen");
-}
-
-function startChallengeStyle(style) {
-  challengeDifficulty = style;
   newChallenge();
   showOnly("pathScreen");
 }
