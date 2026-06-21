@@ -285,7 +285,66 @@ const triviaQuestions = {
 { question: "What color shorts does Mickey usually wear?", choices: ["Blue", "Green", "Yellow", "Red"], answer: 3 },
 { question: "Who is Donald Duck's girlfriend?", choices: ["Minnie", "Daisy", "Clarabelle", "Pearl"], answer: 1 },
 { question: "What is Goofy?", choices: ["Dog", "Cow", "Horse", "Bear"], answer: 0 },
-{ question: "Who wears a big red bow?", choices: ["Daisy", "Minnie", "Clarabelle", "Pearl"], answer: 1 }
+{ question: "Who wears a big red bow?", choices: ["Daisy", "Minnie", "Clarabelle", "Pearl"], answer: 1 },
+    { question: "What color is Mario's hat?", choices: ["Blue", "Red", "Green", "Yellow"], answer: 1 },
+{ question: "Who is Mario's brother?", choices: ["Wario", "Yoshi", "Luigi", "Toad"], answer: 2 },
+{ question: "What color is Luigi's hat?", choices: ["Blue", "Green", "Red", "Yellow"], answer: 1 },
+{ question: "What animal is Sonic?", choices: ["Fox", "Hedgehog", "Rabbit", "Cat"], answer: 1 },
+{ question: "What color is Sonic?", choices: ["Red", "Green", "Blue", "Yellow"], answer: 2 },
+
+{ question: "What game lets you build with blocks?", choices: ["Fortnite", "Minecraft", "Roblox", "Mario Kart"], answer: 1 },
+{ question: "What are the green enemies called in Mario?", choices: ["Koopas", "Goombas", "Yoshis", "Toads"], answer: 0 },
+{ question: "What animal is Pikachu?", choices: ["Mouse", "Cat", "Rabbit", "Fox"], answer: 0 },
+{ question: "What color is Pikachu?", choices: ["Blue", "Green", "Yellow", "Orange"], answer: 2 },
+{ question: "What game features Creepers?", choices: ["Minecraft", "Roblox", "Fortnite", "Pokemon"], answer: 0 },
+
+{ question: "Who kidnaps Princess Peach?", choices: ["Yoshi", "Bowser", "Luigi", "Toad"], answer: 1 },
+{ question: "What does Mario collect?", choices: ["Stars and Coins", "Apples", "Diamonds", "Keys"], answer: 0 },
+{ question: "What is the name of Mario's dinosaur friend?", choices: ["Bowser", "Yoshi", "Luigi", "Toad"], answer: 1 },
+{ question: "What game has trainers and Pokémon?", choices: ["Minecraft", "Pokemon", "Sonic", "Fortnite"], answer: 1 },
+{ question: "What color is Charmander?", choices: ["Blue", "Green", "Orange", "Purple"], answer: 2 },
+
+{ question: "What does a Creeper do?", choices: ["Explodes", "Flies", "Swims", "Builds"], answer: 0 },
+{ question: "What is Roblox?", choices: ["A movie", "A game platform", "A cartoon", "A toy"], answer: 1 },
+{ question: "What is the main goal in Pac-Man?", choices: ["Collect dots", "Build houses", "Race cars", "Catch fish"], answer: 0 },
+{ question: "What color is Pac-Man?", choices: ["Blue", "Yellow", "Red", "Green"], answer: 1 },
+{ question: "Who throws barrels at Mario?", choices: ["Bowser", "Donkey Kong", "Luigi", "Yoshi"], answer: 1 },
+
+{ question: "What vehicle do players race in Mario Kart?", choices: ["Planes", "Boats", "Karts", "Trains"], answer: 2 },
+{ question: "What animal is Tails from Sonic?", choices: ["Fox", "Rabbit", "Cat", "Dog"], answer: 0 },
+{ question: "How many tails does Tails have?", choices: ["1", "2", "3", "4"], answer: 1 },
+{ question: "What color is Luigi's shirt?", choices: ["Red", "Blue", "Green", "Yellow"], answer: 2 },
+{ question: "What do Minecraft players mine?", choices: ["Blocks", "Clouds", "Cars", "Fish"], answer: 0 },
+
+{ question: "Which Pokemon is known for water attacks and has a shell?", choices: ["Pikachu", "Bulbasaur", "Squirtle", "Charmander"], answer: 2 },
+{ question: "What does Sonic like to collect?", choices: ["Coins", "Rings", "Stars", "Diamonds"], answer: 1 },
+{ question: "What color is Knuckles?", choices: ["Blue", "Red", "Green", "Yellow"], answer: 1 },
+{ question: "What game is Steve from?", choices: ["Roblox", "Minecraft", "Fortnite", "Pokemon"], answer: 1 },
+{ question: "What shape are Minecraft blocks?", choices: ["Round", "Square", "Triangle", "Oval"], answer: 1 },
+
+{ question: "Who is Mario trying to rescue?", choices: ["Zelda", "Peach", "Daisy", "Rosalina"], answer: 1 },
+{ question: "What color is Bulbasaur?", choices: ["Green", "Blue", "Red", "Yellow"], answer: 0 },
+{ question: "What color is Squirtle?", choices: ["Green", "Blue", "Orange", "Purple"], answer: 1 },
+{ question: "What is the fastest blue video game character?", choices: ["Mario", "Sonic", "Luigi", "Pac-Man"], answer: 1 },
+{ question: "What game features Endermen?", choices: ["Pokemon", "Minecraft", "Mario Kart", "Roblox"], answer: 1 },
+
+{ question: "What fruit gives Pac-Man bonus points?", choices: ["Cherry", "Banana", "Apple", "Orange"], answer: 0 },
+{ question: "Who is Bowser's main enemy?", choices: ["Luigi", "Mario", "Yoshi", "Toad"], answer: 1 },
+{ question: "What does Pikachu shoot?", choices: ["Ice", "Water", "Electricity", "Fire"], answer: 2 },
+{ question: "What color is a Pokeball mostly?", choices: ["Blue", "Green", "Red", "Yellow"], answer: 2 },
+{ question: "What game has Battle Royale mode?", choices: ["Fortnite", "Pac-Man", "Pokemon", "Mario Kart"], answer: 0 },
+
+{ question: "What color is Yoshi?", choices: ["Blue", "Red", "Green", "Yellow"], answer: 2 },
+{ question: "What is the name of the princess in Mario games?", choices: ["Peach", "Daisy", "Rosalina", "Zelda"], answer: 0 },
+{ question: "What game features gym leaders?", choices: ["Minecraft", "Pokemon", "Fortnite", "Roblox"], answer: 1 },
+{ question: "What is Sonic's enemy scientist called?", choices: ["Dr. Robotnik", "Bowser", "Ganondorf", "King Boo"], answer: 0 },
+{ question: "What block glows in Minecraft?", choices: ["Dirt", "Glowstone", "Sand", "Wood"], answer: 1 },
+
+{ question: "What color is a Creeper?", choices: ["Blue", "Green", "Red", "Black"], answer: 1 },
+{ question: "What game has villagers trading items?", choices: ["Minecraft", "Pac-Man", "Mario Kart", "Sonic"], answer: 0 },
+{ question: "Who evolves from Charmander?", choices: ["Bulbasaur", "Charmeleon", "Squirtle", "Pikachu"], answer: 1 },
+{ question: "What is the main collectible in Mario games?", choices: ["Coins", "Rings", "Blocks", "Stars"], answer: 0 },
+{ question: "What game features crafting tables?", choices: ["Minecraft", "Pokemon", "Fortnite", "Pac-Man"], answer: 0 }
 ],
 
 hard: [
