@@ -499,6 +499,7 @@ let currentTriviaDifficulty = "easy";
 let challengeDifficulty = "simple";
 let fortunePredictions = {};
 let gameDifficulty = "easy";
+let previousScreenBeforeRules = "setupScreen";
 
 let gameInProgress = false;
 
@@ -2310,6 +2311,19 @@ function cancelChallengeGoNormal() {
 }
 
 function showRules() {
+  const visibleScreen = [
+    "setupScreen",
+    "choiceScreen",
+    "pathScreen",
+    "playScreen",
+    "specialScreen",
+    "wheelScreen",
+    "finalScreen",
+    "historyScreen"
+  ].find(id => !document.getElementById(id).classList.contains("hidden"));
+
+  previousScreenBeforeRules = visibleScreen || "setupScreen";
+
   document.getElementById("specialTitle").textContent = "Adventure Cove Rules";
 
   document.getElementById("specialContent").innerHTML = `
@@ -2328,10 +2342,9 @@ function showRules() {
         <li>Choose Your Path for a random challenge.</li>
         <li>Read the challenge before starting the hole.</li>
         <li>If the app says it will add or subtract strokes, follow the screen after the hole.</li>
-        <li>If the app asks you to select players, choose the correct player and the app updates the score.</li>
-        <li><strong>Trivia:</strong> answer correctly to move your ball forward.</li>
-        <li><strong>Fortune Teller:</strong> predict your score before the hole. If correct, the app deducts 1 stroke.</li>
-        <li><strong>Spin Wheel:</strong> each player spins, then takes their turn right away.</li>
+        <li>Trivia: answer correctly to move your ball forward.</li>
+        <li>Fortune Teller: predict your score before the hole. Correct prediction = -1 stroke.</li>
+        <li>Spin Wheel: each player spins, then takes their turn right away.</li>
         <li>Lowest total score wins.</li>
       </ul>
 
@@ -2340,7 +2353,7 @@ function showRules() {
         <li>No running, jumping, lunging, or swinging hard.</li>
         <li>Do not block walkways.</li>
         <li>Be careful around water, rocks, walls, and decorations.</li>
-        <li>Keep it fun. Don’t be the reason we need a rule sign.</li>
+        <li>Keep it fun. Do not be the reason we need a bigger rule sign.</li>
       </ul>
 
       <div class="center">
@@ -2353,12 +2366,7 @@ function showRules() {
 }
 
 function returnFromRules() {
-  if (scores.length && currentHoleIndex < holes.length) {
-    updateChoiceScreen();
-    showOnly("choiceScreen");
-  } else {
-    showOnly("setupScreen");
-  }
+  showOnly(previousScreenBeforeRules || "setupScreen");
 }
 
 buildSetup();
