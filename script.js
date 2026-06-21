@@ -462,7 +462,66 @@ const triviaQuestions = {
 { question: "What fruit is known for being fuzzy on the outside?", choices: ["Peach", "Orange", "Apple", "Grape"], answer: 0 },
 { question: "What food is often served at baseball games in a bun?", choices: ["Hot Dog", "Pizza", "Taco", "Chicken"], answer: 0 },
 { question: "What fruit is green inside and brown outside?", choices: ["Pear", "Kiwi", "Apple", "Lime"], answer: 1 },
-{ question: "What candy is often given out on Halloween in fun-sized bars?", choices: ["Chocolate Bars", "Broccoli", "Pretzels", "Crackers"], answer: 0 }
+{ question: "What candy is often given out on Halloween in fun-sized bars?", choices: ["Chocolate Bars", "Broccoli", "Pretzels", "Crackers"], answer: 0 },
+    { question: "How many points is a touchdown worth in football?", choices: ["3", "6", "7", "8"], answer: 1 },
+{ question: "What sport uses a bat and baseball?", choices: ["Football", "Basketball", "Baseball", "Soccer"], answer: 2 },
+{ question: "What sport is known as the 'beautiful game'?", choices: ["Baseball", "Soccer", "Hockey", "Tennis"], answer: 1 },
+{ question: "What color is a traditional basketball?", choices: ["Blue", "Orange", "Green", "Yellow"], answer: 1 },
+{ question: "How many bases are on a baseball field?", choices: ["3", "4", "5", "6"], answer: 1 },
+
+{ question: "What sport uses a puck?", choices: ["Baseball", "Soccer", "Hockey", "Golf"], answer: 2 },
+{ question: "What sport is Tiger Woods famous for?", choices: ["Tennis", "Golf", "Baseball", "Basketball"], answer: 1 },
+{ question: "What sport uses a racket and a yellow ball?", choices: ["Tennis", "Golf", "Baseball", "Soccer"], answer: 0 },
+{ question: "How many players are on a basketball team on the court?", choices: ["4", "5", "6", "7"], answer: 1 },
+{ question: "What sport does LeBron James play?", choices: ["Football", "Baseball", "Basketball", "Golf"], answer: 2 },
+
+{ question: "What sport uses clubs and holes?", choices: ["Golf", "Tennis", "Hockey", "Football"], answer: 0 },
+{ question: "What is scored in soccer?", choices: ["Touchdowns", "Goals", "Runs", "Points"], answer: 1 },
+{ question: "What sport uses a bowling ball?", choices: ["Golf", "Baseball", "Bowling", "Tennis"], answer: 2 },
+{ question: "What color card usually means stop in soccer?", choices: ["Green", "Blue", "Yellow", "Red"], answer: 3 },
+{ question: "What sport is played at Adventure Cove?", choices: ["Golf", "Mini Golf", "Disc Golf", "Baseball"], answer: 1 },
+
+{ question: "How many strikes are an out in baseball?", choices: ["2", "3", "4", "5"], answer: 1 },
+{ question: "What sport uses a net and a volleyball?", choices: ["Soccer", "Volleyball", "Basketball", "Baseball"], answer: 1 },
+{ question: "What do golfers try to get the ball into?", choices: ["Basket", "Goal", "Hole", "Net"], answer: 2 },
+{ question: "What sport uses a helmet and shoulder pads?", choices: ["Golf", "Football", "Tennis", "Bowling"], answer: 1 },
+{ question: "What sport uses pins?", choices: ["Bowling", "Golf", "Soccer", "Hockey"], answer: 0 },
+
+{ question: "What is the object hit in hockey?", choices: ["Ball", "Puck", "Disk", "Stone"], answer: 1 },
+{ question: "What sport is played at Wimbledon?", choices: ["Golf", "Soccer", "Tennis", "Baseball"], answer: 2 },
+{ question: "What is the highest score in bowling called?", choices: ["Perfect Game", "Grand Slam", "Touchdown", "Hat Trick"], answer: 0 },
+{ question: "How many holes are in a standard round of golf?", choices: ["9", "12", "18", "24"], answer: 2 },
+{ question: "What sport uses a goalie?", choices: ["Soccer", "Hockey", "Both", "Neither"], answer: 2 },
+
+{ question: "What color is a standard tennis ball?", choices: ["Red", "Blue", "Yellow", "Orange"], answer: 2 },
+{ question: "What sport uses a tee?", choices: ["Baseball", "Golf", "Soccer", "Basketball"], answer: 1 },
+{ question: "What sport has innings?", choices: ["Soccer", "Football", "Baseball", "Golf"], answer: 2 },
+{ question: "What sport is known for slam dunks?", choices: ["Tennis", "Basketball", "Golf", "Hockey"], answer: 1 },
+{ question: "What sport uses cleats and a football?", choices: ["Baseball", "Soccer", "Football", "Golf"], answer: 2 },
+
+{ question: "What do you call scoring three goals in one hockey game?", choices: ["Triple Play", "Hat Trick", "Grand Slam", "Strikeout"], answer: 1 },
+{ question: "What sport uses a putter?", choices: ["Golf", "Baseball", "Tennis", "Bowling"], answer: 0 },
+{ question: "What sport uses a catcher?", choices: ["Soccer", "Baseball", "Basketball", "Golf"], answer: 1 },
+{ question: "What sport has quarters?", choices: ["Football", "Basketball", "Both", "Neither"], answer: 2 },
+{ question: "What sport is played on ice with skates?", choices: ["Soccer", "Golf", "Hockey", "Tennis"], answer: 2 },
+
+{ question: "What is a score of zero called in tennis?", choices: ["Nil", "Love", "Blank", "Zero"], answer: 1 },
+{ question: "What sport has home plate?", choices: ["Football", "Soccer", "Baseball", "Golf"], answer: 2 },
+{ question: "What sport uses a driver?", choices: ["Golf", "Baseball", "Soccer", "Tennis"], answer: 0 },
+{ question: "What sport has free throws?", choices: ["Basketball", "Golf", "Football", "Baseball"], answer: 0 },
+{ question: "What sport uses shin guards?", choices: ["Soccer", "Golf", "Bowling", "Tennis"], answer: 0 },
+
+{ question: "What is the goal in mini golf?", choices: ["Most points", "Fastest time", "Lowest score", "Longest shot"], answer: 2 },
+{ question: "What sport uses a scoreboard and bases?", choices: ["Football", "Baseball", "Golf", "Soccer"], answer: 1 },
+{ question: "What sport is the Masters tournament?", choices: ["Tennis", "Golf", "Soccer", "Baseball"], answer: 1 },
+{ question: "What sport uses a fairway?", choices: ["Golf", "Football", "Soccer", "Hockey"], answer: 0 },
+{ question: "What sport uses a three-point line?", choices: ["Football", "Basketball", "Golf", "Baseball"], answer: 1 },
+
+{ question: "What sport uses a soccer ball?", choices: ["Football", "Basketball", "Soccer", "Baseball"], answer: 2 },
+{ question: "What sport uses a net and a hoop?", choices: ["Golf", "Basketball", "Soccer", "Tennis"], answer: 1 },
+{ question: "What sport is played at the Super Bowl?", choices: ["Basketball", "Soccer", "Football", "Baseball"], answer: 2 },
+{ question: "What sport uses tees, clubs, and greens?", choices: ["Golf", "Baseball", "Soccer", "Tennis"], answer: 0 },
+{ question: "What sport is Adventure Cove's challenge game based on?", choices: ["Baseball", "Golf", "Bowling", "Soccer"], answer: 1 }
 ],
 
 hard: [
@@ -733,7 +792,66 @@ hard: [
 { question: "What university is located in Athens, Ohio?", choices: ["Ohio State", "Ohio University", "Miami University", "Kent State"], answer: 1 },
 { question: "What famous inventor from Ohio created the cash register?", choices: ["John Patterson", "Thomas Edison", "Alexander Graham Bell", "Henry Ford"], answer: 0 },
 { question: "What color is a buckeye nut?", choices: ["Green", "Black", "Brown", "Red"], answer: 2 },
-{ question: "What city hosts Adventure Cove Mini Golf?", choices: ["Mason", "Wilmington", "Dayton", "Lebanon"], answer: 1 }
+{ question: "What city hosts Adventure Cove Mini Golf?", choices: ["Mason", "Wilmington", "Dayton", "Lebanon"], answer: 1 },
+  { question: "What planet is known as the Red Planet?", choices: ["Venus", "Mars", "Jupiter", "Mercury"], answer: 1 },
+{ question: "What is the largest planet in our solar system?", choices: ["Saturn", "Earth", "Jupiter", "Neptune"], answer: 2 },
+{ question: "What gas do plants absorb from the air?", choices: ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"], answer: 2 },
+{ question: "How many planets are in our solar system?", choices: ["7", "8", "9", "10"], answer: 1 },
+{ question: "What force keeps us on the ground?", choices: ["Magnetism", "Friction", "Gravity", "Pressure"], answer: 2 },
+
+{ question: "What is the hottest planet in our solar system?", choices: ["Mercury", "Mars", "Venus", "Jupiter"], answer: 2 },
+{ question: "What is Earth's natural satellite?", choices: ["Mars", "The Moon", "The Sun", "Venus"], answer: 1 },
+{ question: "What is the chemical symbol for gold?", choices: ["Ag", "Go", "Au", "Gd"], answer: 2 },
+{ question: "What is the chemical symbol for oxygen?", choices: ["Ox", "O", "Oy", "Og"], answer: 1 },
+{ question: "Which planet has the most rings?", choices: ["Earth", "Mars", "Saturn", "Mercury"], answer: 2 },
+
+{ question: "How many bones are in the adult human body?", choices: ["196", "206", "216", "226"], answer: 1 },
+{ question: "What is the largest organ in the human body?", choices: ["Heart", "Liver", "Brain", "Skin"], answer: 3 },
+{ question: "What part of the body pumps blood?", choices: ["Brain", "Lungs", "Heart", "Kidneys"], answer: 2 },
+{ question: "What star is closest to Earth?", choices: ["Polaris", "Sirius", "The Sun", "Alpha Centauri"], answer: 2 },
+{ question: "What is H2O commonly known as?", choices: ["Salt", "Hydrogen", "Water", "Oxygen"], answer: 2 },
+
+{ question: "What planet is closest to the Sun?", choices: ["Mercury", "Venus", "Earth", "Mars"], answer: 0 },
+{ question: "How long does Earth take to orbit the Sun?", choices: ["30 days", "180 days", "365 days", "500 days"], answer: 2 },
+{ question: "What is the freezing point of water?", choices: ["0°", "32°", "Both", "Neither"], answer: 2 },
+{ question: "Which blood type is known as the universal donor?", choices: ["A", "AB", "O Negative", "B"], answer: 2 },
+{ question: "What gas do humans breathe in to survive?", choices: ["Hydrogen", "Nitrogen", "Oxygen", "Carbon Dioxide"], answer: 2 },
+
+{ question: "Which planet is famous for the Great Red Spot?", choices: ["Mars", "Jupiter", "Saturn", "Venus"], answer: 1 },
+{ question: "What is the center of an atom called?", choices: ["Electron", "Nucleus", "Proton", "Neutron"], answer: 1 },
+{ question: "How many teeth does a typical adult have?", choices: ["28", "30", "32", "34"], answer: 2 },
+{ question: "What is the speed of sound measured in?", choices: ["Miles", "Seconds", "Mach", "Pounds"], answer: 2 },
+{ question: "Which planet is known for its giant rings?", choices: ["Earth", "Saturn", "Mars", "Mercury"], answer: 1 },
+
+{ question: "What is the hardest natural substance on Earth?", choices: ["Gold", "Steel", "Diamond", "Granite"], answer: 2 },
+{ question: "Which planet is known as Earth's twin?", choices: ["Mars", "Venus", "Mercury", "Jupiter"], answer: 1 },
+{ question: "How many chambers does the human heart have?", choices: ["2", "3", "4", "5"], answer: 2 },
+{ question: "What is the largest ocean on Earth?", choices: ["Atlantic", "Indian", "Pacific", "Arctic"], answer: 2 },
+{ question: "What kind of galaxy is the Milky Way?", choices: ["Spiral", "Square", "Ring", "Irregular"], answer: 0 },
+
+{ question: "What planet is farthest from the Sun?", choices: ["Uranus", "Neptune", "Saturn", "Jupiter"], answer: 1 },
+{ question: "What is the main gas in Earth's atmosphere?", choices: ["Oxygen", "Nitrogen", "Hydrogen", "Carbon Dioxide"], answer: 1 },
+{ question: "What is the study of weather called?", choices: ["Meteorology", "Geology", "Astronomy", "Biology"], answer: 0 },
+{ question: "What is the largest mammal on Earth?", choices: ["Elephant", "Blue Whale", "Giraffe", "Hippo"], answer: 1 },
+{ question: "Which planet rotates on its side?", choices: ["Mars", "Venus", "Uranus", "Mercury"], answer: 2 },
+
+{ question: "What is the boiling point of water in Celsius?", choices: ["50", "75", "100", "150"], answer: 2 },
+{ question: "What is the nearest galaxy to the Milky Way?", choices: ["Andromeda", "Whirlpool", "Triangulum", "Sombrero"], answer: 0 },
+{ question: "What is the largest desert on Earth?", choices: ["Sahara", "Gobi", "Antarctica", "Mojave"], answer: 2 },
+{ question: "What element do diamonds consist of?", choices: ["Carbon", "Silicon", "Quartz", "Iron"], answer: 0 },
+{ question: "Which planet has the shortest day?", choices: ["Jupiter", "Mars", "Earth", "Mercury"], answer: 0 },
+
+{ question: "How many sides does a hexagon have?", choices: ["5", "6", "7", "8"], answer: 1 },
+{ question: "What is measured with a Richter scale?", choices: ["Wind", "Rain", "Earthquakes", "Temperature"], answer: 2 },
+{ question: "What is the largest species of shark?", choices: ["Great White", "Hammerhead", "Whale Shark", "Tiger Shark"], answer: 2 },
+{ question: "What part of the eye controls how much light enters?", choices: ["Lens", "Retina", "Iris", "Cornea"], answer: 2 },
+{ question: "Which planet has the longest year?", choices: ["Neptune", "Saturn", "Mars", "Venus"], answer: 0 },
+
+{ question: "What is the closest planet to Earth most often?", choices: ["Venus", "Mars", "Mercury", "Jupiter"], answer: 2 },
+{ question: "What is the largest volcano in the solar system?", choices: ["Mount Everest", "Olympus Mons", "Mauna Loa", "Vesuvius"], answer: 1 },
+{ question: "What is the name of our galaxy?", choices: ["Andromeda", "Milky Way", "Whirlpool", "Centaurus"], answer: 1 },
+{ question: "What causes tides on Earth?", choices: ["Wind", "The Moon", "The Sun", "Earthquakes"], answer: 1 },
+{ question: "How many Earths could fit inside Jupiter?", choices: ["About 10", "About 100", "About 1,300", "About 10,000"], answer: 2 }
   ]
   };
 
