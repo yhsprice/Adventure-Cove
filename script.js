@@ -495,6 +495,7 @@ function newChallenge() {
 function getChallengePreviewMessage(type) {
   if (type === "HIGHEST_PAR_DECIDES") return highestScoreMessage();
   if (type === "SPIN_WHEEL") return "Each player spins, then takes their turn right away.";
+  if (type === "TRIVIA") return "Each player answers a trivia question before taking their turn. Correct answer = move forward 1 normal step.";
   if (type === "CLOSEST_TO_HOLE") return "After everyone scores, choose the closest player and mark if anyone sank the ball.";
   if (type === "UNDER_PAR_REMOVE_WORST") return "After the hole, the app removes the worst previous score for anyone who beats par.";
   if (type === "HOLE_IN_ONE_ATTACK") return "After the hole, anyone with a hole-in-one can add +2 to another player.";
