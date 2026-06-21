@@ -590,9 +590,8 @@ function acceptChallenge() {
     startWheelChallenge();
   } else if (currentChallenge.type === "TRIVIA") {
     startTriviaChallenge();
-    else if (currentChallenge.type === "FORTUNE_TELLER") {
-  startFortuneTeller();
-}
+  } else if (currentChallenge.type === "FORTUNE_TELLER") {
+    startFortuneTeller();
   } else {
     startHolePlay();
   }
