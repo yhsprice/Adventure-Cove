@@ -19,7 +19,8 @@ const challengeTypes = {
   TREASURE_STEAL: "Treasure Steal: hole-in-one earns -1 stroke.",
   WATERFALL_WHISPER: "Waterfall Whisper: everyone stays quiet for first shots. Talk early = +1.",
   LUCKY_BOUNCE: "Lucky Bounce: bounce off a wall and sink it = -1 stroke.",
-  TRIVIA: "Do You Dare? Answer a trivia question correctly before your turn. If correct, move your ball forward 1 normal step. No jumping or lunging."
+  TRIVIA: "Do You Dare? Answer a trivia question correctly before your turn. If correct, move your ball forward 1 normal step. No jumping or lunging.",
+  FORTUNE_TELLER: "Fortune Teller: predict your score before the hole starts. If your prediction is exactly correct, the app deducts 1 stroke."
 };
 
 const challenges = [
@@ -59,7 +60,7 @@ const challenges = [
 { text: "Captain's Call: the youngest player chooses one rule for everyone's first shot.", type: "NORMAL" },
 { text: "Waterfall Whisper: everyone must stay quiet until all first shots are complete. Anyone who talks receives 1 extra stroke. After the hole, select those players and the app will apply it.", type: "WATERFALL_WHISPER" },
 { text: "Lucky Bounce: if your ball bounces off a wall and then goes in, earn a 1-stroke deduction. After the hole, select qualifying players and the app will apply it.", type: "LUCKY_BOUNCE" },
-{ text: "The Detour: your first shot must be aimed at a wall or obstacle instead of directly at the hole.", type: "NORMAL" },
+{ text: challengeTypes.FORTUNE_TELLER, type: "FORTUNE_TELLER" },
 { text: "Steady Captain: keep both hands touching each other on the putter for the entire hole.", type: "NORMAL" },
 { text: challengeTypes.TRIVIA, type: "TRIVIA" },
   ];
@@ -198,6 +199,7 @@ let usedTriviaQuestions = [];
 let currentTriviaQuestion = null;
 let currentTriviaDifficulty = "easy";
 let challengeDifficulty = "simple";
+let fortunePredictions = {};
 
 let gameInProgress = false;
 
@@ -588,6 +590,9 @@ function acceptChallenge() {
     startWheelChallenge();
   } else if (currentChallenge.type === "TRIVIA") {
     startTriviaChallenge();
+    else if (currentChallenge.type === "FORTUNE_TELLER") {
+  startFortuneTeller();
+}
   } else {
     startHolePlay();
   }
@@ -938,6 +943,7 @@ function handleEndOfHole() {
     if (currentChallenge.type === "CLOSEST_TO_HOLE") return showClosestToHoleScreen();
     if (currentChallenge.type === "UNDER_PAR_REMOVE_WORST") return applyUnderParRemoveWorst();
     if (currentChallenge.type === "HOLE_IN_ONE_ATTACK") return showHoleInOneAttackScreen();
+    if (currentChallenge.type === "FORTUNE_TELLER") return applyFortuneTeller();
 
    if (currentChallenge.type === "OBSTACLE_TROUBLE") {
   return applyMutiny();
@@ -949,6 +955,74 @@ if (["SAFE_SHOT", "COMEBACK_COVE", "TREASURE_STEAL", "WATERFALL_WHISPER", "LUCKY
   }
 
   advanceHole();
+}
+
+function startFortuneTeller() {
+  fortunePredictions = {};
+  askFortunePrediction(0);
+}
+
+function askFortunePrediction(playerIndex) {
+  document.getElementById("specialTitle").textContent = "🔮 Fortune Teller";
+
+  document.getElementById("specialContent").innerHTML = `
+    <div class="message-box">
+      ${players[playerIndex]}, predict your score for this hole.
+    </div>
+
+    <div class="center">
+      <input id="predictionInput" type="number" min="1" max="12" value="${holes[currentHoleIndex].par}">
+      <br><br>
+      <button onclick="savePrediction(${playerIndex})">Save Prediction</button>
+    </div>
+  `;
+
+  showOnly("specialScreen");
+}
+
+function savePrediction(playerIndex) {
+  const prediction = Number(document.getElementById("predictionInput").value);
+
+  fortunePredictions[playerIndex] = prediction;
+
+  if (playerIndex + 1 < players.length) {
+    askFortunePrediction(playerIndex + 1);
+  } else {
+    startHolePlay();
+  }
+}
+
+function applyFortuneTeller() {
+  const winners = [];
+
+  scores.forEach((player, index) => {
+    const score = getHoleTotal(player, currentHoleIndex);
+
+    if (fortunePredictions[index] === score) {
+      player.adjustments[currentHoleIndex] -= 1;
+      player.notes[currentHoleIndex] += " Fortune Teller: -1.";
+      player.stats.bonuses++;
+      winners.push(player.name);
+    }
+  });
+
+  document.getElementById("specialTitle").textContent = "🔮 Fortune Teller Results";
+
+  document.getElementById("specialContent").innerHTML = `
+    <div class="message-box">
+      ${
+        winners.length
+          ? `${winners.join(", ")} predicted perfectly and earned -1 stroke!`
+          : "Nobody saw the future this time."
+      }
+    </div>
+
+    <div class="center">
+      <button onclick="advanceHole()">Continue</button>
+    </div>
+  `;
+
+  showOnly("specialScreen");
 }
 
 function advanceHole() {
