@@ -109,7 +109,66 @@ const triviaQuestions = {
   { question: "How many fingers are on one hand?", choices: ["4", "5", "6", "7"], answer: 1 },
   { question: "Which animal says oink?", choices: ["Pig", "Cow", "Dog", "Duck"], answer: 0 },
   { question: "What is the first month of the year?", choices: ["December", "January", "February", "March"], answer: 1 },
-  { question: "What do fish breathe through?", choices: ["Lungs", "Gills", "Noses", "Mouths"], answer: 1 }
+  { question: "What do fish breathe through?", choices: ["Lungs", "Gills", "Noses", "Mouths"], answer: 1 },
+    { question: "What color is Mickey Mouse's shorts?", choices: ["Blue", "Red", "Green", "Yellow"], answer: 1 },
+{ question: "What is the name of Elsa's sister in Frozen?", choices: ["Anna", "Olaf", "Moana", "Belle"], answer: 0 },
+{ question: "What superhero wears a bat symbol?", choices: ["Superman", "Batman", "Spider-Man", "Iron Man"], answer: 1 },
+{ question: "What color is Lightning McQueen?", choices: ["Blue", "Green", "Red", "Yellow"], answer: 2 },
+{ question: "What animal is Simba?", choices: ["Tiger", "Lion", "Bear", "Wolf"], answer: 1 },
+
+{ question: "Who lives in a pineapple under the sea?", choices: ["Mickey Mouse", "SpongeBob", "Olaf", "Buzz Lightyear"], answer: 1 },
+{ question: "What is Buzz Lightyear's catchphrase?", choices: ["Let's Go!", "To Infinity and Beyond!", "Cowabunga!", "Adventure Time!"], answer: 1 },
+{ question: "What color is Hulk?", choices: ["Blue", "Green", "Red", "Purple"], answer: 1 },
+{ question: "What kind of animal is Olaf?", choices: ["Penguin", "Snowman", "Reindeer", "Bear"], answer: 1 },
+{ question: "Who has a magic lamp?", choices: ["Aladdin", "Woody", "Peter Pan", "Shrek"], answer: 0 },
+
+{ question: "What superhero can climb walls?", choices: ["Batman", "Spider-Man", "Thor", "Flash"], answer: 1 },
+{ question: "What is Moana's pet chicken named?", choices: ["Hei Hei", "Cluck", "Peck", "Red"], answer: 0 },
+{ question: "What color is Captain America's shield?", choices: ["Blue, Red, and White", "Green and Yellow", "Purple and Black", "Orange"], answer: 0 },
+{ question: "What toy is Woody?", choices: ["Astronaut", "Cowboy", "Pirate", "Robot"], answer: 1 },
+{ question: "What animal is Dumbo?", choices: ["Mouse", "Elephant", "Horse", "Dog"], answer: 1 },
+
+{ question: "Who is Mickey Mouse's dog?", choices: ["Pluto", "Goofy", "Donald", "Max"], answer: 0 },
+{ question: "What is the name of the snowman in Frozen?", choices: ["Sven", "Kristoff", "Olaf", "Hans"], answer: 2 },
+{ question: "Which superhero uses a hammer?", choices: ["Thor", "Batman", "Hulk", "Iron Man"], answer: 0 },
+{ question: "What color is Cinderella's dress?", choices: ["Pink", "Blue", "Green", "Purple"], answer: 1 },
+{ question: "Who says 'Hakuna Matata'?", choices: ["Elsa", "Timon and Pumbaa", "Buzz", "Maui"], answer: 1 },
+
+{ question: "What kind of fish is Nemo?", choices: ["Goldfish", "Clownfish", "Shark", "Tuna"], answer: 1 },
+{ question: "What is Superman's weakness?", choices: ["Ice", "Fire", "Kryptonite", "Water"], answer: 2 },
+{ question: "Who is the cowboy in Toy Story?", choices: ["Buzz", "Woody", "Rex", "Forky"], answer: 1 },
+{ question: "What does Olaf dream about?", choices: ["Winter", "Summer", "Spring", "Snow"], answer: 1 },
+{ question: "What color is Pikachu?", choices: ["Blue", "Yellow", "Green", "Red"], answer: 1 },
+
+{ question: "Who lives in Neverland?", choices: ["Aladdin", "Peter Pan", "Maui", "Simba"], answer: 1 },
+{ question: "What animal is Scooby-Doo?", choices: ["Beagle", "Great Dane", "Bulldog", "Poodle"], answer: 1 },
+{ question: "Who is Iron Man?", choices: ["Tony Stark", "Bruce Wayne", "Steve Rogers", "Clark Kent"], answer: 0 },
+{ question: "What kind of animal is Sven?", choices: ["Horse", "Reindeer", "Moose", "Dog"], answer: 1 },
+{ question: "What is the name of Ariel's fish friend?", choices: ["Flounder", "Nemo", "Dory", "Sebastian"], answer: 0 },
+
+{ question: "What color is Shrek?", choices: ["Blue", "Green", "Brown", "Yellow"], answer: 1 },
+{ question: "Who is Batman's sidekick?", choices: ["Robin", "Flash", "Hulk", "Thor"], answer: 0 },
+{ question: "What animal is Pumbaa?", choices: ["Pig", "Warthog", "Boar", "Hippo"], answer: 1 },
+{ question: "Who pulls Maui's hook from the ocean?", choices: ["Elsa", "Moana", "Anna", "Rapunzel"], answer: 1 },
+{ question: "What kind of creature is Stitch?", choices: ["Alien", "Dog", "Bear", "Monkey"], answer: 0 },
+
+{ question: "Who is the princess in Beauty and the Beast?", choices: ["Belle", "Jasmine", "Ariel", "Elsa"], answer: 0 },
+{ question: "What superhero is known as the fastest man alive?", choices: ["Batman", "Flash", "Hulk", "Thor"], answer: 1 },
+{ question: "What is the name of the dragon in Mulan?", choices: ["Mushu", "Spike", "Draco", "Toothless"], answer: 0 },
+{ question: "What animal is Winnie the Pooh?", choices: ["Rabbit", "Bear", "Pig", "Dog"], answer: 1 },
+{ question: "Who is Elsa's magical snowman?", choices: ["Olaf", "Sven", "Kristoff", "Hans"], answer: 0 },
+
+{ question: "What color is the Genie in Aladdin?", choices: ["Green", "Blue", "Purple", "Red"], answer: 1 },
+{ question: "Who lives with seven dwarfs?", choices: ["Cinderella", "Snow White", "Belle", "Rapunzel"], answer: 1 },
+{ question: "What is Baby Yoda's real name?", choices: ["Grogu", "Yoda Jr.", "Mando", "Jedi"], answer: 0 },
+{ question: "What superhero carries a shield?", choices: ["Iron Man", "Captain America", "Thor", "Hulk"], answer: 1 },
+{ question: "Who says 'Ohana means family'?", choices: ["Lilo", "Moana", "Anna", "Belle"], answer: 0 },
+
+{ question: "What animal is Baloo?", choices: ["Lion", "Bear", "Tiger", "Wolf"], answer: 1 },
+{ question: "What color are Minions?", choices: ["Blue", "Yellow", "Green", "Orange"], answer: 1 },
+{ question: "Who is the cowboy's best friend in Toy Story?", choices: ["Rex", "Buzz", "Slinky", "Forky"], answer: 1 },
+{ question: "What is the name of the kingdom in Frozen?", choices: ["Arendelle", "Avalon", "Atlantis", "Corona"], answer: 0 },
+{ question: "Who swings through New York using webs?", choices: ["Batman", "Spider-Man", "Flash", "Thor"], answer: 1 }
 ],
 
 hard: [
@@ -262,7 +321,125 @@ hard: [
 { question: "Which ocean is the warmest?", choices: ["Atlantic", "Pacific", "Indian", "Arctic"], answer: 2 },
 { question: "What is a pirate crew led by?", choices: ["Navigator", "Captain", "Quartermaster", "Cook"], answer: 1 },
 { question: "What famous pirate had a black beard?", choices: ["Captain Kidd", "Blackbeard", "Long John Silver", "Calico Jack"], answer: 1 },
-{ question: "What is a voyage?", choices: ["A treasure", "A storm", "A journey by sea", "A pirate flag"], answer: 2 }
+{ question: "What is a voyage?", choices: ["A treasure", "A storm", "A journey by sea", "A pirate flag"], answer: 2 },
+  { question: "How many noses does a slug have?", choices: ["1", "2", "4", "6"], answer: 2 },
+{ question: "Which animal can sleep standing up?", choices: ["Horse", "Cat", "Rabbit", "Monkey"], answer: 0 },
+{ question: "What color is a polar bear's skin?", choices: ["White", "Pink", "Black", "Gray"], answer: 2 },
+{ question: "Which animal's fingerprints are most like a human's?", choices: ["Chimpanzee", "Koala", "Gorilla", "Orangutan"], answer: 1 },
+{ question: "How many hearts does an earthworm have?", choices: ["1", "2", "5", "10"], answer: 2 },
+
+{ question: "What is the only letter not found in any U.S. state name?", choices: ["Q", "X", "Z", "J"], answer: 0 },
+{ question: "Can flamingos be born gray?", choices: ["Yes", "No", "Only males", "Only females"], answer: 0 },
+{ question: "Which animal cannot jump?", choices: ["Elephant", "Rhino", "Hippo", "Giraffe"], answer: 0 },
+{ question: "How long can a snail sleep?", choices: ["1 week", "1 month", "6 months", "3 years"], answer: 3 },
+{ question: "What is a group of crows called?", choices: ["Pack", "Murder", "Flock", "Herd"], answer: 1 },
+
+{ question: "What fruit floats in water?", choices: ["Apple", "Banana", "Orange", "Peach"], answer: 0 },
+{ question: "How many stomachs does a cow have?", choices: ["1", "2", "4", "6"], answer: 2 },
+{ question: "Which animal's tongue is longer than its body?", choices: ["Frog", "Anteater", "Chameleon", "Lizard"], answer: 2 },
+{ question: "What color is octopus blood?", choices: ["Red", "Green", "Blue", "Purple"], answer: 2 },
+{ question: "Can sharks blink?", choices: ["Yes", "No"], answer: 1 },
+
+{ question: "Which bird can fly backward?", choices: ["Sparrow", "Robin", "Hummingbird", "Crow"], answer: 2 },
+{ question: "How many eyes does a bee have?", choices: ["2", "3", "5", "8"], answer: 2 },
+{ question: "Which animal can taste with its feet?", choices: ["Butterfly", "Spider", "Ant", "Beetle"], answer: 0 },
+{ question: "What animal spends most of its life upside down?", choices: ["Bat", "Sloth", "Possum", "Koala"], answer: 1 },
+{ question: "Which sea creature has three hearts?", choices: ["Shark", "Whale", "Octopus", "Seal"], answer: 2 },
+
+{ question: "Which country has the most islands?", choices: ["Indonesia", "Canada", "Sweden", "Philippines"], answer: 2 },
+{ question: "Can a shrimp's heart be in its head?", choices: ["Yes", "No"], answer: 0 },
+{ question: "Which animal can survive without its head for weeks?", choices: ["Snake", "Cockroach", "Lizard", "Spider"], answer: 1 },
+{ question: "How many bones do sharks have?", choices: ["0", "12", "100", "206"], answer: 0 },
+{ question: "What animal has square poop?", choices: ["Koala", "Wombat", "Beaver", "Otter"], answer: 1 },
+
+{ question: "Which planet rains diamonds?", choices: ["Mars", "Saturn", "Neptune", "Mercury"], answer: 2 },
+{ question: "What is the only food that never spoils?", choices: ["Honey", "Sugar", "Salt", "Peanut Butter"], answer: 0 },
+{ question: "Can turtles breathe through their rear ends?", choices: ["Yes", "No"], answer: 0 },
+{ question: "What is the strongest muscle by size in the body?", choices: ["Heart", "Tongue", "Jaw", "Leg"], answer: 2 },
+{ question: "Which animal laughs like a human?", choices: ["Chimpanzee", "Rat", "Dog", "Dolphin"], answer: 1 },
+
+{ question: "How many teeth does an adult giraffe have?", choices: ["32", "34", "36", "40"], answer: 1 },
+{ question: "Which animal has the largest eyes?", choices: ["Whale", "Owl", "Giant Squid", "Shark"], answer: 2 },
+{ question: "What color are hippos' sweat?", choices: ["Clear", "White", "Pink", "Blue"], answer: 2 },
+{ question: "Can frogs drink water through their skin?", choices: ["Yes", "No"], answer: 0 },
+{ question: "Which mammal is the only one that can truly fly?", choices: ["Flying Squirrel", "Bat", "Sugar Glider", "Flying Lemur"], answer: 1 },
+
+{ question: "What animal can rotate its head the farthest?", choices: ["Owl", "Eagle", "Falcon", "Parrot"], answer: 0 },
+{ question: "How many chambers does a crocodile heart have?", choices: ["2", "3", "4", "5"], answer: 2 },
+{ question: "Which animal's eye is bigger than its brain?", choices: ["Horse", "Ostrich", "Whale", "Elephant"], answer: 1 },
+{ question: "Can dolphins recognize themselves in a mirror?", choices: ["Yes", "No"], answer: 0 },
+{ question: "What animal can hold its breath the longest?", choices: ["Whale", "Sea Turtle", "Seal", "Dolphin"], answer: 0 },
+
+{ question: "Which country invented ice cream?", choices: ["Italy", "China", "France", "United States"], answer: 1 },
+{ question: "What is the most stolen food in the world?", choices: ["Chocolate", "Cheese", "Bread", "Coffee"], answer: 1 },
+{ question: "Which animal can survive being frozen and thawed?", choices: ["Frog", "Tardigrade", "Bear", "Penguin"], answer: 1 },
+{ question: "Can cows have best friends?", choices: ["Yes", "No"], answer: 0 },
+{ question: "Which fruit has seeds on the outside?", choices: ["Apple", "Strawberry", "Orange", "Pear"], answer: 1 },
+
+{ question: "How many times can a woodpecker peck per second?", choices: ["5", "10", "20", "40"], answer: 2 },
+{ question: "What is the world's loudest animal?", choices: ["Lion", "Blue Whale", "Elephant", "Howler Monkey"], answer: 1 },
+{ question: "Which animal can regenerate its heart?", choices: ["Starfish", "Axolotl", "Salamander", "Zebrafish"], answer: 3 },
+{ question: "Can bananas be berries?", choices: ["Yes", "No"], answer: 0 },
+{ question: "Which animal never forgets?", choices: ["Elephant", "Crow", "Dolphin", "Octopus"], answer: 0 },
+  { question: "What is the capital of Ohio?", choices: ["Cleveland", "Cincinnati", "Columbus", "Toledo"], answer: 2 },
+{ question: "What is Ohio's nickname?", choices: ["Buckeye State", "Corn State", "Lake State", "River State"], answer: 0 },
+{ question: "Which city is home to the Rock & Roll Hall of Fame?", choices: ["Cincinnati", "Columbus", "Cleveland", "Dayton"], answer: 2 },
+{ question: "What tree produces buckeyes?", choices: ["Oak", "Buckeye Tree", "Maple", "Walnut"], answer: 1 },
+{ question: "What famous aviation city is in Ohio?", choices: ["Akron", "Dayton", "Athens", "Mansfield"], answer: 1 },
+
+{ question: "Which two brothers were born in Ohio and pioneered flight?", choices: ["Wright Brothers", "Warner Brothers", "Johnson Brothers", "Smith Brothers"], answer: 0 },
+{ question: "What river forms much of Ohio's southern border?", choices: ["Mississippi", "Ohio River", "Scioto", "Miami"], answer: 1 },
+{ question: "Which amusement park in Ohio is known for roller coasters?", choices: ["Kings Island", "Cedar Point", "Both", "Neither"], answer: 2 },
+{ question: "What is Ohio's state bird?", choices: ["Cardinal", "Blue Jay", "Robin", "Eagle"], answer: 0 },
+{ question: "What Great Lake borders Ohio?", choices: ["Lake Michigan", "Lake Superior", "Lake Erie", "Lake Ontario"], answer: 2 },
+
+{ question: "What city hosts the Cincinnati Reds?", choices: ["Columbus", "Dayton", "Cincinnati", "Toledo"], answer: 2 },
+{ question: "What city hosts the Cleveland Browns?", choices: ["Akron", "Cleveland", "Dayton", "Youngstown"], answer: 1 },
+{ question: "What candy is famous in Ohio and made in Cleveland?", choices: ["M&M's", "Reese's", "Malley's", "Hershey's"], answer: 2 },
+{ question: "What color is Ohio's state flower, the scarlet carnation?", choices: ["Yellow", "Blue", "Red", "White"], answer: 2 },
+{ question: "Which university plays football in Ohio Stadium called 'The Horseshoe'?", choices: ["Ohio University", "Miami University", "Ohio State University", "Kent State"], answer: 2 },
+
+{ question: "What animal is Ohio's state mammal?", choices: ["White-tailed Deer", "Black Bear", "Raccoon", "Fox"], answer: 0 },
+{ question: "Which city is known as the Rubber Capital of the World?", choices: ["Akron", "Dayton", "Cleveland", "Lima"], answer: 0 },
+{ question: "What is Ohio's state insect?", choices: ["Ladybug", "Honeybee", "Monarch Butterfly", "Dragonfly"], answer: 0 },
+{ question: "What is Ohio's state beverage?", choices: ["Apple Juice", "Milk", "Root Beer", "Lemonade"], answer: 1 },
+{ question: "Which famous astronaut was born in Ohio?", choices: ["Neil Armstrong", "Buzz Aldrin", "John Glenn", "Both Armstrong and Glenn"], answer: 3 },
+
+{ question: "Which city is known as the Queen City?", choices: ["Columbus", "Cincinnati", "Cleveland", "Dayton"], answer: 1 },
+{ question: "How many U.S. Presidents were born in Ohio?", choices: ["5", "7", "8", "10"], answer: 1 },
+{ question: "Which Ohio city is closest to Wilmington?", choices: ["Cincinnati", "Dayton", "Columbus", "Cleveland"], answer: 0 },
+{ question: "What county is Wilmington located in?", choices: ["Clermont", "Clinton", "Brown", "Warren"], answer: 1 },
+{ question: "What famous race track is near Wilmington?", choices: ["Daytona", "Eldora", "Kil-Kare", "Cincinnati Speedway"], answer: 2 },
+
+{ question: "What is Ohio's state reptile?", choices: ["Black Racer", "Box Turtle", "Water Snake", "Copperhead"], answer: 1 },
+{ question: "What is Ohio's state wildflower?", choices: ["Trillium", "Rose", "Daisy", "Sunflower"], answer: 0 },
+{ question: "What city is home to Cedar Point?", choices: ["Toledo", "Sandusky", "Lorain", "Akron"], answer: 1 },
+{ question: "What military museum is located in Dayton?", choices: ["National Museum of the U.S. Air Force", "Smithsonian", "War Memorial Museum", "Aviation Hall"], answer: 0 },
+{ question: "Which city is Ohio's largest by population?", choices: ["Cincinnati", "Cleveland", "Columbus", "Toledo"], answer: 2 },
+
+{ question: "What famous chili style is associated with Cincinnati?", choices: ["Texas Chili", "White Chili", "Skyline-style Chili", "Green Chili"], answer: 2 },
+{ question: "What company is headquartered in Cincinnati?", choices: ["Ford", "Procter & Gamble", "Apple", "Tesla"], answer: 1 },
+{ question: "Which Ohio city hosts the Pro Football Hall of Fame?", choices: ["Canton", "Akron", "Cleveland", "Youngstown"], answer: 0 },
+{ question: "What is Ohio's state rock song?", choices: ["Hang On Sloopy", "Sweet Home Alabama", "Born in the USA", "Ohio"], answer: 0 },
+{ question: "Which Ohio city hosts the annual Pumpkin Show?", choices: ["Circleville", "Dayton", "Athens", "Findlay"], answer: 0 },
+
+{ question: "Which famous fast-food chain was founded in Ohio?", choices: ["Wendy's", "Burger King", "Subway", "Five Guys"], answer: 0 },
+{ question: "What color are Ohio State's team colors?", choices: ["Red and Black", "Scarlet and Gray", "Blue and Gold", "Red and White"], answer: 1 },
+{ question: "Which Ohio city is known for aviation history?", choices: ["Toledo", "Akron", "Dayton", "Athens"], answer: 2 },
+{ question: "Which county fair is one of the largest in Ohio?", choices: ["Clinton County", "Darke County", "Brown County", "Ross County"], answer: 1 },
+{ question: "What major interstate runs near Wilmington?", choices: ["I-70", "I-71", "I-75", "I-90"], answer: 1 },
+
+{ question: "Which professional baseball team plays in Ohio?", choices: ["Reds", "Guardians", "Both", "Neither"], answer: 2 },
+{ question: "Which famous astronaut first walked on the moon and was from Ohio?", choices: ["John Glenn", "Neil Armstrong", "Buzz Aldrin", "Jim Lovell"], answer: 1 },
+{ question: "Which city hosts Kings Island?", choices: ["Mason", "Wilmington", "Dayton", "Hamilton"], answer: 0 },
+{ question: "Ohio borders how many states?", choices: ["4", "5", "6", "7"], answer: 1 },
+{ question: "What is Ohio's state fruit?", choices: ["Apple", "Tomato", "Pawpaw", "Peach"], answer: 1 },
+
+{ question: "Which Ohio city is nicknamed 'The Gem City'?", choices: ["Akron", "Dayton", "Cleveland", "Lima"], answer: 1 },
+{ question: "What university is located in Athens, Ohio?", choices: ["Ohio State", "Ohio University", "Miami University", "Kent State"], answer: 1 },
+{ question: "What famous inventor from Ohio created the cash register?", choices: ["John Patterson", "Thomas Edison", "Alexander Graham Bell", "Henry Ford"], answer: 0 },
+{ question: "What color is a buckeye nut?", choices: ["Green", "Black", "Brown", "Red"], answer: 2 },
+{ question: "What city hosts Adventure Cove Mini Golf?", choices: ["Mason", "Wilmington", "Dayton", "Lebanon"], answer: 1 }
   ]
   };
 
@@ -321,6 +498,7 @@ let currentTriviaQuestion = null;
 let currentTriviaDifficulty = "easy";
 let challengeDifficulty = "simple";
 let fortunePredictions = {};
+let gameDifficulty = "easy";
 
 let gameInProgress = false;
 
@@ -579,6 +757,24 @@ function showOnly(id) {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+function startChallengeEasy() {
+  currentMode = "Challenge";
+  gameDifficulty = "easy";
+  startGame();
+}
+
+function startChallengeMixed() {
+  currentMode = "Challenge";
+  gameDifficulty = "mixed";
+  startGame();
+}
+
+function startChallengeHard() {
+  currentMode = "Challenge";
+  gameDifficulty = "hard";
+  startGame();
+}
+
 function startGame() {
   players = [];
 
@@ -661,27 +857,45 @@ function startChallengeStyle(style) {
 }
 
 function newChallenge() {
-  const triviaChance = challengeDifficulty === "hard" ? 0.50 : 0.25;
+
+  let triviaChance = 0;
+  let triviaDifficulty = "easy";
+
+  if (gameDifficulty === "easy") {
+    triviaChance = 0.25;
+    triviaDifficulty = "easy";
+  }
+
+  if (gameDifficulty === "mixed") {
+    triviaChance = 0.50;
+    triviaDifficulty = Math.random() < 0.5 ? "easy" : "hard";
+  }
+
+  if (gameDifficulty === "hard") {
+    triviaChance = 0.50;
+    triviaDifficulty = "hard";
+  }
+
   const shouldUseTrivia = Math.random() < triviaChance;
 
   if (shouldUseTrivia) {
-    currentChallenge = { text: challengeTypes.TRIVIA, type: "TRIVIA" };
+    currentChallenge = {
+      text: challengeTypes.TRIVIA,
+      type: "TRIVIA",
+      difficulty: triviaDifficulty
+    };
   } else {
-    const nonTriviaChallenges = challenges.filter(challenge => challenge.type !== "TRIVIA");
-    currentChallenge = nonTriviaChallenges[Math.floor(Math.random() * nonTriviaChallenges.length)];
+    const nonTriviaChallenges =
+      challenges.filter(c => c.type !== "TRIVIA");
+
+    currentChallenge =
+      nonTriviaChallenges[
+        Math.floor(Math.random() * nonTriviaChallenges.length)
+      ];
   }
 
-  document.getElementById("challengeText").textContent = currentChallenge.text;
-
-  const preview = document.getElementById("challengePreview");
-  const message = getChallengePreviewMessage(currentChallenge.type);
-
-  if (message) {
-    preview.textContent = message;
-    preview.classList.remove("hidden");
-  } else {
-    preview.classList.add("hidden");
-  }
+  document.getElementById("challengeText").textContent =
+    currentChallenge.text;
 }
 
 function getChallengePreviewMessage(type) {
@@ -741,13 +955,17 @@ function highestScoreMessage() {
   return `There is a tie for highest score. Random pick: ${randomLeader} decides how everyone must hit the ball.`;
 }
 
-  function startTriviaChallenge() {
+ function startTriviaChallenge() {
   triviaPlayerIndex = 0;
-  usedTriviaQuestions = [];
-  currentTriviaDifficulty = challengeDifficulty === "hard" ? "hard" : "easy";
+
+  usedTriviaQuestions.easy = [];
+  usedTriviaQuestions.hard = [];
+
+  currentTriviaDifficulty =
+    currentChallenge.difficulty || "easy";
+
   showTriviaQuestion();
 }
-
 function showTriviaQuestion() {
   currentPlayerIndex = triviaPlayerIndex;
 
