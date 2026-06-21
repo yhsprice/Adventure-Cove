@@ -2344,7 +2344,7 @@ function showRules() {
         <li>If the app says it will add or subtract strokes, follow the screen after the hole.</li>
         <li>Trivia: answer correctly to move your ball forward.</li>
         <li>Fortune Teller: predict your score before the hole. Correct prediction = -1 stroke.</li>
-        <li>Spin Wheel: each player spins, then takes their turn right away.</li>
+        <li>Spin Wheel: each player spins, then takes their whole turn right away.</li>
         <li>Lowest total score wins.</li>
       </ul>
 
