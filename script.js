@@ -226,7 +226,66 @@ const triviaQuestions = {
 { question: "What superhero uses shrinking technology?", choices: ["Ant-Man", "Iron Man", "Thor", "Hulk"], answer: 0 },
 { question: "What superhero wears armor instead of having powers?", choices: ["Iron Man", "Hulk", "Thor", "Superman"], answer: 0 },
 { question: "What superhero comes from Asgard?", choices: ["Thor", "Batman", "Aquaman", "Flash"], answer: 0 },
-{ question: "What superhero is known for super speed?", choices: ["Flash", "Batman", "Iron Man", "Aquaman"], answer: 0 }
+{ question: "What superhero is known for super speed?", choices: ["Flash", "Batman", "Iron Man", "Aquaman"], answer: 0 },
+    { question: "What is the name of the cowboy in Toy Story?", choices: ["Buzz", "Woody", "Jessie", "Rex"], answer: 1 },
+{ question: "What is the name of Buzz Lightyear's best friend?", choices: ["Rex", "Woody", "Slinky", "Forky"], answer: 1 },
+{ question: "What kind of fish is Nemo?", choices: ["Goldfish", "Clownfish", "Tuna", "Shark"], answer: 1 },
+{ question: "Who is Elsa's sister?", choices: ["Moana", "Anna", "Belle", "Rapunzel"], answer: 1 },
+{ question: "What is Olaf made of?", choices: ["Ice", "Snow", "Sand", "Clouds"], answer: 1 },
+
+{ question: "What is the name of the monster with one eye in Monsters, Inc.?", choices: ["Sulley", "Mike", "Randall", "Roz"], answer: 1 },
+{ question: "What animal is Simba?", choices: ["Tiger", "Lion", "Leopard", "Cheetah"], answer: 1 },
+{ question: "Who grants wishes in Aladdin?", choices: ["Jafar", "Abu", "The Genie", "Carpet"], answer: 2 },
+{ question: "What color is Lightning McQueen?", choices: ["Blue", "Yellow", "Red", "Green"], answer: 2 },
+{ question: "Who owns Lightning McQueen?", choices: ["Mater", "Sally", "No One", "Doc"], answer: 2 },
+
+{ question: "What is the name of Moana's chicken?", choices: ["Hei Hei", "Pua", "Maui", "Tamatoa"], answer: 0 },
+{ question: "What animal is Pua?", choices: ["Pig", "Dog", "Goat", "Cat"], answer: 0 },
+{ question: "Who has magical long hair?", choices: ["Belle", "Elsa", "Rapunzel", "Tiana"], answer: 2 },
+{ question: "What is the name of Ariel's fish friend?", choices: ["Nemo", "Flounder", "Dory", "Sebastian"], answer: 1 },
+{ question: "What animal is Sebastian?", choices: ["Fish", "Lobster", "Crab", "Shrimp"], answer: 2 },
+
+{ question: "What color is Cinderella's famous dress?", choices: ["Pink", "Blue", "Green", "Purple"], answer: 1 },
+{ question: "What is the name of the snowman in Frozen?", choices: ["Sven", "Olaf", "Hans", "Kristoff"], answer: 1 },
+{ question: "Who is the princess in Beauty and the Beast?", choices: ["Belle", "Aurora", "Jasmine", "Ariel"], answer: 0 },
+{ question: "What animal is Dumbo?", choices: ["Horse", "Elephant", "Mouse", "Bear"], answer: 1 },
+{ question: "What is the name of the dragon in Mulan?", choices: ["Mushu", "Spike", "Draco", "Puff"], answer: 0 },
+
+{ question: "Who says 'To Infinity and Beyond!'?", choices: ["Woody", "Buzz", "Rex", "Forky"], answer: 1 },
+{ question: "What is Sulley covered in?", choices: ["Scales", "Fur", "Feathers", "Armor"], answer: 1 },
+{ question: "What animal is Timon?", choices: ["Meerkat", "Monkey", "Fox", "Hyena"], answer: 0 },
+{ question: "What animal is Pumbaa?", choices: ["Pig", "Warthog", "Hippo", "Buffalo"], answer: 1 },
+{ question: "Who sings 'Let It Go'?", choices: ["Anna", "Elsa", "Olaf", "Kristoff"], answer: 1 },
+
+{ question: "What color are the Minions?", choices: ["Blue", "Green", "Yellow", "Orange"], answer: 2 },
+{ question: "What kind of animal is Sven?", choices: ["Horse", "Moose", "Reindeer", "Goat"], answer: 2 },
+{ question: "Who lives in a pineapple under the sea?", choices: ["Patrick", "SpongeBob", "Squidward", "Mr. Krabs"], answer: 1 },
+{ question: "What shape is SpongeBob?", choices: ["Circle", "Square", "Triangle", "Rectangle"], answer: 1 },
+{ question: "What animal is Winnie the Pooh?", choices: ["Rabbit", "Bear", "Pig", "Dog"], answer: 1 },
+
+{ question: "What is the name of the kingdom in Frozen?", choices: ["Corona", "Atlantica", "Arendelle", "Auradon"], answer: 2 },
+{ question: "What is Stitch?", choices: ["Alien", "Dog", "Bear", "Monkey"], answer: 0 },
+{ question: "What is the name of Lilo's blue friend?", choices: ["Spike", "Stitch", "Scrump", "Angel"], answer: 1 },
+{ question: "What animal is Baloo?", choices: ["Tiger", "Bear", "Wolf", "Elephant"], answer: 1 },
+{ question: "Who is Peter Pan's fairy friend?", choices: ["Tinker Bell", "Wendy", "Tiger Lily", "Jane"], answer: 0 },
+
+{ question: "What does Pinocchio want to become?", choices: ["A prince", "A real boy", "A knight", "A pirate"], answer: 1 },
+{ question: "What animal is Bambi?", choices: ["Rabbit", "Deer", "Fox", "Bear"], answer: 1 },
+{ question: "Who owns the magic lamp?", choices: ["Jafar", "Aladdin", "Abu", "Jasmine"], answer: 1 },
+{ question: "What kind of animal is Dory?", choices: ["Blue Tang Fish", "Goldfish", "Clownfish", "Shark"], answer: 0 },
+{ question: "What is the name of the rat chef in Ratatouille?", choices: ["Remy", "Emile", "Linguini", "Gusteau"], answer: 0 },
+
+{ question: "What animal is Mater's friend Lightning McQueen?", choices: ["Car", "Truck", "Race Car", "Tow Truck"], answer: 2 },
+{ question: "What family has powers in Encanto?", choices: ["The Madrigals", "The Garcias", "The Riveras", "The Casitas"], answer: 0 },
+{ question: "Who is the strongest Madrigal?", choices: ["Mirabel", "Isabela", "Luisa", "Dolores"], answer: 2 },
+{ question: "What color chameleon belongs to Rapunzel?", choices: ["Pascal", "Maximus", "Bruno", "Flit"], answer: 0 },
+{ question: "What animal is Pascal?", choices: ["Lizard", "Chameleon", "Snake", "Gecko"], answer: 1 },
+
+{ question: "Who is Mickey Mouse's dog?", choices: ["Goofy", "Pluto", "Max", "Pete"], answer: 1 },
+{ question: "What color shorts does Mickey usually wear?", choices: ["Blue", "Green", "Yellow", "Red"], answer: 3 },
+{ question: "Who is Donald Duck's girlfriend?", choices: ["Minnie", "Daisy", "Clarabelle", "Pearl"], answer: 1 },
+{ question: "What is Goofy?", choices: ["Dog", "Cow", "Horse", "Bear"], answer: 0 },
+{ question: "Who wears a big red bow?", choices: ["Daisy", "Minnie", "Clarabelle", "Pearl"], answer: 1 }
 ],
 
 hard: [
