@@ -9,19 +9,19 @@ const holes = [
 
 const challengeTypes = {
   HIGHEST_PAR_DECIDES: "The player currently losing chooses how everyone takes their first shot.",
-  CLOSEST_TO_HOLE: "Closest to the hole without sinking it wins -1 stroke. If your ball goes in, add +2.",
+  CLOSEST_TO_HOLE: "Closest to the hole without sinking it wins -1 stroke. If your ball goes in, add +2 more.",
   UNDER_PAR_REMOVE_WORST: "Beat par and your worst score disappears.",
   HOLE_IN_ONE_ATTACK: "Get a hole-in-one and give +2 strokes to any player.",
   SPIN_WHEEL: "Spin the wheel to learn your fate.",
-  SAFE_SHOT: "Safe Shot: no walls or obstacles touched = -1 stroke.",
+  SAFE_SHOT: "Bet you hit a wall = -1 stroke if you don't.",
   OBSTACLE_TROUBLE: "Mutiny! The player currently in first place receives +1 stroke after the hole. The app will apply it.",
   COMEBACK_COVE: "Comeback Cove: losing player gets -1 if they finish par or better.",
   TREASURE_STEAL: "Treasure Steal: hole-in-one earns -1 stroke.",
-  WATERFALL_WHISPER: "Waterfall Whisper: everyone stays quiet for first shots. Talk early = +1.",
+  WATERFALL_WHISPER: "Waterfall Whisper: bet you can't stay quiet.  = +1 if you talk first this round.",
   LUCKY_BOUNCE: "Lucky Bounce: bounce off a wall and sink it = -1 stroke.",
-  TRIVIA: "Do You Dare? Answer a trivia question correctly before your turn. If correct, move your ball forward 1 normal step. No jumping or lunging.",
+  TRIVIA: "Do You Dare? Answer a trivia question correctly before your turn. If correct, move your ball forward 1 or 2 steps. No jumping or lunging.",
   FORTUNE_TELLER: "Fortune Teller: predict your score before the hole starts. If your prediction is exactly correct, the app deducts 1 stroke.",
-  STEADY_CAPTAIN: "Steady Captain: keep both hands touching each other on the putter for the entire hole. If your hands separate at any time, add 1 stroke. After the hole, select affected players and the app will apply it."
+  STEADY_CAPTAIN: "Steady Captain: keep both hands touching each other on the putter for the entire hole. If your hands separate at any time, add 1 stroke. After the hole, select who broke the rule and the app will apply it."
 };
 
 const challenges = [
@@ -45,8 +45,7 @@ const challenges = [
 { text: "Use your non-dominant hand for the entire hole.", type: "NORMAL" },
 { text: "Crab Walk Shot: stand sideways for your first shot.", type: "NORMAL" },
 { text: "Best Shot Switch: choose another player to take your first shot for you.", type: "NORMAL" },
-{ text: "Bank Shot: your first shot must touch any wall before your second shot.", type: "NORMAL" },
-{ text: "No Peeking: look at the hole, then close your eyes before your first shot.", type: "NORMAL" },
+{ text: "Bank Shot: your first shot must touch any wall before your second shot or start over. Points add up.", type: "NORMAL" },
 { text: "Two-Finger Grip: hold the putter with only two fingers on your first shot.", type: "NORMAL" },
 { text: "Last Place Rule: the player with the highest score chooses how everyone takes their first shot.", type: "NORMAL" },
 { text: "Leader Trouble: the player with the highest score must use their non-dominant hand on their first shot.", type: "NORMAL" },
